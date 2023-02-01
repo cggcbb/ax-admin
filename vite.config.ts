@@ -3,11 +3,11 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
+import { NaiveUiResolver} from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   resolve: {
@@ -24,12 +24,24 @@ export default defineConfig({
       }
     }),
 
-    // https://github.com/hannoeru/vite-plugin-pages
-    Pages(),
-
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
-      imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core'],
+      imports: [
+        'vue',
+        'vue/macros',
+        'vue-router',
+        'pinia',
+        '@vueuse/core',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+            "darkTheme"
+          ]
+        }
+      ],
       dirs: ['./src/composables'],
       dts: './src/types/unplugin-auto-imports.d.ts',
       vueTemplate: true
@@ -37,13 +49,21 @@ export default defineConfig({
 
     // https://github.com/antfu/vite-plugin-components
     Components({
-      dts: true
+      dts: './src/types/components.d.ts',
+      resolvers: [NaiveUiResolver()],
     }),
 
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
     Unocss()
   ],
+  css: {
+    preprocessorOptions: {
+      less: {
+        additionalData: '@import "~/styles/variables.less";',
+      },
+    },
+  },
 
   // https://github.com/vitest-dev/vitest
   test: {

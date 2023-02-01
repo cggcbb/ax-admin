@@ -1,0 +1,38 @@
+<template>
+  <section class="nav-bar-wrapper" flex items-center>
+    <navbar-fold-icon />
+    <navbar-breadcrumb />
+    <!-- placeholder 占位 -->
+    <div class="placeholder"></div>
+    <navbar-actions @search-click="handleSearchClick" @bell-click="handleBellClick"
+      @full-screen-click="handleFullScreenClick" @setting-click="handleSettingClick" />
+    <navbar-avatar />
+    <!-- <div class="tab-bar-wrapper">
+      <tab-bar></tab-bar>
+    </div> -->
+  </section>
+</template>
+
+<script setup lang="ts">
+import useActions from './useActions'
+
+const { handleSearchClick, handleBellClick, handleFullScreenClick, handleSettingClick } =
+  useActions()
+
+</script>
+
+<style lang="less" scoped>
+.nav-bar-wrapper {
+  box-sizing: border-box;
+  box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  overflow: hidden;
+  transition: all 0.3s;
+  height: @logoHeight;
+  padding: 0 12px;
+
+  .placeholder {
+    flex: 1;
+  }
+}
+</style>

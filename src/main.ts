@@ -1,16 +1,13 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import routes from 'virtual:generated-pages'
-import App from './App.vue'
 
-import '@unocss/reset/tailwind.css'
-import './styles/main.css'
-import 'uno.css'
+import App from './App.vue'
+import router from './router'
+import './styles'
+import pinia from '~/store'
+
+import useMock from '../mock'
+useMock()
 
 const app = createApp(App)
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes
-})
-app.use(router)
+
+app.use(router).use(pinia)
 app.mount('#app')
