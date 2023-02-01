@@ -34,4 +34,7 @@ const send = async () => {
   }
 }
 </script>
-<style lang=""></style>
+
+<style lang="less">
+
+</style>

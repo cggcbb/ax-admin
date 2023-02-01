@@ -21,6 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/dashboard',
     name: '/dashboard',
     component: Layout,
+    redirect: '/workbench',
     children: [
       {
         path: '/workbench',
