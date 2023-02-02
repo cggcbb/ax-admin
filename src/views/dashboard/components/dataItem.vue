@@ -1,10 +1,12 @@
 <template>
-  <n-card :content-style="{ padding: '16px' }" :header-style="{ padding: '5px 10px' }" :segmented="true">
+  <n-card class="card-data-item" :content-style="{ padding: '16px' }" :header-style="{ padding: '5px 10px' }"
+    :segmented="true">
     <template #header>
-      <n-skeleton text v-if="loading" width="60%" />
+      <n-skeleton text v-if="loading" width="95%" />
       <template v-else>
         <div flex-center-v justify-between>
           <span text-4>{{ data.title }}</span>
+          <n-icon :size="data.iconSize" :component="data.icon"></n-icon>
         </div>
       </template>
     </template>
@@ -15,7 +17,7 @@
           <span text-6>{{ data.data }}</span>
         </div>
         <div flex-center-h flex-col flex-1>
-          <slot name="extra" :extra="data.extra"></slot>
+          <slot name="content" :content="data.content"></slot>
         </div>
         <div class="divide"></div>
         <div flex-center-v justify-between>
@@ -55,5 +57,13 @@ setTimeout(() => {
 .divide {
   margin: 10px 0;
   border-bottom: 1px solid #f5f5f5;
+}
+
+.card-data-item {
+  .n-card-header {
+    .n-skeleton {
+      transform: translateX(6px);
+    }
+  }
 }
 </style>

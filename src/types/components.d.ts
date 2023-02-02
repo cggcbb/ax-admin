@@ -37,7 +37,7 @@ declare module '@vue/runtime-core' {
     NProgress: typeof import('naive-ui')['NProgress']
     NSkeleton: typeof import('naive-ui')['NSkeleton']
     NSwitch: typeof import('naive-ui')['NSwitch']
-    OrderChart: typeof import('./../components/chart/orderChart.vue')['default']
+    OrderChart: typeof import('./../views/dashboard/components/chart/orderChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheInput: typeof import('./../components/TheInput.vue')['default']

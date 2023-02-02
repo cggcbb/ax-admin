@@ -3,18 +3,17 @@
 </template>
 
 <script lang="ts" setup>
-import { EChartsCoreOption } from 'echarts';
+import { EChartsOption } from 'echarts'
 import useEcharts from './useEcharts'
 
 const vueEcharts = ref<HTMLElement | null>(null)
 
 const props = defineProps<{
-  options: EChartsCoreOption,
+  options: EChartsOption,
   theme?: [String, Object]
 }>()
 
 useEcharts(props, vueEcharts)
-
 </script>
 
 <style lang="less" scoped>
