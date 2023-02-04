@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     ChinaMapChart: typeof import('./../views/dashboard/components/chart/china-map-chart/index.vue')['default']
     ChinaMapItem: typeof import('./../views/dashboard/components/chinaMapItem.vue')['default']
     DataItem: typeof import('./../views/dashboard/components/dataItem.vue')['default']
+    FlyBox: typeof import('./../components/flyBox/index.vue')['default']
     Layout: typeof import('./../components/Layout.vue')['default']
     Login: typeof import('./../views/login/index.vue')['default']
     Logo: typeof import('./../components/logo/index.vue')['default']
