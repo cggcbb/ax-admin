@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AxHeader: typeof import('./../components/ax-header/index.vue')['default']
     Axios: typeof import('./../views/axios.vue')['default']
+    ChinaMapChart: typeof import('./../views/dashboard/components/chart/china-map-chart/index.vue')['default']
+    ChinaMapItem: typeof import('./../views/dashboard/components/chinaMapItem.vue')['default']
     DataItem: typeof import('./../views/dashboard/components/dataItem.vue')['default']
     Layout: typeof import('./../components/Layout.vue')['default']
     Login: typeof import('./../views/login/index.vue')['default']
@@ -40,6 +42,7 @@ declare module '@vue/runtime-core' {
     OrderChart: typeof import('./../views/dashboard/components/chart/orderChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScaleContainer: typeof import('./../components/scale-container/index.vue')['default']
     TheInput: typeof import('./../components/TheInput.vue')['default']
     VueEcharts: typeof import('./../components/vue-echarts/index.vue')['default']
     Workbench: typeof import('./../views/dashboard/workbench.vue')['default']

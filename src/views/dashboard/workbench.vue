@@ -24,6 +24,12 @@
         </data-item>
       </n-gi>
     </n-grid>
+
+    <n-grid mt-10px>
+      <n-gi :span="24">
+        <china-map-item></china-map-item>
+      </n-gi>
+    </n-grid>
   </section>
 </template>
 
@@ -83,13 +89,15 @@ const dataList = [
 </script>
 
 <style lang="less" scoped>
-.light-green {
-  height: 180px;
-  background-color: rgb(0, 101, 128, .8);
-}
+.section-china-map {
+  .item-right {
+    left: 50.3%;
+  }
 
-.green {
-  height: 180px;
-  background-color: rgba(160, 59, 154, 0.8);
+  @media screen and (max-width: 768px) {
+    .item-right {
+      left: 0
+    }
+  }
 }
 </style>

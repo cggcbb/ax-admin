@@ -2,6 +2,7 @@
   "cSpell.words": [
     "Attributify",
     "composables",
+    "curveness",
     "Echarts",
     "ionicons",
     "mockjs",
@@ -11,6 +12,7 @@
     "unocss",
     "unplugin",
     "vicons",
-    "vueuse"
+    "vueuse",
+    "zlevel"
   ]
 }

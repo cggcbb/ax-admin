@@ -77,7 +77,6 @@ let timer: any = null
 onMounted(() => {
   updateChart()
 
-
   timer = setInterval(() => {
     updateChart()
   }, 3000)

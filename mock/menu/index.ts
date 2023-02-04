@@ -2,8 +2,7 @@ import Mock from 'mockjs'
 import { Component } from 'vue'
 import { MenuOption, NIcon } from 'naive-ui'
 import { GET_MENU_LIST } from '~/api/url'
-import { BowlingBallOutline, Leaf, MapOutline, Map, MapSharp, FlameOutline, Flame }from '@vicons/ionicons5'
-
+import { BowlingBallOutline, Leaf, MapOutline, Map, MapSharp, FlameOutline, Flame } from '@vicons/ionicons5'
 
 const renderIcon = (icon: Component) => {
   return () => h(NIcon, null, { default: () => h(icon) })
