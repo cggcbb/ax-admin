@@ -1,8 +1,9 @@
 
 import App from './App.vue'
 import router from './router'
-import './styles'
 import pinia from '~/store'
+import './styles'
+import '~/config/chartTheme'
 
 import useMock from '../mock'
 useMock()
