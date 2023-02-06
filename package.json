@@ -24,7 +24,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
     "@iconify-json/carbon": "^1.1.11",
-    "@types/axios": "^0.14.0",
     "@types/echarts": "^4.9.16",
     "@types/mockjs": "^1.0.7",
     "@types/node": "^18.11.13",

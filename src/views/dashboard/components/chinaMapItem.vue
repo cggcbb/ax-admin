@@ -6,12 +6,12 @@
         <div text-4> 销售地区分布图（不是一个好的设计师，颜色搭配总是差点意思） </div>
       </template>
     </template>
-    <div>
+    <template #default>
       <n-skeleton text v-if="loading" :repeat="16" />
       <template v-else>
         <china-map-chart></china-map-chart>
       </template>
-    </div>
+    </template>
   </n-card>
 </template>
 

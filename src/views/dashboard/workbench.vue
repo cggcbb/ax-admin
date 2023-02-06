@@ -10,7 +10,7 @@
             </div>
           </template>
           <template v-else-if="index === 1" #content="{ content }">
-            <div style="position: relative">
+            <div relative>
               <div> 较昨日新增：{{ content.data }} </div>
               <div> 较上周新增：{{ content.data1 }} </div>
             </div>

@@ -8,6 +8,7 @@
 import useChinaMap from './useChinaMap'
 
 const options = ref({})
+
 useChinaMap(options)
 </script>
 

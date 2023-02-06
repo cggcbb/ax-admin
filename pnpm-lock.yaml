@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.33.1
   '@iconify-json/carbon': ^1.1.11
-  '@types/axios': ^0.14.0
   '@types/echarts': ^4.9.16
   '@types/mockjs': ^1.0.7
   '@types/node': ^18.11.13
@@ -55,7 +54,6 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.33.1_ha6vam6werchizxrnqvarmz2zu
   '@iconify-json/carbon': 1.1.11
-  '@types/axios': 0.14.0
   '@types/echarts': 4.9.16
   '@types/mockjs': 1.0.7
   '@types/node': 18.11.13
@@ -739,15 +737,6 @@ packages:
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
-    dev: true
-
-  /@types/axios/0.14.0:
-    resolution: {integrity: sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==}
-    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
-    dependencies:
-      axios: 1.3.0
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /@types/chai-subset/1.3.3:
@@ -1723,6 +1712,7 @@ packages:
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
+    dev: false
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -2822,6 +2812,7 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dev: false
 
   /form-data/4.0.0:
     resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
@@ -4402,6 +4393,7 @@ packages:
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
 
   /prr/1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
