@@ -4,8 +4,6 @@ import {
   presetIcons,
   presetUno,
   presetWebFonts,
-  // transformerDirectives,
-  // transformerVariantGroup,
 } from 'unocss'
 
 export default defineConfig({
@@ -35,4 +33,7 @@ export default defineConfig({
   //   transformerDirectives(),
   //   transformerVariantGroup(),
   // ],
+  rules: [
+    [/^font-size-(\d+)$/, ([, d]) => ({ 'font-size': `${d as any / 10}rem` })],
+  ]
 })
