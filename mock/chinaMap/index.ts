@@ -83,7 +83,7 @@ const generateData = (center: string) => {
 // 和上面line中心坐标对应
 const cities = ['北京', '上海', '深圳', '成都', '杭州', '拉萨']
 
-Mock.mock(RegExp(`${GET_CHINA_MAP_DATA}`), 'get', function () {
+Mock.mock(RegExp(`${GET_CHINA_MAP_DATA}`), 'get', () => {
   return Mock.mock({
     code: 200, data: {
       geoGpsMap,
@@ -99,7 +99,7 @@ Mock.mock(RegExp(`${GET_CHINA_MAP_DATA}`), 'get', function () {
   })
 })
 
-Mock.mock(RegExp(`${GET_CHINA_MAP_FEATURE_COLLECTION}`), 'get', function () {
+Mock.mock(RegExp(`${GET_CHINA_MAP_FEATURE_COLLECTION}`), 'get', () => {
   return Mock.mock({
     code: 200, data: featureCollection, msg: '获取地图FeatureCollection数据成功'
   })
