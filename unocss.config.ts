@@ -35,5 +35,6 @@ export default defineConfig({
   // ],
   rules: [
     [/^font-size-(\d+)$/, ([, d]) => ({ 'font-size': `${d as any / 10}rem` })],
+    [/^hover:transform-scale-(\d+)$/, ([, d]) => ({ 'transform': `scale(${d as any / 10}rem)` })],
   ]
 })
