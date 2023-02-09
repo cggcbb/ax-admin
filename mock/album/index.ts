@@ -25,14 +25,14 @@ const albumList = [
     },
   },
   {
-    album: '后 · 青春期的诗',
-    songName: '如烟',
+    album: '神的孩子都在跳舞',
+    songName: '倔强',
     singer: '五月天 Mayday',
-    albumUrl: '/src/assets/hqcqds.jpeg',
-    date: '2008年10月23日',
+    albumUrl: '/src/assets/sdhzdztw.jpg',
+    date: '2004年11月05日',
     content: {
-      one: '七岁的那一年 抓住那只蝉',
-      two: '以为能抓住夏天'
+      one: '你说被火烧过 才能出现凤凰',
+      two: '逆风的方向 更适合飞翔'
     },
   },
   {

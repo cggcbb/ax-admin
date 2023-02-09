@@ -1,7 +1,7 @@
 <template>
   <section class="scrollbar">
-    <n-menu mode="vertical" accordion :collapsed="setting.collapsed" :collapsed-width="64" :collapsed-icon-size="22"
-      :options="menuOptions" :render-label="renderMenuLabel" />
+    <n-menu mode="vertical" :accordion="setting.accordion" :collapsed="setting.collapsed" :collapsed-width="64"
+      :collapsed-icon-size="22" :options="menuOptions" :render-label="renderMenuLabel" :default-value="defaultValue" />
   </section>
 </template>
 
@@ -18,6 +18,8 @@ import { RouterLink } from 'vue-router'
 import { routes as menuOptions } from '../../../mock/menu'
 
 const setting = useSetting()
+
+const defaultValue = $computed(() => useRoute().fullPath)
 
 const renderMenuLabel = (option: MenuOption) => {
   if (option.to) {

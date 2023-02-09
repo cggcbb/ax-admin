@@ -1,7 +1,7 @@
 <template>
-  <div class="china-map-wrapper">
+  <section class="china-map-wrapper">
     <vue-echarts :options="options" />
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>

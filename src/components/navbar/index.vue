@@ -1,6 +1,12 @@
 <template>
   <section class="nav-bar-wrapper" flex items-center>
     <navbar-fold-icon />
+    <n-tooltip trigger="hover">
+      <template #trigger>
+        <navbar-music-icon :size="22" />
+      </template>
+      背景音乐 ： 一首来自周杰伦的 &lt;枫&gt;
+    </n-tooltip>
     <navbar-breadcrumb />
     <!-- placeholder 占位 -->
     <div class="placeholder"></div>
@@ -11,13 +17,16 @@
       <tab-bar></tab-bar>
     </div> -->
   </section>
+  <setting ref="settingRef" />
 </template>
 
 <script setup lang="ts">
 import useActions from './useActions'
 
+const settingRef = ref<HTMLElement | null>(null)
+
 const { handleSearchClick, handleBellClick, handleFullScreenClick, handleSettingClick } =
-  useActions()
+  useActions(settingRef)
 
 </script>
 

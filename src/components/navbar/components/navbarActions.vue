@@ -1,13 +1,5 @@
 <template>
   <section flex-center-all>
-    <n-switch v-model:value="isDark" @update:value="toggleDark" mr-20px :rail-style="railStyle">
-      <template #checked-icon>
-        <n-icon :component="MoonIcon" />
-      </template>
-      <template #unchecked-icon>
-        <n-icon :component="SunIcon" />
-      </template>
-    </n-switch>
     <span class="action-item" v-for="(action, index) in actionRender" :key="`${action.name}-${index}`">
       <n-icon size="20" @click.stop="action.callback">
         <component :is="action.component"></component>
@@ -17,16 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import { toggleDark, isFullscreen, isDark } from '~/composables'
-import { CSSProperties } from 'vue'
+import { isFullscreen } from '~/composables'
+// import { CSSProperties } from 'vue'
 import {
   SearchOutline as SearchIcon,
   NotificationsOutline as BellIcon,
   SettingsOutline as SettingIcon,
   ExpandOutline as ExpandOutIcon,
   ContractOutline as ContractOutIcon,
-  MoonOutline as MoonIcon,
-  SunnyOutline as SunIcon
 } from '@vicons/ionicons5'
 
 const emits = defineEmits(['search-click', 'bell-click', 'full-screen-click', 'setting-click'])
@@ -97,18 +87,18 @@ watch(
   { immediate: true }
 )
 
-const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
-  const style: CSSProperties = {}
-  if (checked) {
-    style.background = '#333'
-    if (focused) {
-      style.boxShadow = '0 0 0 1px rgba(100, 100, 100, .5)'
-    }
-  } else if (focused) {
-    style.boxShadow = '0 0 0 1px #fff'
-  }
-  return style
-}
+// const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
+//   const style: CSSProperties = {}
+//   if (checked) {
+//     style.background = '#333'
+//     if (focused) {
+//       style.boxShadow = '0 0 0 1px rgba(100, 100, 100, .5)'
+//     }
+//   } else if (focused) {
+//     style.boxShadow = '0 0 0 1px #fff'
+//   }
+//   return style
+// }
 </script>
 
 <style lang="less" scoped>

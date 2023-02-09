@@ -1,7 +1,7 @@
 <template>
   <section class="main-container" pa-8px>
     <router-view v-slot="{ Component, route }">
-      <transition mode="out-in" appear>
+      <transition name="fade-transform" mode="out-in" appear>
         <keep-alive>
           <component :is="Component" :key="route.fullPath" />
         </keep-alive>
@@ -14,7 +14,7 @@
 export default defineComponent({
   name: 'Main',
   setup() {
-    const backgroundColor = computed(() => isDark.value ? '#1c1c1c' : '#f4f4f4');
+    const backgroundColor = computed(() => isDark.value ? '#1c1c1c' : '#f4f4f4')
     return {
       backgroundColor
     }

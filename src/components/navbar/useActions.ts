@@ -7,18 +7,22 @@ interface IActionsEmit {
   handleSettingClick: () => void
 }
 
-export default function useActions() {
+export default function useActions(setting: any) {
+  const message = useMessage()
+
   const handleSearchClick = () => {
+    message.success('click search, do nothing currently')
     console.log('search click')
   }
   const handleBellClick = () => {
+    message.success('click bell, do nothing currently')
     console.log('bell click')
   }
   const handleFullScreenClick = (): void => {
     toggleFullscreen()
   }
   const handleSettingClick = () => {
-    console.log('setting click')
+    setting.value.openDrawer()
   }
 
   return {

@@ -13,7 +13,7 @@ export default function useEcharts(props: echartsProps, domWrapper: any) {
 
   const updateChart = () => {
     if (chart && props.options) {
-      chart.setOption(props.options)
+      chart.setOption(props.options, true)
     }
   }
 

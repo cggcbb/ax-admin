@@ -24,22 +24,5 @@ export default defineComponent({
   align-items: center;
   box-sizing: border-box;
   border-bottom: 1px solid var(--border-color);
-
-  .logo-wrapper {
-    width: calc(@menuWidth / 3 * 2);
-  }
-
-  .menu-wrapper {
-    flex: 1;
-    overflow: hidden;
-  }
-
-  .right-wrapper {
-    height: 100%;
-  }
-
-  .avatar-wrapper {
-    padding-right: 15px;
-  }
 }
 </style>

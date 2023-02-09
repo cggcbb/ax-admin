@@ -1,5 +1,4 @@
 
-import 'echarts-gl'
 import * as echarts from 'echarts'
 import { isDark } from '~/composables'
 import http from '~/utils/http'
@@ -24,9 +23,11 @@ export default function useChinaMap(options: any) {
   // 切换每项的颜色
   const colors = $computed(() => isDark.value ? [['#04b9ff', '#e690d1', '#ffdb5c', '#1de9b6', '#ea7e53', '#e062ae']] : [['#199fb7', '#ff668f', '#d38f45', '#0092f4', '#3eaa77', '#626262']])
 
+  const REGISTER_MAP_NAME = 'china'
+
   const registerMap = async () => {
     const res: any = await http.get(GET_CHINA_MAP_FEATURE_COLLECTION)
-    echarts.registerMap('China', res.data)
+    echarts.registerMap(REGISTER_MAP_NAME, res.data)
   }
 
   const update = async () => {
@@ -199,11 +200,11 @@ export default function useChinaMap(options: any) {
             type: 'shadow',
             shadowStyle: {
               color: 'rgba(150, 150, 150, 0.1)'
-            }
+            },
           }
         },
         geo: {
-          map: 'China',
+          map: REGISTER_MAP_NAME,
           zoom: 1.1,
           // 是否允许拖动，缩放
           // roam: true,
@@ -245,8 +246,9 @@ export default function useChinaMap(options: any) {
           //   min: 0.8,
           //   max: 1
           // }
-        }
+        },
       },
+
       options: [] as any
     }
 
@@ -254,8 +256,8 @@ export default function useChinaMap(options: any) {
       _option.options.push({
         title: [
           {
-            text: '销售地区分布图',
-            subtext: '数据由大数据提供',
+            text: '看起来像一个中国地图',
+            subtext: '颜色搭配总差点意思',
             left: '2%',
             top: '2%',
             textStyle: {
@@ -268,7 +270,8 @@ export default function useChinaMap(options: any) {
           },
           {
             id: 'statistic',
-            text: `${cities[i]}销售额统计情况`,
+            // text: `${cities[i]}销售额统计情况`,
+            text: '不知道这条形图有什么用',
             right: '10%',
             top: '1%',
             textStyle: {
@@ -309,7 +312,6 @@ export default function useChinaMap(options: any) {
           },
           axisLabel: {
             interval: 0,
-            lineHeight: 100,
             color: colors[colorIndex][i]
           }
         },
@@ -369,7 +371,7 @@ export default function useChinaMap(options: any) {
     options.value = _option
   }
 
-  watch(isDark, () => nextTick(update))
+  watch(isDark, () => nextTick(async () => await update()))
 
   onMounted(async () => {
     await registerMap()

@@ -3,15 +3,15 @@
     <template #header>
       <n-skeleton text v-if="loading" />
       <template v-else>
-        <n-gradient-text font-size-9 gradient="linear-gradient(90deg, #08d9d6 0%, #3490de 50%, #ff00c1 100%)">
-          那天她说 No Problem
-        </n-gradient-text>
+        <gradient-text font-size-9>
+          瑶，是不是有两只鹿耳朵？
+        </gradient-text>
       </template>
     </template>
     <template #default>
       <n-skeleton text v-if="loading" :repeat="16" />
       <template v-else>
-        <china-map-chart></china-map-chart>
+        <deformation-chart></deformation-chart>
       </template>
     </template>
   </n-card>

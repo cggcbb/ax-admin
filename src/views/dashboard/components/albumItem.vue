@@ -1,28 +1,29 @@
 <template>
-  <n-card class="card-data-item" :content-style="{ padding: '16px' }" :header-style="{ padding: '5px 10px' }"
+  <n-card class="card-data-item" :content-style="{ padding: '8px 16px' }" :header-style="{ padding: '5px 16px' }"
     :segmented="true">
     <template #header>
       <n-skeleton text v-if="loading" width="95%" />
       <template v-else>
         <div flex-center-v justify-between>
-          <span text-4>{{ data.title }}</span>
-          <n-icon :size="data.iconSize" :component="data.icon"></n-icon>
+          <gradient-text :size="16">{{ data.album }}</gradient-text>
+          <n-avatar size="small" :src="data.albumUrl" hover:transform-scale-240 transform-origin-right-center
+            transition-transform></n-avatar>
         </div>
       </template>
     </template>
     <n-skeleton text v-if="loading" :repeat="6" />
     <template v-else>
-      <div h-130px flex justify-between flex-col>
-        <div flex-center-h flex-col>
-          <span text-6>{{ data.data }}</span>
-        </div>
+      <div h-120px flex justify-between flex-col>
+        <span font-size-10>
+          {{ data.songName }}
+        </span>
         <div flex-center-h flex-col flex-1>
           <slot name="content" :content="data.content"></slot>
         </div>
         <div class="divide"></div>
         <div flex-center-v justify-between>
-          <span>{{ data.bottomTitle }}</span>
-          <span>{{ data.totalSum }}</span>
+          <span text-3>{{ data.singer }}</span>
+          <span text-3>{{ data.date }}</span>
         </div>
       </div>
     </template>
@@ -56,7 +57,9 @@ setTimeout(() => {
 <style lang="less" scoped>
 .divide {
   margin: 10px 0;
-  border-bottom: 1px solid #f5f5f5;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.09);
+  border: none;
 }
 
 .card-data-item {
