@@ -9,7 +9,7 @@
         </n-gi>
       </n-grid>
       <n-divider dashed>菜单设置</n-divider>
-      <menu-width-setting></menu-width-setting>
+      <menu-setting />
       <n-divider dashed>水印设置</n-divider>
       <watch-mark-setting />
     </n-drawer-content>

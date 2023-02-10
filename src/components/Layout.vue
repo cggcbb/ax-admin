@@ -1,10 +1,9 @@
 <template>
-
   <n-el>
     <n-layout has-sider>
       <!-- 侧边栏 -->
-      <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="setting.menuWidth"
-        :collapsed="setting.collapsed" class="ax-layout-sider">
+      <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="menuWidth" :collapsed="collapsed"
+        class="ax-layout-sider">
         <!-- logo -->
         <logo></logo>
         <!-- 菜单 -->
@@ -37,7 +36,7 @@ import useSetting from '~/store/setting'
 import useSong from '~/store/song'
 
 const setting = useSetting()
-
+const { collapsed, menuWidth } = toRefs(setting.menuSetting)
 
 const audio: any = $ref<HTMLElement | null>(null)
 
@@ -46,11 +45,11 @@ const song = useSong()
 // 背景音乐播放完毕，重复播放
 const handleAudioEnded = () => {
   audio.currentTime = 0
-  audio.play()
+  audio?.play()
 }
 // 暂停，开始播放
 watchPostEffect(() => {
-  song.playing ? audio.play() : audio.pause()
+  song?.playing ? audio?.play() : audio?.pause()
 })
 
 // 水印相关设置

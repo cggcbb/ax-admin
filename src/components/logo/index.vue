@@ -2,7 +2,7 @@
   <div flex-center-all class="logo-wrapper">
     <img v-if="showLogo" w-30px src="../../assets/logo.svg" />
     <div flex items-center>
-      <span fw-bold :class="[setting.collapsed ? 'close-title' : 'show-title']">ax-admin</span>
+      <span fw-bold :class="[setting.menuSetting.collapsed ? 'close-title' : 'show-title']">ax-admin</span>
     </div>
   </div>
 </template>

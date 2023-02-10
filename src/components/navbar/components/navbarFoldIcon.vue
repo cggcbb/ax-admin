@@ -1,6 +1,6 @@
 <template>
   <div flex-center-v class="fold-wrapper" @click.stop="toggleFold">
-    <span i-carbon-text-wrap w-22px h-22px :class="[setting.collapsed ? 'fold-close-status' : 'fold-open-status']">
+    <span i-carbon-text-wrap w-22px h-22px :class="[menuSetting.collapsed ? 'fold-close-status' : 'fold-open-status']">
     </span>
   </div>
 </template>
@@ -9,9 +9,10 @@
 import useSetting from '~/store/setting'
 
 const setting = useSetting()
+const { menuSetting } = setting
 
 const toggleFold: () => void = () => {
-  setting.setCollapsed(!setting.collapsed)
+  setting.setCollapsed(!menuSetting.collapsed)
 }
 </script>
 
