@@ -20,7 +20,7 @@
   git clone -b main https://github.com/AnxGGYw/ax-admin.git
   ```
   ```bash
-  cd ax-work
+  cd ax-admin
   ```
   - 安装依赖
   - 如果你没装过 pnpm，可以看看 [这里]( https://pnpm.io/ )
