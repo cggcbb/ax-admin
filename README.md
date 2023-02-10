@@ -14,58 +14,42 @@
 
 - 🦾 TypeScript, 还在摸索... ... ...
 
-## 预配置
-
-### UI 框架
-
-- [UnoCSS](https://github.com/antfu/unocss) - 高性能且极具灵活性的即时原子化 CSS 引擎
-
-### Icons
-
-- [Iconify](https://iconify.design) - 使用任意的图标集，浏览：[🔍Icônes](https://icones.netlify.app/)
-- [UnoCSS 的纯 CSS 图标方案](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
-
-### 插件
-
-- [Vue Router](https://github.com/vuejs/vue-router)
-- [`unplugin-auto-import`](https://github.com/antfu/unplugin-auto-import) - 直接使用 Composition API 等，无需导入
-- [`unplugin-vue-components`](https://github.com/antfu/unplugin-vue-components) - 自动加载组件
-- [VueUse](https://github.com/antfu/vueuse) - 实用的 Composition API 工具合集
-
-
 ## 下载&安装
 
-- 下载
   ```bash
   git clone -b main https://github.com/AnxGGYw/ax-admin.git
   ```
-- 进入项目目录
   ```bash
   cd ax-work
   ```
-- 安装依赖
+  - 安装依赖
+  - 如果你没装过 pnpm，可以看看 [这里]( https://pnpm.io/ )
+  - 推荐 [ni](https://github.com/antfu/ni)，会自动检测项目用到的包管理器（yarn，pnpm，bun）
   ```bash
   pnpm i
+  # or
+  # ni
   ```
-  - 如果你没装过 pnpm，可以看看 [这里]( https://pnpm.io/ )
-- 运行
+  - 运行
   ```bash
-  npm run dev
+  pnpm run dev
+  # or
+  # nr dev
   ```
-  - 推荐 [ni](https://github.com/antfu/ni)，会自动检测项目用到的包管理器（yarn，pnpm，bun）
-  - ```bash
-    ni
-    # npm install
-    # yarn install
-    # pnpm install
-    # bun install
+## 🎨 鸣谢
 
-    nr dev
-    # npm run dev
-    # yarn run dev
-    # pnpm run dev
-    # bun run dev
-    ```
+| Project                                                                    |
+| ---------------------------------------------------------------------------|
+| [Vue3](https://github.com/vuejs/core)                                      |
+| [Vue Router](https://github.com/vuejs/vue-router)                          |
+| [Naive-ui](https://www.naiveui.com/)                                       |
+| [Mock](http://mockjs.com/)                                                 |
+| [Echarts](https://echarts.apache.org/)                                     |
+| [Axios](https://axios-http.com/)                                           |
+| [Unocss](https://github.com/unocss/unocss)                                 |
+| [VueUse](https://github.com/antfu/vueuse)                                  |
+| [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)      |
+| [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)|
 
 ## GitHub 模板
 
