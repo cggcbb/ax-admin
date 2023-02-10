@@ -36,18 +36,18 @@
   # or
   # nr dev
   ```
-## 🎨 鸣谢
+## 👏 鸣谢
 
 | Project                                                                    |
 | ---------------------------------------------------------------------------|
 | [Vue3](https://github.com/vuejs/core)                                      |
-| [Vue Router](https://github.com/vuejs/vue-router)                          |
+| [Vue Router](https://router.vuejs.org/)                          |
 | [Naive-ui](https://www.naiveui.com/)                                       |
 | [Mock](http://mockjs.com/)                                                 |
 | [Echarts](https://echarts.apache.org/)                                     |
 | [Axios](https://axios-http.com/)                                           |
 | [Unocss](https://github.com/unocss/unocss)                                 |
-| [VueUse](https://github.com/antfu/vueuse)                                  |
+| [VueUse](https://vueuse.org/)                                  |
 | [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)      |
 | [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)|
 
