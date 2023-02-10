@@ -7,7 +7,11 @@ const FORM_URLENCODED = 'application/x-www-form-urlencoded; charset=UTF-8'
 
 const instance: AxiosInstance = axios.create({
   baseURL: '/api',
-  timeout: 10 * 60 * 1000
+  timeout: 10 * 60 * 1000,
+  // 所有状态码都是有效的
+  validateStatus: function (status) {
+    return true
+  }
 })
 
 instance.interceptors.request.use(
@@ -31,11 +35,11 @@ instance.interceptors.response.use(
     if (response.status === 200) {
       return response.data
     }
-    window.$message.error(response.status)
+    window.$message.error(response.data.message)
     throw new Error(response.status.toString())
   },
   (error: AxiosError) => {
-    window.$message.error('服务器异常，请稍后重试 …')
+    window.$message.error(error.message)
     return Promise.reject(new Error('服务器异常，请稍后重试 …'))
   }
 )
