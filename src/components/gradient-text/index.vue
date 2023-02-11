@@ -4,7 +4,6 @@
   </n-gradient-text>
 </template>
 
-
 <script lang="ts" setup>
 defineProps({
   size: [Number, String]
@@ -13,7 +12,7 @@ defineProps({
 
 <script lang="ts">
 export default defineComponent({
-  name: 'gradientText'
+  name: 'GradientText'
 })
 </script>
 

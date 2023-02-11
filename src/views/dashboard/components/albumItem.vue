@@ -32,7 +32,7 @@
 
 <script lang="ts">
 export default defineComponent({
-  name: 'DataItem',
+  name: 'DataItem'
 })
 </script>
 

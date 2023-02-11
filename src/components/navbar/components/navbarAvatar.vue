@@ -4,6 +4,12 @@
   </section>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'NavBarAvatar'
+})
+</script>
+
 <script setup lang="ts"></script>
 
 <style lang="less" scoped>

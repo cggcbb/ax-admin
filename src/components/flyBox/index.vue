@@ -22,6 +22,11 @@
   </div>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'FlyBox'
+})
+</script>
 
 <script lang="ts" setup>
 defineProps({
@@ -65,12 +70,6 @@ const initFlyBox = () => {
 onMounted(() => {
   setTimeout(initFlyBox, 3000)
 })
-</script>
-
-<script lang="ts">
-export default {
-  name: 'flyBox',
-}
 </script>
 
 <style lang="less" scoped>

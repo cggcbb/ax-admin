@@ -17,6 +17,12 @@
   </n-card>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'ChinaMapItem'
+})
+</script>
+
 <script setup lang="ts">
 let loading = $ref(true)
 

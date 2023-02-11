@@ -7,6 +7,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default defineComponent({
+  name: 'Logo',
+})
+</script>
+
 <script lang="ts" setup>
 import useSetting from '~/store/setting'
 

@@ -14,7 +14,7 @@ useChinaMap(options)
 
 <script lang="ts">
 export default {
-  name: 'chinaMapChart',
+  name: 'ChinaMapChart'
 }
 </script>
 

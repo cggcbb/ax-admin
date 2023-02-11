@@ -4,6 +4,12 @@
   </section>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'ChinaMapItem'
+})
+</script>
+
 <script lang="ts" setup>
 import useDeformationChart from './useDeformationChart'
 

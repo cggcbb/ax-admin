@@ -5,6 +5,12 @@
   </div>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'NavBarFoldIcon'
+})
+</script>
+
 <script setup lang="ts">
 import useSetting from '~/store/setting'
 

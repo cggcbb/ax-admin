@@ -5,10 +5,9 @@
 </template>
 
 <script lang="ts">
-
-export default {
-  name: 'scaleContainer'
-}
+defineComponent({
+  name: 'ScaleContainer'
+})
 </script>
 
 <script lang="ts" setup>
@@ -28,8 +27,8 @@ let observer: any = null
 
 const initSize = () => {
   // 获取真实尺寸（传参options）, 如果没传options参数，取containerWrapper宽高
-
   const { width: _width, height: _height } = props.options!
+
   if (_width && _height) {
     width = _width
     height = _height

@@ -8,6 +8,12 @@
   </section>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'NavBarActions'
+})
+</script>
+
 <script setup lang="ts">
 import { isFullscreen } from '~/composables'
 // import { CSSProperties } from 'vue'

@@ -26,8 +26,13 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+defineComponent({
+  name: 'WorkBench'
+})
+</script>
 
+<script setup lang="ts">
 import { GET_ALBUM_DATA_LIST } from '~/api/url'
 import http from '~/utils/http';
 

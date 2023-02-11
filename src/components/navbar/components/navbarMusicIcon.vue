@@ -4,6 +4,12 @@
   </n-icon>
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'NavBarMusicIcon'
+})
+</script>
+
 <script setup lang="ts">
 
 import { PlayCircleOutline, PauseCircleOutline } from '@vicons/ionicons5'
