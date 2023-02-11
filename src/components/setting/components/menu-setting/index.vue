@@ -4,7 +4,7 @@
       菜单宽度
     </n-gi>
     <n-gi :span="16">
-      <n-input-number v-model:value="menuWidth" placeholder="请输入" min="0" :max="600" :step="10">
+      <n-input-number size="small" v-model:value="menuWidth" placeholder="请输入" min="0" :max="600" :step="10">
         <template #suffix>
           px
         </template>

@@ -1,6 +1,6 @@
 import setting from '~/setting'
-import type { IDrawer, IMenuSetting, IWaterMarkSetting } from '~/types/common'
-import { STORAGE_WATER_MASK_KEY, STORAGE_MENU_KEY, STORAGE_THEME_COLOR_KEY } from '~/config/storage'
+import type { IDrawer, ILayoutAnimation, IMenuSetting, IWaterMarkSetting } from '~/types/common'
+import { STORAGE_WATER_MASK_KEY, STORAGE_MENU_KEY, STORAGE_THEME_COLOR_KEY, STORAGE_LAYOUT_ANIMATION_KEY } from '~/config/storage'
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
 
@@ -9,6 +9,7 @@ const useSetting = defineStore('setting', () => {
   const storageWaterMaskValue = localStorage.getItem(STORAGE_WATER_MASK_KEY)
   const storageMenuValue = localStorage.getItem(STORAGE_MENU_KEY)
   const storageThemeColorValue = localStorage.getItem(STORAGE_THEME_COLOR_KEY)
+  const storageLayoutAnimationValue = localStorage.getItem(STORAGE_LAYOUT_ANIMATION_KEY)
   // 水印
   const waterMarkSetting = storageWaterMaskValue
     ? reactive(JSON.parse(storageWaterMaskValue) as IWaterMarkSetting)
@@ -24,7 +25,12 @@ const useSetting = defineStore('setting', () => {
     ? ref<string>(storageThemeColorValue)
     : ref<string>(setting.themeColor)
 
-  watch(waterMarkSetting, (newSetting) => {
+  // 页面切换过度动画
+  const layoutAnimationSetting = storageLayoutAnimationValue
+    ? reactive(JSON.parse(storageLayoutAnimationValue) as ILayoutAnimation)
+    : reactive({ ...setting.layoutAnimation })
+
+  watch(waterMarkSetting, (newSetting: IWaterMarkSetting) => {
     localStorage.setItem(STORAGE_WATER_MASK_KEY, JSON.stringify(newSetting))
   })
 
@@ -35,7 +41,7 @@ const useSetting = defineStore('setting', () => {
    * 2. 又不能影响折叠icon点击的时候不生效
    * 所以这里加一个开关
    */
-  watch(menuSetting, (newSetting) => {
+  watch(menuSetting, (newSetting: IMenuSetting) => {
     // 自动折叠
     if (!isClickCollapsedIcon) {
       menuSetting.collapsed = newSetting.collapsed = (newSetting.menuWidth <= menuSetting.autoCollapsedWidth)
@@ -56,6 +62,10 @@ const useSetting = defineStore('setting', () => {
     localStorage.setItem(STORAGE_THEME_COLOR_KEY, newSetting)
   })
 
+  watch(layoutAnimationSetting, (newSetting: ILayoutAnimation) => {
+    localStorage.setItem(STORAGE_LAYOUT_ANIMATION_KEY, JSON.stringify(newSetting))
+  })
+
   // 修改主题颜色 themeColorSetting 是响应式的
   const themeOverrides = computed<GlobalThemeOverrides>(() => {
     return {
@@ -73,7 +83,8 @@ const useSetting = defineStore('setting', () => {
     menuSetting,
     drawerSetting,
     themeColorSetting,
-    themeOverrides
+    themeOverrides,
+    layoutAnimationSetting
   }
 })
 

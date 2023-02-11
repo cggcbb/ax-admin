@@ -1,6 +1,6 @@
 <template>
   <n-drawer v-model:show="visible" placement="right" :width="width" :auto-focus="false">
-    <n-drawer-content :native-scrollbar="false">
+    <n-drawer-content :native-scrollbar="true" closable>
       <template #header>
         <n-grid>
           <n-gi :span="24">
@@ -17,6 +17,8 @@
       </n-grid>
       <n-divider dashed>主题颜色</n-divider>
       <theme-color-setting></theme-color-setting>
+      <n-divider dashed>切换动画</n-divider>
+      <layout-animation-setting></layout-animation-setting>
       <n-divider dashed>菜单设置</n-divider>
       <menu-setting />
       <n-divider dashed>水印设置</n-divider>

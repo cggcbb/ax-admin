@@ -1,4 +1,6 @@
-declare interface Result<T = any> {
+import { SelectOption } from "naive-ui";
+
+export interface Result<T = any> {
   code: number;
   type: 'success' | 'error' | 'warning';
   message: string;
@@ -6,10 +8,12 @@ declare interface Result<T = any> {
 }
 
 export interface ISetting {
-  waterMarkSetting: WaterMarkSetting,
+  waterMarkSetting: IWaterMarkSetting,
   menu: IMenuSetting,
   drawer: IDrawer,
-  themeColor: string
+  themeColor: string,
+  layoutAnimation: ILayoutAnimation,
+  layoutAnimationOptions: SelectOption[]
 }
 
 // 用户水印系统设置
@@ -27,15 +31,12 @@ export interface IWaterMarkUserSetting {
 // 系统水印自带设置
 export interface IWaterMarkSystemSetting {
   waterMarkType: string,
-  waterMarkTypeOptions: IWaterMarkTypeOptionsItem[]
+  waterMarkTypeOptions: SelectOption[]
 }
 
 // 整体水印设置
 export type IWaterMarkSetting = IWaterMarkUserSetting & IWaterMarkSystemSetting
-export interface IWaterMarkTypeOptionsItem {
-  label: string,
-  value: string
-}
+
 
 // 菜单
 export interface IMenuSetting {
@@ -55,4 +56,17 @@ export interface IMenuSetting {
 // 抽屉
 export interface IDrawer {
   width: number
+}
+
+export enum LayoutAnimationEnum {
+  FADE_R = 'fade-r',
+  FADE_L = 'fade-l',
+  OPACITY = 'opacity',
+  DOWN = 'down',
+  SCALE = 'scale',
+}
+
+export interface ILayoutAnimation {
+  animationActive: boolean,
+  type: LayoutAnimationEnum
 }
