@@ -33,9 +33,6 @@ import http from '~/utils/http';
 
 const albumList = ref([])
 
-
-
-
 const getAlbumDataList = async () => {
   const res: any = await http.get(GET_ALBUM_DATA_LIST)
 
