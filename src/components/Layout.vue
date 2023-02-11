@@ -2,8 +2,8 @@
   <n-el>
     <n-layout has-sider>
       <!-- 侧边栏 -->
-      <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="menuWidth" :collapsed="collapsed"
-        class="ax-layout-sider">
+      <n-layout-sider bordered collapse-mode="width" :collapsed-width="collapsedWidth" :width="menuWidth"
+        :collapsed="collapsed" class="ax-layout-sider">
         <!-- logo -->
         <logo></logo>
         <!-- 菜单 -->
@@ -30,13 +30,18 @@
     :image-opacity="0.24" />
 </template>
 
+<script lang="ts">
+defineComponent({
+  name: 'Layout'
+})
+</script>
 
 <script lang="ts" setup>
 import useSetting from '~/store/setting'
 import useSong from '~/store/song'
 
 const setting = useSetting()
-const { collapsed, menuWidth } = toRefs(setting.menuSetting)
+const { collapsed, menuWidth, collapsedWidth } = toRefs(setting.menuSetting)
 
 const audio: any = $ref<HTMLElement | null>(null)
 
@@ -75,7 +80,6 @@ router.beforeEach(() => {
 router.afterEach(() => {
   loadingBar.finish()
 })
-
 </script>
 
 <style lang="less" scoped>

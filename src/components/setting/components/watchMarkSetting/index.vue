@@ -5,7 +5,7 @@
         开启水印
       </n-gi>
       <n-gi :span="4">
-        <n-switch v-model:value="waterMarkActive" @update:value="handleActiveChange" />
+        <n-switch size="small" v-model:value="waterMarkActive" @update:value="handleActiveChange" />
       </n-gi>
     </n-grid>
     <n-grid flex justify-between items-center mb-12px>
@@ -36,10 +36,10 @@
       </n-gi>
       <n-gi :span="16">
         <n-input-number v-if="waterMarkType === 'text'" size="small" :min="1" v-model:value="waterMarkSize"
-          placeholder="大的总是好的" />
+          placeholder="请输入" />
         <n-tooltip v-else trigger="hover">
           <template #trigger>
-            <n-input-number size="small" :min="1" v-model:value="waterMarkImageSize" placeholder="大的总是好的" />
+            <n-input-number size="small" :min="1" v-model:value="waterMarkImageSize" placeholder="请输入" />
           </template>
           修改图片大小后，请重新开启水印
         </n-tooltip>
@@ -50,7 +50,7 @@
         水印颜色
       </n-gi>
       <n-gi :span="16">
-        <n-color-picker size="small" v-model:value="waterMarkColor" />
+        <n-color-picker size="small" show-preview v-model:value="waterMarkColor" />
       </n-gi>
     </n-grid>
     <n-grid flex justify-between items-center mt-12px>
@@ -68,7 +68,7 @@
 
 <script lang="ts">
 defineComponent({
-  name: 'waterMarkSetting'
+  name: 'WaterMarkSetting'
 })
 </script>
 

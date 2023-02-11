@@ -9,10 +9,10 @@
 import useSetting from '~/store/setting'
 
 const setting = useSetting()
-const { menuSetting } = setting
+const { menuSetting, setCollapsed } = setting
 
 const toggleFold: () => void = () => {
-  setting.setCollapsed(!menuSetting.collapsed)
+  setCollapsed(!menuSetting.collapsed)
 }
 </script>
 

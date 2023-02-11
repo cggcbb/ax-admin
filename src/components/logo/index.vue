@@ -2,7 +2,7 @@
   <div flex-center-all class="logo-wrapper">
     <img v-if="showLogo" w-30px src="../../assets/logo.svg" />
     <div flex items-center>
-      <span fw-bold :class="[setting.menuSetting.collapsed ? 'close-title' : 'show-title']">ax-admin</span>
+      <span fw-bold :class="[menuSetting.collapsed ? 'close-title' : 'show-title']">ax-admin</span>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ defineProps({
   },
 })
 
-const setting = useSetting()
+const menuSetting = useSetting().menuSetting
 
 </script>
 <style lang="less" scoped>

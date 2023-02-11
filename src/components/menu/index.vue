@@ -1,7 +1,8 @@
 <template>
   <section class="scrollbar">
-    <n-menu mode="vertical" :accordion="menuSetting.accordion" :collapsed="menuSetting.collapsed" :collapsed-width="64"
-      :collapsed-icon-size="22" :options="menuOptions" :render-label="renderMenuLabel" :default-value="defaultValue" />
+    <n-menu mode="vertical" :accordion="menuSetting.accordion" :collapsed="menuSetting.collapsed"
+      :collapsed-width="menuSetting.collapsedWidth" :collapsed-icon-size="menuSetting.collapsedIconSize"
+      :options="menuOptions" :render-label="renderMenuLabel" :default-value="defaultValue" />
   </section>
 </template>
 

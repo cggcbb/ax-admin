@@ -12,9 +12,10 @@
 
 <script lang="ts">
 export default defineComponent({
-  name: 'Main',
+  name: 'LayoutMain',
   setup() {
     const backgroundColor = computed(() => isDark.value ? '#1c1c1c' : '#f4f4f4')
+
     return {
       backgroundColor
     }

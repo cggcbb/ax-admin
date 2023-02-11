@@ -1,6 +1,13 @@
 <template>
-  <n-drawer v-model:show="visible" placement="right" width="280" :native-scrollbar="true" :auto-focus="false">
-    <n-drawer-content title="系统设置" closable>
+  <n-drawer v-model:show="visible" placement="right" :width="width" :auto-focus="false">
+    <n-drawer-content :native-scrollbar="false">
+      <template #header>
+        <n-grid>
+          <n-gi :span="24">
+            系统设置
+          </n-gi>
+        </n-grid>
+      </template>
       <n-divider dashed>主题设置</n-divider>
       <n-grid>
         <n-gi v-for="(item, index) of themeList" :key="index" :span="12" class="example-wrapper">
@@ -8,6 +15,8 @@
             :right-bottom-bg="item.rightBottomBg" :text="item.text" @click="handleThemeSettingClick(item)" />
         </n-gi>
       </n-grid>
+      <n-divider dashed>主题颜色</n-divider>
+      <theme-color-setting></theme-color-setting>
       <n-divider dashed>菜单设置</n-divider>
       <menu-setting />
       <n-divider dashed>水印设置</n-divider>
@@ -17,14 +26,19 @@
 </template>
 
 <script lang="ts">
+import useSetting from '~/store/setting'
 import useThemeSetting from './components/theme-setting/useThemeSetting'
 
 export default defineComponent({
-  name: 'setting',
+  name: 'Setting',
   setup() {
     const visible = ref(false)
 
     const { themeList, handleThemeSettingClick } = useThemeSetting()
+
+    const setting = useSetting()
+
+    const { width } = toRefs(setting.drawerSetting)
 
     // 开启抽屉栏
     const openDrawer = () => {
@@ -34,8 +48,9 @@ export default defineComponent({
     return {
       visible,
       themeList,
+      width,
       handleThemeSettingClick,
-      openDrawer
+      openDrawer,
     }
   }
 })

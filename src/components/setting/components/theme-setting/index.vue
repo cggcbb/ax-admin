@@ -13,7 +13,7 @@
 
 <script lang="ts">
 export default defineComponent({
-  name: 'themeSetting',
+  name: 'ThemeSetting',
   props: {
     leftBg: {
       type: String,
