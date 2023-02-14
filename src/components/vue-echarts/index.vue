@@ -3,7 +3,14 @@
 </template>
 
 <script lang="ts" setup>
-import useEcharts, { echartsProps } from './useEcharts'
+
+import { EChartsCoreOption } from 'echarts/core'
+import useEcharts from './useEcharts'
+
+interface echartsProps {
+  options: EChartsCoreOption
+  theme?: string | object
+}
 
 const props = withDefaults(defineProps<echartsProps>(), {
   options: {} as any,

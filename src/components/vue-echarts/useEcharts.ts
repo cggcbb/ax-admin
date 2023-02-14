@@ -1,13 +1,8 @@
 import * as echarts from 'echarts'
-import { EChartsType, EChartsCoreOption } from 'echarts'
+import { EChartsType } from 'echarts'
 import { debounce } from '~/utils'
 
-export interface echartsProps {
-  options: EChartsCoreOption
-  theme?: string | object
-}
-
-export default function useEcharts(props: echartsProps, domWrapper: any) {
+export default function useEcharts(props: any, domWrapper: any) {
   let chart = $ref<EChartsType | null>(null)
   const theme = $computed(() => isDark.value ? 'dark' : 'light')
 
