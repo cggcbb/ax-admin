@@ -6,7 +6,7 @@
           <component :is="CloseIcon"></component>
         </n-icon>
         <n-input-group>
-          <n-select :style="{ width: '32%' }" v-model:value="searchType" :render-label="renderLabel"
+          <n-select :style="{ width: '33%' }" v-model:value="searchType" :render-label="renderLabel"
             :options="options" />
           <n-input autofocus v-model:value="searchValue" placeholder="柳絮纷飞，毕竟不是雪..." />
           <n-button @click.prevent="handleSearch">搜索</n-button>
