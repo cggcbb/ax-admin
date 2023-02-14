@@ -1,5 +1,5 @@
 <template>
-  <n-card class="card-data-item" :content-style="{ padding: '8px 16px' }" :header-style="{ padding: '5px 16px' }"
+  <n-card class="card-album-item" :content-style="{ padding: '8px 16px' }" :header-style="{ padding: '5px 16px' }"
     :segmented="true">
     <template #header>
       <n-skeleton text v-if="loading" width="95%" />
@@ -55,18 +55,18 @@ setTimeout(() => {
 </script>
 
 <style lang="less" scoped>
-.divide {
-  margin: 10px 0;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.09);
-  border: none;
-}
-
-.card-data-item {
+.card-album-item {
   .n-card-header {
     .n-skeleton {
       transform: translateX(6px);
     }
+  }
+
+  .divide {
+    margin: 10px 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.09);
+    border: none;
   }
 }
 </style>
