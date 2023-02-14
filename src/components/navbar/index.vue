@@ -18,15 +18,23 @@
     </div> -->
   </section>
   <setting ref="settingRef" />
+  <search ref="searchRef" />
 </template>
+
+<script lang="ts">
+defineComponent({
+  name: 'Navbar'
+})
+</script>
 
 <script setup lang="ts">
 import useActions from './useActions'
 
 const settingRef = ref<HTMLElement | null>(null)
+const searchRef = ref<HTMLElement | null>(null)
 
 const { handleSearchClick, handleBellClick, handleFullScreenClick, handleSettingClick } =
-  useActions(settingRef)
+  useActions(settingRef, searchRef)
 
 </script>
 

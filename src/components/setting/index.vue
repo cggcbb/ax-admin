@@ -33,28 +33,25 @@ import useThemeSetting from './components/theme-setting/useThemeSetting'
 
 export default defineComponent({
   name: 'Setting',
-  setup() {
-    const visible = ref(false)
+})
+</script>
 
-    const { themeList, handleThemeSettingClick } = useThemeSetting()
+<script lang="ts" setup>
+const visible = ref(false)
 
-    const setting = useSetting()
+const { themeList, handleThemeSettingClick } = useThemeSetting()
 
-    const { width } = toRefs(setting.drawerSetting)
+const setting = useSetting()
 
-    // 开启抽屉栏
-    const openDrawer = () => {
-      visible.value = true
-    }
+const { width } = toRefs(setting.drawerSetting)
 
-    return {
-      visible,
-      themeList,
-      width,
-      handleThemeSettingClick,
-      openDrawer,
-    }
-  }
+// 开启抽屉栏
+const openDrawer = () => {
+  visible.value = true
+}
+
+defineExpose({
+  openDrawer
 })
 </script>
 

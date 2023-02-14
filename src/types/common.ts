@@ -70,3 +70,24 @@ export interface ILayoutAnimation {
   animationActive: boolean,
   type: LayoutAnimationEnum
 }
+
+export enum SearchType {
+  Google = 'Google',
+  Bing = 'Bing',
+  Github = 'Github',
+  Youtube = 'Youtube'
+}
+
+export enum SearchUrl {
+  Google = 'https://www.google.com/search?q=',
+  Bing = 'https://cn.bing.com/search?q=',
+  Github = 'https://github.com/search?q=',
+  Youtube = 'https://www.youtube.com/results?search_query='
+}
+
+export interface ISearchUrlMap {
+  Google: SearchUrl,
+  Bing: SearchUrl,
+  Github: SearchUrl,
+  Youtube: SearchUrl
+}

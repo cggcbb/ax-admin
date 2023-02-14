@@ -7,12 +7,11 @@ interface IActionsEmit {
   handleSettingClick: () => void
 }
 
-export default function useActions(setting: any) {
+export default function useActions(setting: any, searchRef: any) {
   const message = useMessage()
 
   const handleSearchClick = () => {
-    message.success('click search, do nothing currently')
-    console.log('search click')
+    searchRef.value.handleOpen()
   }
   const handleBellClick = () => {
     message.success('click bell, do nothing currently')
