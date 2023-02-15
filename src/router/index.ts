@@ -3,7 +3,8 @@ import { RouteRecordRaw, createRouter, createWebHistory, Router } from 'vue-rout
 const Layout = () => import(/** layout */ '~/components/Layout.vue')
 const Login = () => import(/** login */ '~/views/login/index.vue')
 const Github = () => import(/** github */ '~/views/github.vue')
-const workbench = () => import(/** workbench */ '~/views/dashboard/workbench.vue')
+const Workbench = () => import(/** workbench */ '~/views/dashboard/workbench.vue')
+const Package = () => import(/** package */ '~/views/dep/index.vue')
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -25,12 +26,17 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/dashboard/workbench',
         name: '/dashboard/workbench',
-        component: workbench
+        component: Workbench
       },
       {
         path: '/github',
         name: '/github',
         component: Github
+      },
+      {
+        path: '/dep',
+        name: '/dep',
+        component: Package
       },
     ]
   }

@@ -1,5 +1,6 @@
 {
-  "private": true,
+  "name": "ax-admin",
+  "version": "0.0.1",
   "packageManager": "pnpm@7.12.0",
   "scripts": {
     "build": "vite build",
