@@ -1,6 +1,5 @@
 
 import * as echarts from 'echarts'
-import { isDark } from '~/composables'
 import { get } from '~/utils/http'
 import { GET_CHINA_MAP_DATA, GET_CHINA_MAP_FEATURE_COLLECTION } from '~/api/url'
 

@@ -13,8 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { isDark } from '~/composables'
-import useSetting from './store/setting';
+import useSetting from './store/setting'
 const theme = computed(() => isDark.value ? darkTheme : null)
 
 const setting = useSetting()

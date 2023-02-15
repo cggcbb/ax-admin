@@ -1,5 +1,3 @@
-import { toggleDark, isDark } from '~/composables'
-
 export interface IThemeSettingItem {
   leftBg: string,
   rightTopBg: string,
