@@ -28,14 +28,10 @@
       </n-grid>
     </n-el>
     <n-el class="notification-options">
-      <n-grid>
-        <n-gi :span="12" flex-center-h>
-          <n-button text tag="a" size="small" @click="readAll">全部已读</n-button>
-        </n-gi>
-        <n-gi :span="12" flex-center-h>
-          <n-button text tag="a" size="small" @click="unReadAll">全部未读</n-button>
-        </n-gi>
-      </n-grid>
+      <n-space justify="center">
+        <n-button text tag="a" size="small" @click="readAll">全部已读</n-button>
+        <n-button text tag="a" size="small" @click="unReadAll">全部未读</n-button>
+      </n-space>
     </n-el>
   </section>
 </template>
