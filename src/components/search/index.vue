@@ -6,7 +6,7 @@
           <component :is="CloseIcon"></component>
         </n-icon>
         <n-input-group>
-          <n-select :style="{ width: '33%' }" v-model:value="searchType" :render-label="renderLabel"
+          <n-select :style="{ minWidth: '118px', width: '33%' }" v-model:value="searchType" :render-label="renderLabel"
             :options="options" />
           <n-input autofocus v-model:value="searchValue" placeholder="柳絮纷飞，毕竟不是雪..." />
           <n-button @click.prevent="handleSearch">搜索</n-button>
@@ -133,6 +133,7 @@ watchPostEffect(() => {
     border-radius: 8px;
     background-color: var(--card-color);
     box-shadow: 2px 2px 10px var(--card-color);
+    opacity: .8;
 
     .search-close {
       position: absolute;
@@ -140,6 +141,18 @@ watchPostEffect(() => {
       top: 2px;
       color: var(--text-color-3);
       cursor: pointer;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    .search-content {
+      width: 55%;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .search-content {
+      width: 70%;
     }
   }
 }
