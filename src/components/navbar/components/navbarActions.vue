@@ -1,9 +1,16 @@
 <template>
   <section flex-center-all>
     <span class="action-item" v-for="(action, index) in actionRender" :key="`${action.name}-${index}`">
-      <n-icon size="20" @click.stop="action.callback">
-        <component :is="action.component"></component>
-      </n-icon>
+      <n-popover placement="bottom" trigger="click" :width="320" v-if="action.name === 'bell-icon'">
+        <template #trigger>
+          <n-badge processing :value="badgeValue" :class="{ active: !badgeValue }">
+            <n-icon size="20" :component="action.component" />
+          </n-badge>
+        </template>
+        <navbar-notification :list="notificationList" @clickIcon="handleClickIcon" @read-all="handleReadAll"
+          @un-read-all="handleReadAll(false)" />
+      </n-popover>
+      <n-icon v-else size="20" @click.stop="action.callback" :component="action.component" />
     </span>
   </section>
 </template>
@@ -24,6 +31,7 @@ import {
   ExpandOutline as ExpandOutIcon,
   ContractOutline as ContractOutIcon,
 } from '@vicons/ionicons5'
+import useNotification from '../useNotification'
 
 const emits = defineEmits(['search-click', 'bell-click', 'full-screen-click', 'setting-click'])
 
@@ -44,10 +52,7 @@ const actions: IAction[] = [
   },
   {
     name: 'bell-icon',
-    component: BellIcon,
-    callback: () => {
-      emits('bell-click')
-    }
+    component: BellIcon
   },
   {
     name: 'full-screen-icon',
@@ -93,6 +98,8 @@ watch(
   { immediate: true }
 )
 
+const { badgeValue, notificationList, handleClickIcon, handleReadAll } = useNotification()
+
 // const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
 //   const style: CSSProperties = {}
 //   if (checked) {
@@ -116,6 +123,10 @@ watch(
 
   &:hover {
     color: var(--primary-color);
+  }
+
+  .active {
+    color: var(--primary-color)
   }
 }
 </style>

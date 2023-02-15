@@ -91,3 +91,10 @@ export interface ISearchUrlMap {
   Github: SearchUrl,
   Youtube: SearchUrl
 }
+
+export interface INotificationItem {
+  albumUrl: string,
+  title: string,
+  content: string,
+  selected: boolean
+}

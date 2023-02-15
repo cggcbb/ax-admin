@@ -123,6 +123,7 @@ watchPostEffect(() => {
   justify-content: center;
   align-items: center;
   z-index: 99;
+  backdrop-filter: blur(3px);
 
   .search-content {
     position: relative;
@@ -131,7 +132,7 @@ watchPostEffect(() => {
     padding: 24px 36px;
     border-radius: 8px;
     background-color: var(--card-color);
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 10px var(--card-color);
 
     .search-close {
       position: absolute;

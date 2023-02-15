@@ -7,7 +7,7 @@
         <div flex-center-v justify-between>
           <gradient-text :size="16">{{ data.album }}</gradient-text>
           <n-avatar size="small" :src="data.albumUrl" hover:transform-scale-240 transform-origin-right-center
-            transition-transform></n-avatar>
+            transition-transform-300></n-avatar>
         </div>
       </template>
     </template>
