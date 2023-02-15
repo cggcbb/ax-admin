@@ -1,7 +1,5 @@
 <template>
-  <n-icon :size="size" class="navbar-music-icon-wrapper" @click="handleSongPlay">
-    <component :is="icon" />
-  </n-icon>
+  <n-icon :size="size" :component="icon" class="navbar-music-icon-wrapper" @click="handleSongPlay" />
 </template>
 
 <script lang="ts">
