@@ -34,13 +34,13 @@ defineComponent({
 
 <script setup lang="ts">
 import { GET_ALBUM_DATA_LIST } from '~/api/url'
-import { IAlbumItem, Result } from '~/types/common'
-import http from '~/utils/http'
+import { IAlbumItem } from '~/types/common'
+import { get } from '~/utils/http'
 
 const albumList = ref<IAlbumItem[]>([])
 
 const getAlbumDataList = async () => {
-  const res = await http.get<null, Result<IAlbumItem[]>>(GET_ALBUM_DATA_LIST)
+  const res = await get<IAlbumItem[]>(GET_ALBUM_DATA_LIST)
   albumList.value = Object.freeze(res.data) as IAlbumItem[]
 }
 

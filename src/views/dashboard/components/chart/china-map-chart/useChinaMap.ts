@@ -1,7 +1,7 @@
 
 import * as echarts from 'echarts'
 import { isDark } from '~/composables'
-import http from '~/utils/http'
+import { get } from '~/utils/http'
 import { GET_CHINA_MAP_DATA, GET_CHINA_MAP_FEATURE_COLLECTION } from '~/api/url'
 
 export default function useChinaMap(options: any) {
@@ -26,12 +26,12 @@ export default function useChinaMap(options: any) {
   const REGISTER_MAP_NAME = 'china'
 
   const registerMap = async () => {
-    const res: any = await http.get(GET_CHINA_MAP_FEATURE_COLLECTION)
-    echarts.registerMap(REGISTER_MAP_NAME, res.data)
+    const res = await get<unknown>(GET_CHINA_MAP_FEATURE_COLLECTION)
+    echarts.registerMap(REGISTER_MAP_NAME, res.data as any)
   }
 
   const update = async () => {
-    const chinaMapData: any = await http.get(GET_CHINA_MAP_DATA)
+    const chinaMapData = await get<unknown>(GET_CHINA_MAP_DATA)
     const {
       geoGpsMap,
       geoCoordMap,
@@ -42,7 +42,7 @@ export default function useChinaMap(options: any) {
       d5,
       d6,
       cities
-    } = chinaMapData.data
+    } = chinaMapData.data as any
 
     const colorIndex = 0
     const mapData = [[], [], [], [], [], []] as any

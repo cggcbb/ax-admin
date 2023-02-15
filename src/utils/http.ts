@@ -1,5 +1,6 @@
 import qs from 'qs'
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
+import { IAxiosOption, Result } from '~/types/common'
 
 const CONTENT_TYPE = 'Content-Type'
 const APPLICATION_JSON = 'application/json; charset=UTF-8'
@@ -31,17 +32,56 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  (response: AxiosResponse): AxiosResponse => {
+  (response: AxiosResponse): AxiosResponse | Promise<never> => {
     if (response.status === 200) {
-      return response.data
+      return response
     }
-    window.$message.error(response.data.message)
-    throw new Error(response.status.toString())
+    return Promise.reject(response)
   },
   (error: AxiosError) => {
-    window.$message.error(error.message)
-    return Promise.reject(new Error('服务器异常，请稍后重试 …'))
+    return Promise.reject(error)
   }
 )
 
-export default instance
+/**
+ * 简单封装一下request方法
+ * 主要为了在调用它的时候，返回值能拿到指定的类型
+ *
+ * const res = request<string>({
+ *   url: 'https://www.baidu.com'
+ * })
+ *
+ * res.data 的类型就是 string
+ */
+export const request = <T = any>({ url, method = 'GET', data = {}, headers = {} }: IAxiosOption) => {
+  const handleSuccess = (res: AxiosResponse<Result<T>>) => {
+    // github 返回的信息 res.data 就是返回数据，里面没有包一层data
+    if (res.data.code === 200 || url.includes('api.github.com')) {
+      return res.data
+    }
+    window.$message.error(res.data.message)
+    throw new Error(res.data.message ?? '请求异常，请稍后重试 …')
+  }
+  const handleError = (error: Result<Error>) => {
+    window.$message.error(error.data.message)
+    throw new Error(error.data.message ?? '请求异常，请稍后重试 …')
+  }
+  const params = Object.assign({}, typeof data === 'function' ? data() : data)
+
+  return method === 'GET'
+    ? instance.get(url, { params }).then(handleSuccess, handleError)
+    : instance.post(url, params, { headers }).then(handleSuccess, handleError)
+}
+
+export const get = <T = any>(url: string) => {
+  return request<T>({
+    url
+  })
+}
+
+export const post = <T = any>(url: string) => {
+  return request<T>({
+    url,
+    method: 'POST'
+  })
+}

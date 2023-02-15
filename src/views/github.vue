@@ -23,7 +23,7 @@
   </n-card>
 </template>
 <script lang="ts" setup>
-import http from '~/utils/http'
+import { get } from '~/utils/http'
 
 let user: any = $ref(null)
 let loading = $ref(false)
@@ -35,7 +35,7 @@ const message = useMessage()
 const send = async () => {
   loading = true
   try {
-    const result: any = await http.get(`https://api.github.com/users/${username}`)
+    const result: any = await get<unknown>(`https://api.github.com/users/${username}`)
     user = result
     message.success(`pull github success, username: ${result.login}`, {
       duration: 4000

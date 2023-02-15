@@ -1,9 +1,16 @@
-import { SelectOption } from "naive-ui";
+import { SelectOption } from "naive-ui"
 
 export interface Result<T = any> {
   code: number;
   message: string;
   data: T;
+}
+
+export interface IAxiosOption {
+  url: string
+  method?: string,
+  data?: any,
+  headers?: any
 }
 
 export interface ISetting {

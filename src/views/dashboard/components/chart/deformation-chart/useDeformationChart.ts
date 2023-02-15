@@ -1,6 +1,6 @@
 import { GET_CHINA_MAP_FEATURE_COLLECTION, GET_DEFORMATION_DATA } from "~/api/url"
 import * as echarts from 'echarts'
-import http from "~/utils/http"
+import { get } from "~/utils/http"
 
 interface IDeformationData {
   name: string,
@@ -9,15 +9,15 @@ interface IDeformationData {
 
 export default function useDeformationChart(options: any) {
   const registerMap = async () => {
-    const res: any = await http.get(GET_CHINA_MAP_FEATURE_COLLECTION)
-    echarts.registerMap('china', res.data)
+    const res = await get<unknown>(GET_CHINA_MAP_FEATURE_COLLECTION)
+    echarts.registerMap('china', res.data as any)
   }
 
   let deformationData: IDeformationData[] = []
 
   const normalizeDeformationData = async () => {
-    const res: any = await http.get(GET_DEFORMATION_DATA)
-    deformationData = res.data
+    const res = await get<unknown>(GET_DEFORMATION_DATA)
+    deformationData = res.data as any
     deformationData!.sort((a, b) => {
       return a.value - b.value
     })
