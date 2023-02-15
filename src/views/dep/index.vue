@@ -2,7 +2,7 @@
   <n-space vertical>
     <n-card v-for="item of renderList" :key="item.title" :title="item.title" :segmented="true" size="small">
       <n-descriptions :column="item.column" label-placement="left" bordered size="medium"
-        :label-style="{ fontWeight: 700, fontSize: '16px', width: item.width }">
+        :label-style="{ fontWeight: 700, fontSize: '16px', width: item.width, color: 'var(--primary-color)' }">
         <n-descriptions-item v-for="dep of item.depList" :key="dep.label">
           <template #label>
             {{ dep.label }}
@@ -44,7 +44,7 @@ watchPostEffect(() => {
   Object.keys(dependencies).map((item, index) => {
     renderList[0].depList.push({
       label: item,
-      value: depValues[index],
+      value: depValues[index]
     })
   })
 
@@ -52,7 +52,7 @@ watchPostEffect(() => {
   Object.keys(devDependencies).map((item, index) => {
     renderList[1].depList.push({
       label: item,
-      value: devDepValues[index],
+      value: devDepValues[index]
     })
   })
 })
