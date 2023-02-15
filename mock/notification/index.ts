@@ -48,8 +48,8 @@ const notificationList = [
 
 Mock.mock(RegExp(`${GET_NOTIFICATION_LIST}`), 'get', () => {
   return Mock.mock({
-    code: 200, data: {
-      data: notificationList
-    }, msg: '获取通知数据成功'
+    code: 200,
+    data: notificationList,
+    msg: '获取通知数据成功'
   })
 })

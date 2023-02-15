@@ -14,8 +14,8 @@ const generateData = () => {
 
 Mock.mock(RegExp(`${GET_DEFORMATION_DATA}`), 'get', () => {
   return Mock.mock({
-    code: 200, data: {
-      data: generateData()
-    }, msg: '获取地图数据成功'
+    code: 200,
+    data: generateData(),
+    msg: '获取地图数据成功'
   })
 })

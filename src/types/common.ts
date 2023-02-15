@@ -2,9 +2,8 @@ import { SelectOption } from "naive-ui";
 
 export interface Result<T = any> {
   code: number;
-  type: 'success' | 'error' | 'warning';
   message: string;
-  result: T;
+  data: T;
 }
 
 export interface ISetting {
@@ -37,7 +36,6 @@ export interface IWaterMarkSystemSetting {
 // 整体水印设置
 export type IWaterMarkSetting = IWaterMarkUserSetting & IWaterMarkSystemSetting
 
-
 // 菜单
 export interface IMenuSetting {
   menuWidth: number,
@@ -58,6 +56,7 @@ export interface IDrawer {
   width: number
 }
 
+// layout
 export enum LayoutAnimationEnum {
   FADE_R = 'fade-r',
   FADE_L = 'fade-l',
@@ -66,26 +65,24 @@ export enum LayoutAnimationEnum {
   SCALE = 'scale',
   SHAKE = 'shake'
 }
-
 export interface ILayoutAnimation {
   animationActive: boolean,
   type: LayoutAnimationEnum
 }
 
+// search
 export enum SearchType {
   Google = 'Google',
   Bing = 'Bing',
   Github = 'Github',
   Youtube = 'Youtube'
 }
-
 export enum SearchUrl {
   Google = 'https://www.google.com/search?q=',
   Bing = 'https://cn.bing.com/search?q=',
   Github = 'https://github.com/search?q=',
   Youtube = 'https://www.youtube.com/results?search_query='
 }
-
 export interface ISearchUrlMap {
   Google: SearchUrl,
   Bing: SearchUrl,
@@ -99,3 +96,18 @@ export interface INotificationItem {
   content: string,
   selected: boolean
 }
+
+// album
+export interface IAlbumItem {
+  album: string,
+  songName: string,
+  singer: string,
+  albumUrl: string,
+  date: string,
+  content: IAlbumItemContent,
+}
+export interface IAlbumItemContent {
+  one?: string,
+  two?: string
+}
+

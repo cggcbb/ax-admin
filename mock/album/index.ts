@@ -1,7 +1,8 @@
 import Mock from 'mockjs'
 import { GET_ALBUM_DATA_LIST } from '~/api/url'
+import { IAlbumItem } from '~/types/common'
 
-const albumList = [
+const albumList: IAlbumItem[] = [
   {
     album: '认了吧',
     songName: '好久不见',
@@ -50,8 +51,8 @@ const albumList = [
 
 Mock.mock(RegExp(`${GET_ALBUM_DATA_LIST}`), 'get', () => {
   return Mock.mock({
-    code: 200, data: {
-      data: albumList
-    }, msg: '获取专辑数据成功'
+    code: 200,
+    data: albumList,
+    message: '获取专辑数据成功'
   })
 })

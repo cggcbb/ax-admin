@@ -17,7 +17,7 @@ export default function useDeformationChart(options: any) {
 
   const normalizeDeformationData = async () => {
     const res: any = await http.get(GET_DEFORMATION_DATA)
-    deformationData = res.data.data
+    deformationData = res.data
     deformationData!.sort((a, b) => {
       return a.value - b.value
     })

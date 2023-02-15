@@ -34,14 +34,14 @@ defineComponent({
 
 <script setup lang="ts">
 import { GET_ALBUM_DATA_LIST } from '~/api/url'
-import http from '~/utils/http';
+import { IAlbumItem, Result } from '~/types/common'
+import http from '~/utils/http'
 
-const albumList = ref([])
+const albumList = ref<IAlbumItem[]>([])
 
 const getAlbumDataList = async () => {
-  const res: any = await http.get(GET_ALBUM_DATA_LIST)
-
-  albumList.value = Object.freeze(res.data.data)
+  const res = await http.get<null, Result<IAlbumItem[]>>(GET_ALBUM_DATA_LIST)
+  albumList.value = Object.freeze(res.data) as IAlbumItem[]
 }
 
 onMounted(async () => {

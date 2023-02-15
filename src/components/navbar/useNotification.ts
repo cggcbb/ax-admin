@@ -1,6 +1,6 @@
 import { ComputedRef, Ref } from "vue"
 import { GET_NOTIFICATION_LIST } from "~/api/url"
-import { INotificationItem } from "~/types/common"
+import { INotificationItem, Result } from "~/types/common"
 import http from "~/utils/http"
 
 interface INotificationUse {
@@ -31,9 +31,9 @@ export default function useNotification() {
   }
 
   const getNotificationList = async () => {
-    const res: any = await http.get(GET_NOTIFICATION_LIST)
+    const res = await http.get<null, Result<INotificationItem[]>>(GET_NOTIFICATION_LIST)
 
-    notificationList.value = res.data.data
+    notificationList.value = res.data
   }
 
   onMounted(async () => {
