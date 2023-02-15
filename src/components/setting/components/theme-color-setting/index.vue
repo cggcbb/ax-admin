@@ -14,6 +14,7 @@ defineComponent({
 
 <script lang="ts" setup>
 import useSetting from '~/store/setting'
+import { themeColorBlack } from '~/config/themeColor'
 
 const setting = useSetting()
 
@@ -26,8 +27,8 @@ const swatches = [
   '#f0a020',
   '#d03050',
   '#01c1dd',
-  '#18181c',
-  '#9c27b0',
+  themeColorBlack,
+  '#f47ad9',
   '#1767aa'
 ]
 </script>

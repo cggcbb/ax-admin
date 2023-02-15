@@ -3,6 +3,7 @@ import type { IDrawer, ILayoutAnimation, IMenuSetting, IWaterMarkSetting } from 
 import { STORAGE_WATER_MASK_KEY, STORAGE_MENU_KEY, STORAGE_THEME_COLOR_KEY, STORAGE_LAYOUT_ANIMATION_KEY } from '~/config/storage'
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
+import { themeColorBlack } from '~/config/themeColor'
 
 const useSetting = defineStore('setting', () => {
   // 优先取localStorage
@@ -59,6 +60,9 @@ const useSetting = defineStore('setting', () => {
   }
 
   watch(themeColorSetting, (newSetting: string) => {
+    if (newSetting === themeColorBlack && isDark.value) {
+      window.$message.warning('暗黑主题下，不建议设置黑色主题色')
+    }
     localStorage.setItem(STORAGE_THEME_COLOR_KEY, newSetting)
   })
 
