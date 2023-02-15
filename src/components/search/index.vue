@@ -28,7 +28,7 @@ import { VNodeChild } from 'vue'
 import {
   LogoGithub as GithubIcon,
   LogoYoutube as YoutubeIcon,
-  LogoMicrosoft as BingIcon,
+  LogoWindows as BingIcon,
   LogoGoogle as GoogleIcon,
   CloseOutline as CloseIcon
 } from '@vicons/ionicons5'
