@@ -1,17 +1,19 @@
 import * as THREE from 'three'
 
 export default function useLoginBackground(loginWrapper: any) {
+  let renderer: null | THREE.WebGLRenderer = null
+  let camera: null | THREE.PerspectiveCamera = null
 
-  const initBackground = () => {
+  const initBackground = async () => {
     // 创建场景
     const scene = new THREE.Scene()
 
     // 创建相机
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     camera.position.z = 5
 
     // 创建渲染器
-    const renderer = new THREE.WebGLRenderer()
+    renderer = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
 
     loginWrapper.value!.appendChild(renderer.domElement)
@@ -56,11 +58,23 @@ export default function useLoginBackground(loginWrapper: any) {
       requestAnimationFrame(render)
       particleSystem.rotation.x += 0.0002
       particleSystem.rotation.y += 0.0002
-      renderer.render(scene, camera)
+      renderer!.render(scene, camera!)
     }
-
     render()
   }
 
-  onMounted(initBackground)
+  const handleResize = () => {
+    renderer!.setSize(window.innerWidth, window.innerHeight)
+    camera!.aspect = window.innerWidth / window.innerHeight
+    camera!.updateProjectionMatrix()
+  }
+
+  onBeforeMount(() => {
+    window.removeEventListener('resize', handleResize)
+  })
+
+  onMounted(async () => {
+    await initBackground()
+    window.addEventListener('resize', handleResize)
+  })
 }
