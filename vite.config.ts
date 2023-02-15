@@ -7,7 +7,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
-import { NaiveUiResolver} from 'unplugin-vue-components/resolvers'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   resolve: {
@@ -31,7 +31,13 @@ export default defineConfig({
         'vue/macros',
         'vue-router',
         'pinia',
-        '@vueuse/core',
+        {
+          '@vueuse/core': [
+            'useDark',
+            'useFullscreen',
+            'useToggle'
+          ]
+        },
         {
           'naive-ui': [
             'useDialog',
