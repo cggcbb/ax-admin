@@ -67,6 +67,10 @@ export default {
       value: LayoutAnimationEnum.OPACITY
     },
     {
+      label: '左右抖动',
+      value: LayoutAnimationEnum.SHAKE
+    },
+    {
       label: '缩放',
       value: LayoutAnimationEnum.SCALE
     }

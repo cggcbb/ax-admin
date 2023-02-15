@@ -64,6 +64,7 @@ export enum LayoutAnimationEnum {
   OPACITY = 'opacity',
   DOWN = 'down',
   SCALE = 'scale',
+  SHAKE = 'shake'
 }
 
 export interface ILayoutAnimation {
