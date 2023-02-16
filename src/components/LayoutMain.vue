@@ -1,7 +1,11 @@
 <template>
   <section class="main-container" pa-8px>
     <router-view v-slot="{ Component, route }">
-      <transition :name="`${animationActive ? type : ''}-transform`" mode="out-in" appear>
+      <transition
+        :name="`${animationActive ? type : ''}-transform`"
+        mode="out-in"
+        appear
+      >
         <keep-alive>
           <component :is="Component" :key="route.fullPath" />
         </keep-alive>
@@ -16,14 +20,16 @@ import useSetting from '~/store/setting'
 export default defineComponent({
   name: 'LayoutMain',
   setup() {
-    const backgroundColor = computed(() => isDark.value ? '#1c1c1c' : '#f4f4f4')
+    const backgroundColor = computed(() =>
+      isDark.value ? '#161616' : '#f4f4f4'
+    )
 
     const setting = useSetting()
     const { type, animationActive } = toRefs(setting.layoutAnimationSetting)
 
     return {
-      backgroundColor,
       type,
+      backgroundColor,
       animationActive
     }
   }
@@ -32,6 +38,8 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .main-container {
-  background-color: v-bind(backgroundColor)
+  height: calc(100vh - @logoHeight);
+  overflow: auto;
+  background-color: v-bind(backgroundColor);
 }
 </style>
