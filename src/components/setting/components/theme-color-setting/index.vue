@@ -1,7 +1,11 @@
 <template>
   <n-grid>
     <n-gi :span="24">
-      <n-color-picker show-preview v-model:value="themeColorSetting" :swatches="swatches" />
+      <n-color-picker
+        show-preview
+        v-model:value="themeColorSetting"
+        :swatches="swatches"
+      />
     </n-gi>
   </n-grid>
 </template>
@@ -25,14 +29,12 @@ const swatches = [
   '#18a058',
   '#2080f0',
   '#f0a020',
-  '#d03050',
+  '#f84b6d',
   '#01c1dd',
   themeColorBlack,
   '#f47ad9',
-  '#1767aa'
+  '#fb272b'
 ]
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>
