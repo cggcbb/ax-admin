@@ -1,18 +1,26 @@
 <template>
   <teleport to="body">
-    <div v-show="visible" class="search-mask" @click.self="handleClose">
+    <n-el v-show="visible" class="search-mask" @click.self="handleClose">
       <n-el class="search-content">
         <n-icon :size="22" class="search-close" @click.prevent="handleClose">
           <component :is="CloseIcon"></component>
         </n-icon>
         <n-input-group>
-          <n-select :style="{ minWidth: '118px', width: '33%' }" v-model:value="searchType" :render-label="renderLabel"
-            :options="options" />
-          <n-input autofocus v-model:value="searchValue" placeholder="柳絮纷飞，毕竟不是雪..." />
+          <n-select
+            :style="{ minWidth: '118px', width: '33%' }"
+            v-model:value="searchType"
+            :render-label="renderLabel"
+            :options="options"
+          />
+          <n-input
+            autofocus
+            v-model:value="searchValue"
+            placeholder="柳絮纷飞，毕竟不是雪..."
+          />
           <n-button @click.prevent="handleSearch">搜索</n-button>
         </n-input-group>
       </n-el>
-    </div>
+    </n-el>
   </teleport>
 </template>
 
@@ -51,25 +59,25 @@ const searchType = ref<SearchType>(SearchType.Google)
 
 const options = [
   {
-    label: "Google",
+    label: 'Google',
     value: 'Google',
     icon: GoogleIcon
   },
   {
-    label: "Bing",
+    label: 'Bing',
     value: 'Bing',
     icon: BingIcon
   },
   {
-    label: "Github",
+    label: 'Github',
     value: 'Github',
     icon: GithubIcon
   },
   {
-    label: "Youtube",
+    label: 'Youtube',
     value: 'Youtube',
     icon: YoutubeIcon
-  },
+  }
 ]
 
 const handleSearch = () => {
@@ -106,9 +114,11 @@ const renderLabel = (option: any): VNodeChild => {
 
 // 防止弹窗后的内容滚动
 watchPostEffect(() => {
-  document.documentElement.setAttribute('style', visible.value ? 'overflow: hidden' : '')
+  document.documentElement.setAttribute(
+    'style',
+    visible.value ? 'overflow: hidden' : ''
+  )
 })
-
 </script>
 
 <style lang="less" scoped>
@@ -118,7 +128,7 @@ watchPostEffect(() => {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,7 +143,7 @@ watchPostEffect(() => {
     border-radius: 8px;
     background-color: var(--card-color);
     box-shadow: 2px 2px 10px var(--card-color);
-    opacity: .8;
+    opacity: 0.8;
 
     .search-close {
       position: absolute;
