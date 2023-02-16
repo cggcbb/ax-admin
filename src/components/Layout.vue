@@ -2,32 +2,61 @@
   <n-el>
     <n-layout has-sider>
       <!-- 侧边栏 -->
-      <n-layout-sider bordered collapse-mode="width" :collapsed-width="collapsedWidth" :width="menuWidth"
-        :collapsed="collapsed" class="ax-layout-sider">
+      <n-layout-sider
+        bordered
+        collapse-mode="width"
+        :collapsed-width="collapsedWidth"
+        :width="menuWidth"
+        :collapsed="collapsed"
+        class="ax-layout-sider"
+      >
         <!-- logo -->
-        <logo></logo>
+        <ax-header />
         <!-- 菜单 -->
-        <Menu></Menu>
+        <Menu />
       </n-layout-sider>
       <n-layout>
         <!-- 导航 -->
-        <navbar></navbar>
+        <navbar />
         <!-- 主题内容 -->
-        <layout-main></layout-main>
+        <layout-main />
       </n-layout>
     </n-layout>
   </n-el>
   <audio ref="audio" @ended="handleAudioEnded">
-    <source src="../assets/mp3/maple.mp3">
+    <source src="../assets/mp3/maple.mp3" />
   </audio>
 
-  <n-watermark v-if="waterMarkActive && waterMarkType === 'text'" :content="waterMarkValue" cross fullscreen
-    :font-size="waterMarkSize" :line-height="16" :width="384" :height="384" :x-offset="12" :y-offset="28"
-    :global-rotate="waterMarkRotate" :font-color="waterMarkColor" />
-  <n-watermark v-if="waterMarkActive && waterMarkType === 'image'" :image="waterMarkImageUrl" cross fullscreen
-    :font-size="waterMarkSize" :line-height="16" :width="384" :height="384" :x-offset="12" :y-offset="0"
-    :image-width="waterMarkImageSize" :global-rotate="watchMarkImageRotate" :image-height="waterMarkImageSize"
-    :image-opacity="0.24" />
+  <n-watermark
+    v-if="waterMarkActive && waterMarkType === 'text'"
+    :content="waterMarkValue"
+    cross
+    fullscreen
+    :font-size="waterMarkSize"
+    :line-height="16"
+    :width="384"
+    :height="384"
+    :x-offset="12"
+    :y-offset="28"
+    :global-rotate="waterMarkRotate"
+    :font-color="waterMarkColor"
+  />
+  <n-watermark
+    v-if="waterMarkActive && waterMarkType === 'image'"
+    :image="waterMarkImageUrl"
+    cross
+    fullscreen
+    :font-size="waterMarkSize"
+    :line-height="16"
+    :width="384"
+    :height="384"
+    :x-offset="12"
+    :y-offset="0"
+    :image-width="waterMarkImageSize"
+    :global-rotate="watchMarkImageRotate"
+    :image-height="waterMarkImageSize"
+    :image-opacity="0.24"
+  />
 </template>
 
 <script lang="ts">
@@ -67,9 +96,8 @@ const {
   waterMarkImageSize,
   waterMarkColor,
   waterMarkRotate,
-  watchMarkImageRotate,
+  watchMarkImageRotate
 } = toRefs(useSetting().waterMarkSetting)
-
 
 // loading bar
 const router = useRouter()
@@ -87,11 +115,10 @@ router.afterEach(() => {
   调用前需要确保 message 已经挂载成功
 */
 window.$message = useMessage()
-
 </script>
 
 <style lang="less" scoped>
 .ax-layout-sider {
-  box-shadow: 3px 0 5px rgba(133, 133, 133, .5);
+  box-shadow: 3px 0 5px rgba(133, 133, 133, 0.5);
 }
 </style>

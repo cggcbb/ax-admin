@@ -1,5 +1,13 @@
 import { SelectOption } from 'naive-ui'
-import { ISetting, IMenuSetting, IWaterMarkSetting, IDrawer, LayoutAnimationEnum, ILayoutAnimation } from '~/types/common'
+import {
+  ISetting,
+  IMenuSetting,
+  IWaterMarkSetting,
+  IDrawer,
+  LayoutAnimationEnum,
+  ILayoutAnimation,
+  IHeaderSetting
+} from '~/types/common'
 
 // 水印
 const waterMarkSetting: IWaterMarkSetting = {
@@ -12,14 +20,16 @@ const waterMarkSetting: IWaterMarkSetting = {
   waterMarkColor: '#808080ff',
   waterMarkRotate: -45,
   watchMarkImageRotate: -30,
-  waterMarkTypeOptions: [{
-    label: "文字",
-    value: 'text',
-  },
-  {
-    label: '图片',
-    value: 'image'
-  }] as SelectOption[]
+  waterMarkTypeOptions: [
+    {
+      label: '文字',
+      value: 'text'
+    },
+    {
+      label: '图片',
+      value: 'image'
+    }
+  ] as SelectOption[]
 }
 // 菜单
 const menu: IMenuSetting = {
@@ -38,10 +48,17 @@ const drawer: IDrawer = {
 // 主题色
 const themeColor: string = '#18a058'
 
-const layoutAnimation = {
+// layoutMain动画
+const layoutAnimation: ILayoutAnimation = {
   animationActive: true,
   type: LayoutAnimationEnum.FADE_R
-} as ILayoutAnimation
+}
+
+// header
+const headerSetting: IHeaderSetting = {
+  showLogo: true,
+  showTitle: true
+}
 
 export default {
   waterMarkSetting,
@@ -74,5 +91,6 @@ export default {
       label: '缩放',
       value: LayoutAnimationEnum.SCALE
     }
-  ]
+  ],
+  headerSetting
 } as ISetting

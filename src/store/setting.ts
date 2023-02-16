@@ -1,6 +1,18 @@
 import setting from '~/setting'
-import type { IDrawer, ILayoutAnimation, IMenuSetting, IWaterMarkSetting } from '~/types/common'
-import { STORAGE_WATER_MASK_KEY, STORAGE_MENU_KEY, STORAGE_THEME_COLOR_KEY, STORAGE_LAYOUT_ANIMATION_KEY } from '~/config/storage'
+import type {
+  IDrawer,
+  IHeaderSetting,
+  ILayoutAnimation,
+  IMenuSetting,
+  IWaterMarkSetting
+} from '~/types/common'
+import {
+  STORAGE_WATER_MASK_KEY,
+  STORAGE_MENU_KEY,
+  STORAGE_THEME_COLOR_KEY,
+  STORAGE_LAYOUT_ANIMATION_KEY,
+  STORAGE_HEADER_KEY
+} from '~/config/storage'
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
 import { themeColorBlack } from '~/config/themeColor'
@@ -10,7 +22,11 @@ const useSetting = defineStore('setting', () => {
   const storageWaterMaskValue = localStorage.getItem(STORAGE_WATER_MASK_KEY)
   const storageMenuValue = localStorage.getItem(STORAGE_MENU_KEY)
   const storageThemeColorValue = localStorage.getItem(STORAGE_THEME_COLOR_KEY)
-  const storageLayoutAnimationValue = localStorage.getItem(STORAGE_LAYOUT_ANIMATION_KEY)
+  const storageLayoutAnimationValue = localStorage.getItem(
+    STORAGE_LAYOUT_ANIMATION_KEY
+  )
+  const storageHeaderSetting = localStorage.getItem(STORAGE_HEADER_KEY)
+
   // 水印
   const waterMarkSetting = storageWaterMaskValue
     ? reactive(JSON.parse(storageWaterMaskValue) as IWaterMarkSetting)
@@ -31,6 +47,11 @@ const useSetting = defineStore('setting', () => {
     ? reactive(JSON.parse(storageLayoutAnimationValue) as ILayoutAnimation)
     : reactive({ ...setting.layoutAnimation })
 
+  // header
+  const headerSetting = storageHeaderSetting
+    ? reactive(JSON.parse(storageHeaderSetting) as IHeaderSetting)
+    : reactive({ ...setting.headerSetting })
+
   watch(waterMarkSetting, (newSetting: IWaterMarkSetting) => {
     localStorage.setItem(STORAGE_WATER_MASK_KEY, JSON.stringify(newSetting))
   })
@@ -45,7 +66,8 @@ const useSetting = defineStore('setting', () => {
   watch(menuSetting, (newSetting: IMenuSetting) => {
     // 自动折叠
     if (!isClickCollapsedIcon) {
-      menuSetting.collapsed = newSetting.collapsed = (newSetting.menuWidth <= menuSetting.autoCollapsedWidth)
+      menuSetting.collapsed = newSetting.collapsed =
+        newSetting.menuWidth <= menuSetting.autoCollapsedWidth
     }
     localStorage.setItem(STORAGE_MENU_KEY, JSON.stringify(newSetting))
     // 关闭开关
@@ -67,7 +89,14 @@ const useSetting = defineStore('setting', () => {
   })
 
   watch(layoutAnimationSetting, (newSetting: ILayoutAnimation) => {
-    localStorage.setItem(STORAGE_LAYOUT_ANIMATION_KEY, JSON.stringify(newSetting))
+    localStorage.setItem(
+      STORAGE_LAYOUT_ANIMATION_KEY,
+      JSON.stringify(newSetting)
+    )
+  })
+
+  watch(headerSetting, (newSetting: IHeaderSetting) => {
+    localStorage.setItem(STORAGE_HEADER_KEY, JSON.stringify(newSetting))
   })
 
   // 修改主题颜色 themeColorSetting 是响应式的
@@ -88,9 +117,9 @@ const useSetting = defineStore('setting', () => {
     drawerSetting,
     themeColorSetting,
     themeOverrides,
-    layoutAnimationSetting
+    layoutAnimationSetting,
+    headerSetting
   }
 })
 
 export default useSetting
-

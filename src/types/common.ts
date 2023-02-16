@@ -1,42 +1,43 @@
-import { SelectOption } from "naive-ui"
+import { SelectOption } from 'naive-ui'
 
 export interface Result<T = any> {
-  code: number;
-  message: string;
-  data: T;
+  code: number
+  message: string
+  data: T
 }
 
 export interface IAxiosOption {
   url: string
-  method?: string,
-  data?: any,
+  method?: string
+  data?: any
   headers?: any
 }
 
 export interface ISetting {
-  waterMarkSetting: IWaterMarkSetting,
-  menu: IMenuSetting,
-  drawer: IDrawer,
-  themeColor: string,
-  layoutAnimation: ILayoutAnimation,
+  waterMarkSetting: IWaterMarkSetting
+  menu: IMenuSetting
+  drawer: IDrawer
+  themeColor: string
+  layoutAnimation: ILayoutAnimation
   layoutAnimationOptions: SelectOption[]
+  headerSetting: IHeaderSetting
 }
 
 // 用户水印系统设置
 export interface IWaterMarkUserSetting {
-  waterMarkActive?: boolean,
-  waterMarkValue?: string,
-  waterMarkImageUrl?: string,
-  waterMarkSize?: number,
-  waterMarkImageSize?: number,
-  waterMarkColor?: string,
-  waterMarkRotate?: number,
+  waterMarkActive?: boolean
+  waterMarkValue?: string
+  waterMarkImageUrl?: string
+  waterMarkSize?: number
+  waterMarkImageSize?: number
+  waterMarkColor?: string
+  waterMarkRotate?: number
   watchMarkImageRotate?: number
 }
 
 // 系统水印自带设置
 export interface IWaterMarkSystemSetting {
-  waterMarkType: string,
+  waterMarkType: string
   waterMarkTypeOptions: SelectOption[]
 }
 
@@ -45,15 +46,15 @@ export type IWaterMarkSetting = IWaterMarkUserSetting & IWaterMarkSystemSetting
 
 // 菜单
 export interface IMenuSetting {
-  menuWidth: number,
+  menuWidth: number
   // 折叠
   collapsed: boolean
   // 手风琴模式
-  accordion: boolean,
+  accordion: boolean
   // 折叠时宽度
-  collapsedWidth: number,
+  collapsedWidth: number
   // 折叠时icon大小
-  collapsedIconSize: number,
+  collapsedIconSize: number
   // 自动折叠最小宽度
   autoCollapsedWidth: number
 }
@@ -73,7 +74,7 @@ export enum LayoutAnimationEnum {
   SHAKE = 'shake'
 }
 export interface ILayoutAnimation {
-  animationActive: boolean,
+  animationActive: boolean
   type: LayoutAnimationEnum
 }
 
@@ -91,30 +92,34 @@ export enum SearchUrl {
   Youtube = 'https://www.youtube.com/results?search_query='
 }
 export interface ISearchUrlMap {
-  Google: SearchUrl,
-  Bing: SearchUrl,
-  Github: SearchUrl,
+  Google: SearchUrl
+  Bing: SearchUrl
+  Github: SearchUrl
   Youtube: SearchUrl
 }
 
 export interface INotificationItem {
-  albumUrl: string,
-  title: string,
-  content: string,
+  albumUrl: string
+  title: string
+  content: string
   selected: boolean
 }
 
 // album
 export interface IAlbumItem {
-  album: string,
-  songName: string,
-  singer: string,
-  albumUrl: string,
-  date: string,
-  content: IAlbumItemContent,
+  album: string
+  songName: string
+  singer: string
+  albumUrl: string
+  date: string
+  content: IAlbumItemContent
 }
 export interface IAlbumItemContent {
-  one?: string,
+  one?: string
   two?: string
 }
 
+export interface IHeaderSetting {
+  showLogo: boolean
+  showTitle: boolean
+}
