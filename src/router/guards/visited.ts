@@ -6,13 +6,12 @@ import router from '../'
 export default function useVisitedGuard() {
   const { addVisitedRoute } = useVisitedRoutes()
   let toRoute = $ref<RouteRecordRaw | null>(null)
-  const title = $computed(() => `${setting.projectName} | ${toRoute?.meta?.title || '烟花易冷'}`)
 
   router.beforeEach(to => {
     const route = (toRoute = to as any as RouteRecordRaw)
     addVisitedRoute(route)
 
     // @vueuse/core, 修改标签页标题
-    useTitle(title)
+    useTitle(() => `${setting.projectName} | ${toRoute?.meta?.title || '烟花易冷'}`)
   })
 }
