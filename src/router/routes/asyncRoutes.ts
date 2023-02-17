@@ -16,7 +16,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: 'workbench',
         component: Workbench,
         meta: {
-          cache: true
+          cache: true,
+          title: '首页'
         }
       },
       {
@@ -24,7 +25,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: 'github',
         component: Github,
         meta: {
-          cache: true
+          cache: true,
+          title: '模拟请求'
         }
       }
     ]
@@ -38,7 +40,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: 'dependencies',
         component: Dependencies,
         meta: {
-          cache: true
+          cache: true,
+          title: '项目依赖'
         }
       }
     ]

@@ -1,9 +1,14 @@
-const useCacheRoutes = defineStore('cache-routes', () => {
-  const cacheRoutesName = ref<string[]>([])
+import { RouteRecordRaw } from 'vue-router'
 
-  const addCacheRouteName = (rName: string) => {
-    if (!cacheRoutesName.value.includes(rName)) {
-      cacheRoutesName.value.push(rName)
+const useCacheRoutes = defineStore('cache-routes', () => {
+  const cacheRoutesName = $ref<string[]>([])
+
+  const addCacheRouteName = (r: RouteRecordRaw) => {
+    if (r.meta?.cache) {
+      const rName = r.name as string
+      if (!cacheRoutesName.includes(rName)) {
+        cacheRoutesName.push(rName)
+      }
     }
   }
 

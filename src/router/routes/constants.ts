@@ -12,7 +12,10 @@ export const constantRoutes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      title: '登录'
+    }
   },
   {
     path: '/redirect',
@@ -32,7 +35,10 @@ export const constantRoutes = [
       {
         path: '',
         name: '404',
-        component: NotFound
+        component: NotFound,
+        meta: {
+          title: 'Not Found'
+        }
       }
     ]
   },

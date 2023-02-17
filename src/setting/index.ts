@@ -61,6 +61,7 @@ const headerSetting: IHeaderSetting = {
 }
 
 export default {
+  projectName: 'ax-admin',
   waterMarkSetting,
   menu,
   drawer,

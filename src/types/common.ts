@@ -14,6 +14,7 @@ export interface IAxiosOption {
 }
 
 export interface ISetting {
+  projectName: string
   waterMarkSetting: IWaterMarkSetting
   menu: IMenuSetting
   drawer: IDrawer

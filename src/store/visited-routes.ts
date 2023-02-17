@@ -1,6 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
 import useCacheRoutes from './cache-routes'
-// import { routes } from '~/router'
 
 const useVisitedRoutes = defineStore('visited-routes', () => {
   const visitedRoutes = $ref<RouteRecordRaw[]>([])
@@ -12,7 +11,7 @@ const useVisitedRoutes = defineStore('visited-routes', () => {
       visitedRoutes.push(route)
     }
     if (route.name) {
-      cacheRoutes.addCacheRouteName(route.name as string)
+      cacheRoutes.addCacheRouteName(route)
     }
   }
 
