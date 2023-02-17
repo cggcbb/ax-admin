@@ -37,18 +37,14 @@ import useActions from './useActions'
 const settingRef = ref<HTMLElement | null>(null)
 const searchRef = ref<HTMLElement | null>(null)
 
-const {
-  handleSearchClick,
-  handleRefreshClick,
-  handleFullScreenClick,
-  handleSettingClick
-} = useActions(settingRef, searchRef)
+const { handleSearchClick, handleRefreshClick, handleFullScreenClick, handleSettingClick } =
+  useActions(settingRef, searchRef)
 </script>
 
 <style lang="less" scoped>
 .nav-bar-wrapper {
   box-sizing: border-box;
-  box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow-1);
   z-index: 99;
   overflow: hidden;
   transition: all 0.3s;

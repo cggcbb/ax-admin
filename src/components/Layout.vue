@@ -18,6 +18,7 @@
       <n-layout>
         <!-- 导航 -->
         <navbar />
+        <tabbar />
         <!-- 主题内容 -->
         <layout-main />
       </n-layout>

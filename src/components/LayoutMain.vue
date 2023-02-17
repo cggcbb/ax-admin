@@ -17,12 +17,11 @@ import useCacheRoutes from '~/store/cache-routes'
 export default defineComponent({
   name: 'LayoutMain',
   setup() {
-    const backgroundColor = computed(() => (isDark.value ? '#161616' : '#f4f4f4'))
+    const backgroundColor = computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
 
     const setting = useSetting()
     const { type, animationActive } = toRefs(setting.layoutAnimationSetting)
-
-    const { cacheRoutesName } = useCacheRoutes()
+    const { cacheRoutesName } = toRefs(useCacheRoutes())
 
     return {
       type,
