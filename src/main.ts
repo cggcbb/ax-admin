@@ -1,4 +1,3 @@
-
 import App from './App.vue'
 import router from './router'
 import pinia from '~/store'
@@ -10,5 +9,4 @@ useMock()
 
 const app = createApp(App)
 
-app.use(router).use(pinia)
-app.mount('#app')
+app.use(router).use(pinia).mount('#app')
