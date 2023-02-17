@@ -25,7 +25,7 @@ let viewportHeight = $ref(0)
 const containerWrapper = ref<HTMLElement | null>(null)
 let observer: any = null
 
-const initSize = () => {
+const initSize = async () => {
   // 获取真实尺寸（传参options）, 如果没传options参数，取containerWrapper宽高
   const { width: _width, height: _height } = props.options!
 
