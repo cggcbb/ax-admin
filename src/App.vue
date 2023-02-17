@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 import useSetting from './store/setting'
-const theme = computed(() => isDark.value ? darkTheme : null)
+const theme = computed(() => (isDark.value ? darkTheme : null))
 
 const setting = useSetting()
 

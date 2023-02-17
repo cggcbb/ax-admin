@@ -1,15 +1,21 @@
-import { toggleFullscreen } from "~/composables"
+import { toggleFullscreen } from '~/composables'
 
 interface IActionsEmit {
   handleSearchClick: () => void
   handleFullScreenClick: () => void
   handleSettingClick: () => void
+  handleRefreshClick: () => void
 }
 
 export default function useActions(setting: any, searchRef: any) {
+  const router = useRouter()
+  const route = useRoute()
 
   const handleSearchClick = () => {
     searchRef.value.handleOpen()
+  }
+  const handleRefreshClick = () => {
+    router.replace({ path: `/redirect${route.path}` })
   }
   const handleFullScreenClick = (): void => {
     toggleFullscreen()
@@ -20,6 +26,7 @@ export default function useActions(setting: any, searchRef: any) {
 
   return {
     handleSearchClick,
+    handleRefreshClick,
     handleFullScreenClick,
     handleSettingClick
   } as IActionsEmit

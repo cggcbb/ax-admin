@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    404: typeof import('./../views/error/404.vue')['default']
     AlbumItem: typeof import('./../views/dashboard/components/albumItem.vue')['default']
     AxHeader: typeof import('./../components/ax-header/index.vue')['default']
     ChinaMapChart: typeof import('./../views/dashboard/components/chart/china-map-chart/index.vue')['default']
@@ -14,9 +15,11 @@ declare module '@vue/runtime-core' {
     DeformationChart: typeof import('./../views/dashboard/components/chart/deformation-chart/index.vue')['default']
     DeformationChartItem: typeof import('./../views/dashboard/components/deformationChartItem.vue')['default']
     Dep: typeof import('./../views/dep/index.vue')['default']
+    Error: typeof import('./../views/error/index.vue')['default']
     FlyBox: typeof import('./../components/flyBox/index.vue')['default']
     Github: typeof import('./../views/github.vue')['default']
     GradientText: typeof import('./../components/gradient-text/index.vue')['default']
+    HeaderSetting: typeof import('./../components/setting/components/header-setting/index.vue')['default']
     Layout: typeof import('./../components/Layout.vue')['default']
     LayoutAnimationSetting: typeof import('./../components/setting/components/layout-animation-setting/index.vue')['default']
     LayoutMain: typeof import('./../components/LayoutMain.vue')['default']
@@ -67,6 +70,7 @@ declare module '@vue/runtime-core' {
     NSwitch: typeof import('naive-ui')['NSwitch']
     NTooltip: typeof import('naive-ui')['NTooltip']
     NWatermark: typeof import('naive-ui')['NWatermark']
+    Redirect: typeof import('./../views/redirect/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScaleContainer: typeof import('./../components/scale-container/index.vue')['default']

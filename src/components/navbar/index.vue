@@ -10,8 +10,12 @@
     <navbar-breadcrumb />
     <!-- placeholder 占位 -->
     <div class="placeholder"></div>
-    <navbar-actions @search-click="handleSearchClick" @full-screen-click="handleFullScreenClick"
-      @setting-click="handleSettingClick" />
+    <navbar-actions
+      @search-click="handleSearchClick"
+      @refresh-click="handleRefreshClick"
+      @full-screen-click="handleFullScreenClick"
+      @setting-click="handleSettingClick"
+    />
     <navbar-avatar />
     <!-- <div class="tab-bar-wrapper">
       <tab-bar></tab-bar>
@@ -33,9 +37,12 @@ import useActions from './useActions'
 const settingRef = ref<HTMLElement | null>(null)
 const searchRef = ref<HTMLElement | null>(null)
 
-const { handleSearchClick, handleFullScreenClick, handleSettingClick } =
-  useActions(settingRef, searchRef)
-
+const {
+  handleSearchClick,
+  handleRefreshClick,
+  handleFullScreenClick,
+  handleSettingClick
+} = useActions(settingRef, searchRef)
 </script>
 
 <style lang="less" scoped>

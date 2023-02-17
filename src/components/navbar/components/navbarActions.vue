@@ -1,16 +1,38 @@
 <template>
   <section flex-center-all>
-    <span class="action-item" v-for="(action, index) in actionRender" :key="`${action.name}-${index}`">
-      <n-popover placement="bottom" trigger="click" :width="320" v-if="action.name === 'bell-icon'">
+    <span
+      class="action-item"
+      v-for="(action, index) in actionRender"
+      :key="`${action.name}-${index}`"
+    >
+      <n-popover
+        placement="bottom"
+        trigger="click"
+        :width="320"
+        v-if="action.name === 'bell-icon'"
+      >
         <template #trigger>
-          <n-badge processing :value="badgeValue" :class="{ active: !badgeValue }">
+          <n-badge
+            processing
+            :value="badgeValue"
+            :class="{ active: !badgeValue }"
+          >
             <n-icon size="20" :component="action.component" />
           </n-badge>
         </template>
-        <navbar-notification :list="notificationList" @clickIcon="handleClickIcon" @read-all="handleReadAll"
-          @un-read-all="handleReadAll(false)" />
+        <navbar-notification
+          :list="notificationList"
+          @clickIcon="handleClickIcon"
+          @read-all="handleReadAll"
+          @un-read-all="handleReadAll(false)"
+        />
       </n-popover>
-      <n-icon v-else size="20" @click.stop="action.callback" :component="action.component" />
+      <n-icon
+        v-else
+        size="20"
+        @click.stop="action.callback"
+        :component="action.component"
+      />
     </span>
   </section>
 </template>
@@ -30,10 +52,17 @@ import {
   SettingsOutline as SettingIcon,
   ExpandOutline as ExpandOutIcon,
   ContractOutline as ContractOutIcon,
+  RefreshOutline as RefreshIcon
 } from '@vicons/ionicons5'
 import useNotification from '../useNotification'
 
-const emits = defineEmits(['search-click', 'bell-click', 'full-screen-click', 'setting-click'])
+const emits = defineEmits([
+  'search-click',
+  'bell-click',
+  'full-screen-click',
+  'setting-click',
+  'refresh-click'
+])
 
 interface IAction {
   name: string
@@ -53,6 +82,13 @@ const actions: IAction[] = [
   {
     name: 'bell-icon',
     component: BellIcon
+  },
+  {
+    name: 'refresh-icon',
+    component: RefreshIcon,
+    callback: () => {
+      emits('refresh-click')
+    }
   },
   {
     name: 'full-screen-icon',
@@ -85,20 +121,21 @@ watch(
   isFullscreen => {
     actionRender.value = isFullscreen
       ? [...actions].filter(
-        action =>
-          action.name !== 'full-screen-icon' ||
-          (action.name === 'full-screen-icon' && action.fullscreen)
-      )
+          action =>
+            action.name !== 'full-screen-icon' ||
+            (action.name === 'full-screen-icon' && action.fullscreen)
+        )
       : [...actions].filter(
-        action =>
-          action.name !== 'full-screen-icon' ||
-          (action.name === 'full-screen-icon' && !action.fullscreen)
-      )
+          action =>
+            action.name !== 'full-screen-icon' ||
+            (action.name === 'full-screen-icon' && !action.fullscreen)
+        )
   },
   { immediate: true }
 )
 
-const { badgeValue, notificationList, handleClickIcon, handleReadAll } = useNotification()
+const { badgeValue, notificationList, handleClickIcon, handleReadAll } =
+  useNotification()
 
 // const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
 //   const style: CSSProperties = {}
@@ -126,7 +163,7 @@ const { badgeValue, notificationList, handleClickIcon, handleReadAll } = useNoti
   }
 
   .active {
-    color: var(--primary-color)
+    color: var(--primary-color);
   }
 }
 </style>
