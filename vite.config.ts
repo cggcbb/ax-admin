@@ -32,20 +32,10 @@ export default defineConfig({
         'vue-router',
         'pinia',
         {
-          '@vueuse/core': [
-            'useDark',
-            'useFullscreen',
-            'useToggle'
-          ]
+          '@vueuse/core': ['useDark', 'useFullscreen', 'useToggle', 'useTitle']
         },
         {
-          'naive-ui': [
-            'useDialog',
-            'useMessage',
-            'useNotification',
-            'useLoadingBar',
-            "darkTheme"
-          ]
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar', 'darkTheme']
         }
       ],
       dirs: ['./src/composables'],
@@ -57,7 +47,7 @@ export default defineConfig({
     Components({
       dts: './src/types/components.d.ts',
       resolvers: [NaiveUiResolver()],
-      dirs: ['src/components', 'src/views'],
+      dirs: ['src/components', 'src/views']
     }),
 
     // https://github.com/antfu/unocss
@@ -67,9 +57,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
-        additionalData: '@import "~/styles/variables.less";',
-      },
-    },
+        additionalData: '@import "~/styles/variables.less";'
+      }
+    }
   },
 
   // https://github.com/vitest-dev/vitest
