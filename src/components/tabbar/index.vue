@@ -12,10 +12,12 @@
         :data="`${setting.projectName}-${item.path}`"
         @click="handleItemClick(item)"
       >
+        <n-icon v-if="item.meta?.affixIcon" :component="item.meta?.affixIcon as any" mr-4px />
         <span font-size-5>
           {{ item.meta?.title ?? item.name }}
         </span>
-        <n-icon class="icon remove-icon" @click.stop="removeItem(item)">
+
+        <n-icon v-if="!item.meta?.fix" class="icon remove-icon" @click.stop="removeItem(item)">
           <close-icon />
         </n-icon>
       </n-button>
@@ -43,14 +45,18 @@ const router = useRouter()
 const scrollbar = $ref<typeof NScrollbar | null>(null)
 let currentPath = $ref(route.fullPath)
 
+console.log(visitedRoutes)
+
 const handleItemClick = (r: RouteRecordRaw) => {
   handleTabClick(r.path ?? '/')
 }
+
 const handleTabClick = (path: string) => {
   router.push({
     path
   })
 }
+
 const removeItem = async (r: RouteRecordRaw) => {
   const prev = await removeVisitedRoute(r, currentPath)
   if (prev !== currentPath) {
@@ -59,7 +65,6 @@ const removeItem = async (r: RouteRecordRaw) => {
     })
   }
 }
-
 const clickItemDom = $computed(
   () => document.querySelector(`[data="${setting.projectName}-${currentPath}"]`) as HTMLElement
 )
@@ -85,8 +90,13 @@ watchPostEffect(() => {
 .ax-tab-bar-container {
   position: relative;
   height: @tabHeight;
+  // 4px 是 n-scrollbar 绝对定位 bottom: 4px
+  // 保证滚动条不遮盖item
+  line-height: calc(@tabHeight - 4px);
   box-shadow: var(--box-shadow-1);
-  padding: 8px;
+  white-space: nowrap;
+  padding: 0 8px;
+  z-index: 999;
   .tab-item {
     padding: 7px 10px;
     cursor: pointer;

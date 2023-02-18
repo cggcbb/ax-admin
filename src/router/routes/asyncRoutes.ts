@@ -17,7 +17,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
         component: Workbench,
         meta: {
           cache: true,
-          title: '首页'
+          title: '首页',
+          affix: true
         }
       },
       {

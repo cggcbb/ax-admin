@@ -10,10 +10,8 @@ const useVisitedRoutes = defineStore('visited-routes', () => {
   let markRemoveIndex = $ref(0)
 
   const addVisitedRoute = (r: RouteRecordRaw): void => {
-    if (!visitedRoutes.find(item => item.name === r.name)) {
+    if (!visitedRoutes.find(item => item.name === r.name) && !r.meta?.hidden) {
       visitedRoutes.push(r)
-    }
-    if (r.name) {
       addCacheRouteName(r)
     }
   }

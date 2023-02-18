@@ -12,11 +12,7 @@
             :render-label="renderLabel"
             :options="options"
           />
-          <n-input
-            autofocus
-            v-model:value="searchValue"
-            placeholder="柳絮纷飞，毕竟不是雪..."
-          />
+          <n-input autofocus v-model:value="searchValue" placeholder="柳絮纷飞，毕竟不是雪..." />
           <n-button @click.prevent="handleSearch">搜索</n-button>
         </n-input-group>
       </n-el>
@@ -114,10 +110,7 @@ const renderLabel = (option: any): VNodeChild => {
 
 // 防止弹窗后的内容滚动
 watchPostEffect(() => {
-  document.documentElement.setAttribute(
-    'style',
-    visible.value ? 'overflow: hidden' : ''
-  )
+  document.documentElement.setAttribute('style', visible.value ? 'overflow: hidden' : '')
 })
 </script>
 
@@ -132,7 +125,7 @@ watchPostEffect(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  z-index: 1000;
   backdrop-filter: blur(3px);
 
   .search-content {
