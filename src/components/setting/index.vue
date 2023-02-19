@@ -1,10 +1,5 @@
 <template>
-  <n-drawer
-    v-model:show="visible"
-    placement="right"
-    :width="width"
-    :auto-focus="false"
-  >
+  <n-drawer v-model:show="visible" placement="right" :width="width" :auto-focus="false">
     <n-drawer-content :native-scrollbar="true" closable>
       <template #header>
         <n-grid>
@@ -13,12 +8,7 @@
       </template>
       <n-divider dashed>主题设置</n-divider>
       <n-grid>
-        <n-gi
-          v-for="(item, index) of themeList"
-          :key="index"
-          :span="12"
-          class="example-wrapper"
-        >
+        <n-gi v-for="(item, index) of themeList" :key="index" :span="12" class="example-wrapper">
           <theme-setting
             :checked="item.checked"
             :left-bg="item.leftBg"
@@ -35,6 +25,8 @@
       <layout-animation-setting />
       <n-divider dashed>头部设置</n-divider>
       <header-setting />
+      <n-divider dashed>页签设置</n-divider>
+      <tabbar-setting />
       <n-divider dashed>菜单设置</n-divider>
       <menu-setting />
       <n-divider dashed>水印设置</n-divider>

@@ -4,14 +4,16 @@ import type {
   IHeaderSetting,
   ILayoutAnimation,
   IMenuSetting,
-  IWaterMarkSetting
+  IWaterMarkSetting,
+  ITabbarSetting
 } from '~/types/common'
 import {
   STORAGE_WATER_MASK_KEY,
   STORAGE_MENU_KEY,
   STORAGE_THEME_COLOR_KEY,
   STORAGE_LAYOUT_ANIMATION_KEY,
-  STORAGE_HEADER_KEY
+  STORAGE_HEADER_KEY,
+  STORAGE_TABBAR_KEY
 } from '~/config/storage'
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
@@ -22,10 +24,9 @@ const useSetting = defineStore('setting', () => {
   const storageWaterMaskValue = localStorage.getItem(STORAGE_WATER_MASK_KEY)
   const storageMenuValue = localStorage.getItem(STORAGE_MENU_KEY)
   const storageThemeColorValue = localStorage.getItem(STORAGE_THEME_COLOR_KEY)
-  const storageLayoutAnimationValue = localStorage.getItem(
-    STORAGE_LAYOUT_ANIMATION_KEY
-  )
+  const storageLayoutAnimationValue = localStorage.getItem(STORAGE_LAYOUT_ANIMATION_KEY)
   const storageHeaderSetting = localStorage.getItem(STORAGE_HEADER_KEY)
+  const storageTabBarSetting = localStorage.getItem(STORAGE_TABBAR_KEY)
 
   // 水印
   const waterMarkSetting = storageWaterMaskValue
@@ -51,6 +52,11 @@ const useSetting = defineStore('setting', () => {
   const headerSetting = storageHeaderSetting
     ? reactive(JSON.parse(storageHeaderSetting) as IHeaderSetting)
     : reactive({ ...setting.headerSetting })
+
+  // tabbar
+  const tabBarSetting = storageTabBarSetting
+    ? reactive(JSON.parse(storageTabBarSetting) as ITabbarSetting)
+    : reactive({ ...setting.tabBarSetting })
 
   watch(waterMarkSetting, (newSetting: IWaterMarkSetting) => {
     localStorage.setItem(STORAGE_WATER_MASK_KEY, JSON.stringify(newSetting))
@@ -89,14 +95,15 @@ const useSetting = defineStore('setting', () => {
   })
 
   watch(layoutAnimationSetting, (newSetting: ILayoutAnimation) => {
-    localStorage.setItem(
-      STORAGE_LAYOUT_ANIMATION_KEY,
-      JSON.stringify(newSetting)
-    )
+    localStorage.setItem(STORAGE_LAYOUT_ANIMATION_KEY, JSON.stringify(newSetting))
   })
 
   watch(headerSetting, (newSetting: IHeaderSetting) => {
     localStorage.setItem(STORAGE_HEADER_KEY, JSON.stringify(newSetting))
+  })
+
+  watch(tabBarSetting, (newSetting: ITabbarSetting) => {
+    localStorage.setItem(STORAGE_TABBAR_KEY, JSON.stringify(newSetting))
   })
 
   // 修改主题颜色 themeColorSetting 是响应式的
@@ -118,7 +125,8 @@ const useSetting = defineStore('setting', () => {
     themeColorSetting,
     themeOverrides,
     layoutAnimationSetting,
-    headerSetting
+    headerSetting,
+    tabBarSetting
   }
 })
 

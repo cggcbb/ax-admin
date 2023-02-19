@@ -4,6 +4,7 @@
       <!-- n-button  绑定了自定义data -->
       <n-button
         class="tab-item"
+        :class="{ showAffixIcon: showAffixIcon }"
         v-for="item of visitedRoutes"
         :key="item.path"
         :type="currentPath === item.path ? 'primary' : 'default'"
@@ -12,12 +13,16 @@
         :data="`${setting.projectName}-${item.path}`"
         @click="handleItemClick(item)"
       >
-        <n-icon v-if="item.meta?.affixIcon" :component="item.meta?.affixIcon as any" mr-4px />
+        <!-- 加载设置的affixIcon， 否则默认图标为 DefaultIcon -->
+        <n-icon v-if="showAffixIcon" :component="item.meta?.affixIcon ?? DefaultIcon" mr-4px />
         <span font-size-5>
           {{ item.meta?.title ?? item.name }}
         </span>
-
-        <n-icon v-if="!item.meta?.fix" class="icon remove-icon" @click.stop="removeItem(item)">
+        <n-icon
+          v-if="showCloseIcon && !item.meta?.fix"
+          class="icon remove-icon"
+          @click.stop="removeItem(item)"
+        >
           <close-icon />
         </n-icon>
       </n-button>
@@ -34,10 +39,10 @@ defineComponent({
 <script lang="ts" setup>
 import { NScrollbar } from 'naive-ui'
 import { RouteRecordRaw } from 'vue-router'
-import { Close as closeIcon } from '@vicons/ionicons5'
+import { Close as closeIcon, MenuOutline as DefaultIcon } from '@vicons/ionicons5'
 import useVisitedRoutes from '~/store/visited-routes'
+import useSetting from '~/store/setting'
 import setting from '~/setting'
-
 const { visitedRoutes, removeVisitedRoute } = useVisitedRoutes()
 
 const route = useRoute()
@@ -45,7 +50,8 @@ const router = useRouter()
 const scrollbar = $ref<typeof NScrollbar | null>(null)
 let currentPath = $ref(route.fullPath)
 
-console.log(visitedRoutes)
+const storeSetting = useSetting()
+const { showAffixIcon, showCloseIcon } = $(storeSetting.tabBarSetting)
 
 const handleItemClick = (r: RouteRecordRaw) => {
   handleTabClick(r.path ?? '/')
@@ -125,6 +131,9 @@ watchPostEffect(() => {
     }
     & + .tab-item {
       margin-left: 10px;
+    }
+    &.showAffixIcon {
+      margin-top: 6.5px;
     }
   }
 }

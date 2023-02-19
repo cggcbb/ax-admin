@@ -5,6 +5,8 @@ const Github = () => import(/** github */ '~/views/github.vue')
 const Workbench = () => import(/** workbench */ '~/views/dashboard/workbench.vue')
 const Dependencies = () => import(/** package */ '~/views/dep/index.vue')
 
+import { HomeOutline } from '@vicons/ionicons5'
+
 export const asyncRoutes: RouteRecordRaw[] = [
   {
     path: '/dashboard',
@@ -18,7 +20,8 @@ export const asyncRoutes: RouteRecordRaw[] = [
         meta: {
           cache: true,
           title: '首页',
-          affix: true
+          affix: true,
+          affixIcon: HomeOutline
         }
       },
       {

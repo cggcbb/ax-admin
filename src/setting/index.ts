@@ -6,7 +6,8 @@ import {
   IDrawer,
   LayoutAnimationEnum,
   ILayoutAnimation,
-  IHeaderSetting
+  IHeaderSetting,
+  ITabbarSetting
 } from '~/types/common'
 
 // 水印
@@ -60,6 +61,13 @@ const headerSetting: IHeaderSetting = {
   showTitle: true
 }
 
+// tabbar
+const tabBarSetting: ITabbarSetting = {
+  showTabBar: true,
+  showAffixIcon: true,
+  showCloseIcon: true
+}
+
 export default {
   projectName: 'ax-admin',
   waterMarkSetting,
@@ -93,5 +101,6 @@ export default {
       value: LayoutAnimationEnum.SCALE
     }
   ],
-  headerSetting
+  headerSetting,
+  tabBarSetting
 } as ISetting

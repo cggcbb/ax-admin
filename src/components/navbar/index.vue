@@ -1,5 +1,5 @@
 <template>
-  <section class="nav-bar-wrapper" flex items-center>
+  <section class="nav-bar-wrapper" :class="{ 'show-box-shadow': !showTabBar }" flex items-center>
     <navbar-fold-icon />
     <n-tooltip trigger="hover">
       <template #trigger>
@@ -17,9 +17,6 @@
       @setting-click="handleSettingClick"
     />
     <navbar-avatar />
-    <!-- <div class="tab-bar-wrapper">
-      <tab-bar></tab-bar>
-    </div> -->
   </section>
   <setting ref="settingRef" />
   <search ref="searchRef" />
@@ -32,6 +29,7 @@ defineComponent({
 </script>
 
 <script setup lang="ts">
+import useSetting from '~/store/setting'
 import useActions from './useActions'
 
 const settingRef = ref<HTMLElement | null>(null)
@@ -39,12 +37,15 @@ const searchRef = ref<HTMLElement | null>(null)
 
 const { handleSearchClick, handleRefreshClick, handleFullScreenClick, handleSettingClick } =
   useActions(settingRef, searchRef)
+
+const { showTabBar } = $(useSetting().tabBarSetting)
 </script>
 
 <style lang="less" scoped>
 .nav-bar-wrapper {
+  position: relative;
   box-sizing: border-box;
-  box-shadow: var(--box-shadow-1);
+  border-bottom: 1px solid var(--border-color);
   z-index: 99;
   overflow: hidden;
   transition: all 0.3s;
@@ -53,6 +54,9 @@ const { handleSearchClick, handleRefreshClick, handleFullScreenClick, handleSett
 
   .placeholder {
     flex: 1;
+  }
+  &.show-box-shadow {
+    box-shadow: var(--box-shadow-2);
   }
 }
 </style>

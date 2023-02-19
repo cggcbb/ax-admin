@@ -76,6 +76,7 @@ declare module '@vue/runtime-core' {
     Search: typeof import('./../components/search/index.vue')['default']
     Setting: typeof import('./../components/setting/index.vue')['default']
     Tabbar: typeof import('./../components/tabbar/index.vue')['default']
+    TabbarSetting: typeof import('./../components/setting/components/tabbar-setting/index.vue')['default']
     TheInput: typeof import('./../components/TheInput.vue')['default']
     ThemeColorSetting: typeof import('./../components/setting/components/theme-color-setting/index.vue')['default']
     ThemeSetting: typeof import('./../components/setting/components/theme-setting/index.vue')['default']

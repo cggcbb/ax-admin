@@ -22,6 +22,7 @@ export interface ISetting {
   layoutAnimation: ILayoutAnimation
   layoutAnimationOptions: SelectOption[]
   headerSetting: IHeaderSetting
+  tabBarSetting: ITabbarSetting
 }
 
 // 用户水印系统设置
@@ -123,4 +124,10 @@ export interface IAlbumItemContent {
 export interface IHeaderSetting {
   showLogo: boolean
   showTitle: boolean
+}
+
+export interface ITabbarSetting {
+  showTabBar: boolean
+  showAffixIcon: boolean
+  showCloseIcon: boolean
 }

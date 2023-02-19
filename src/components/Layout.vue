@@ -18,7 +18,7 @@
       <n-layout>
         <!-- 导航 -->
         <navbar />
-        <tabbar />
+        <tabbar v-show="showTabBar" />
         <!-- 主题内容 -->
         <layout-main />
       </n-layout>
@@ -71,7 +71,8 @@ import useSetting from '~/store/setting'
 import useSong from '~/store/song'
 
 const setting = useSetting()
-const { collapsed, menuWidth, collapsedWidth } = toRefs(setting.menuSetting)
+const { collapsed, menuWidth, collapsedWidth } = $(setting.menuSetting)
+const { showTabBar } = $(setting.tabBarSetting)
 
 const audio: any = $ref<HTMLElement | null>(null)
 
