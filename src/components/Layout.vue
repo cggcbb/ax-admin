@@ -99,7 +99,7 @@ const {
   waterMarkColor,
   waterMarkRotate,
   watchMarkImageRotate
-} = toRefs(useSetting().waterMarkSetting)
+} = $(setting.waterMarkSetting)
 
 // loading bar
 const router = useRouter()

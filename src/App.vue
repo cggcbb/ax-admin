@@ -18,5 +18,5 @@ const theme = computed(() => (isDark.value ? darkTheme : null))
 
 const setting = useSetting()
 
-const { themeOverrides } = toRefs(setting)
+const { themeOverrides } = $(setting)
 </script>

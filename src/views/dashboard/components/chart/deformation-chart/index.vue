@@ -13,10 +13,9 @@ defineComponent({
 <script lang="ts" setup>
 import useDeformationChart from './useDeformationChart'
 
-let options: any = ref({})
+let options: any = $ref({})
 
-useDeformationChart(options)
-
+useDeformationChart($$(options))
 </script>
 
 <style lang="less" scoped>

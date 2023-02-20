@@ -2,9 +2,7 @@
   <div class="ax-header-layout">
     <logo v-if="showLogo" />
     <div flex items-center v-if="showTitle">
-      <span fw-bold :class="[collapsed ? 'close-title' : 'show-title']">
-        ax-admin
-      </span>
+      <span fw-bold :class="[collapsed ? 'close-title' : 'show-title']">ax-admin</span>
     </div>
   </div>
 </template>
@@ -19,8 +17,8 @@ export default defineComponent({
 import useSetting from '~/store/setting'
 const setting = useSetting()
 
-const { collapsed } = toRefs(setting.menuSetting)
-const { showLogo, showTitle } = toRefs(setting.headerSetting)
+const { collapsed } = $(setting.menuSetting)
+const { showLogo, showTitle } = $(setting.headerSetting)
 </script>
 
 <style scoped lang="less">

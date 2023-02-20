@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-
 import { EChartsCoreOption } from 'echarts/core'
 import useEcharts from './useEcharts'
 
@@ -14,13 +13,12 @@ interface echartsProps {
 
 const props = withDefaults(defineProps<echartsProps>(), {
   options: {} as any,
-  theme: 'light',
+  theme: 'light'
 })
 
-const vueEcharts = ref<HTMLElement | null>(null)
+const vueEcharts = $ref<HTMLElement | null>(null)
 
-useEcharts(props, vueEcharts)
-
+useEcharts(props, $$(vueEcharts))
 </script>
 
 <style lang="less" scoped>

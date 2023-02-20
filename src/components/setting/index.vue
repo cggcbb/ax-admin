@@ -45,17 +45,16 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-const visible = ref(false)
+let visible = $ref(false)
 
 const { themeList, handleThemeSettingClick } = useThemeSetting()
 
 const setting = useSetting()
-
-const { width } = toRefs(setting.drawerSetting)
+const { width } = $(setting.drawerSetting)
 
 // 开启抽屉栏
 const openDrawer = () => {
-  visible.value = true
+  visible = true
 }
 
 defineExpose({

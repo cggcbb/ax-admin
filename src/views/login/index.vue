@@ -17,8 +17,8 @@
 <script lang="ts" setup>
 import useLoginBackground from './useLoginBackground'
 
-const loginWrapper = ref<HTMLElement | null>(null)
-useLoginBackground(loginWrapper)
+const loginWrapper = $ref<HTMLElement | null>(null)
+useLoginBackground($$(loginWrapper))
 
 const router = useRouter()
 const go = () => {

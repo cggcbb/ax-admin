@@ -4,7 +4,7 @@ import { debounce } from '~/utils'
 
 export default function useEcharts(props: any, domWrapper: any) {
   let chart = $ref<EChartsType | null>(null)
-  const theme = $computed(() => isDark.value ? 'dark' : 'light')
+  const theme = $computed(() => (isDark.value ? 'dark' : 'light'))
 
   const updateChart = () => {
     if (chart && props.options) {

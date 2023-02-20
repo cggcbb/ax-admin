@@ -1,16 +1,14 @@
 const useSong = defineStore('song', () => {
-
-  const playing = ref(false)
+  let playing = $ref(false)
 
   const togglePlay = (play: boolean): void => {
-    playing.value = play
+    playing = play
   }
 
-  return {
+  return $$({
     playing,
-    togglePlay,
-  }
+    togglePlay
+  })
 })
 
 export default useSong
-

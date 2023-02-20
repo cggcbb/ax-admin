@@ -1,11 +1,7 @@
 <template>
   <n-grid>
     <n-gi :span="24">
-      <n-color-picker
-        show-preview
-        v-model:value="themeColorSetting"
-        :swatches="swatches"
-      />
+      <n-color-picker show-preview v-model:value="themeColorSetting" :swatches="swatches" />
     </n-gi>
   </n-grid>
 </template>
@@ -21,8 +17,7 @@ import useSetting from '~/store/setting'
 import { themeColorBlack } from '~/config/themeColor'
 
 const setting = useSetting()
-
-const { themeColorSetting } = toRefs(setting)
+const { themeColorSetting } = $(setting)
 
 // 预置颜色
 const swatches = [

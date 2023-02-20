@@ -2,9 +2,12 @@
   <teleport to="body">
     <n-el v-show="visible" class="search-mask" @click.self="handleClose">
       <n-el class="search-content">
-        <n-icon :size="22" class="search-close" @click.prevent="handleClose">
-          <component :is="CloseIcon"></component>
-        </n-icon>
+        <n-icon
+          :size="22"
+          class="search-close"
+          :component="CloseIcon"
+          @click.prevent="handleClose"
+        />
         <n-input-group>
           <n-select
             :style="{ minWidth: '118px', width: '33%' }"
@@ -49,9 +52,9 @@ const searchUrlMap: ISearchUrlMap = {
   Youtube: SearchUrl.Youtube
 }
 
-const visible = ref(false)
-const searchValue = ref('')
-const searchType = ref<SearchType>(SearchType.Google)
+let visible = $ref(false)
+let searchValue = $ref('')
+let searchType = $ref<SearchType>(SearchType.Google)
 
 const options = [
   {
@@ -77,17 +80,17 @@ const options = [
 ]
 
 const handleSearch = () => {
-  const url = `${searchUrlMap[searchType.value]}${searchValue.value}`
+  const url = `${searchUrlMap[searchType as SearchType]}${searchValue}`
   window.open(url, '__blank')
 }
 
 const handleClose = () => {
-  visible.value = false
-  searchValue.value = ''
+  visible = false
+  searchValue = ''
 }
 
 function handleOpen() {
-  visible.value = true
+  visible = true
 }
 
 const renderLabel = (option: any): VNodeChild => {
@@ -110,7 +113,7 @@ const renderLabel = (option: any): VNodeChild => {
 
 // 防止弹窗后的内容滚动
 watchPostEffect(() => {
-  document.documentElement.setAttribute('style', visible.value ? 'overflow: hidden' : '')
+  document.documentElement.setAttribute('style', visible ? 'overflow: hidden' : '')
 })
 </script>
 

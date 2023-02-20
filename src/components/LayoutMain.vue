@@ -11,26 +11,20 @@
 </template>
 
 <script lang="ts">
+defineComponent({
+  name: 'LayoutMain'
+})
+</script>
+
+<script lang="ts" setup>
 import useSetting from '~/store/setting'
 import useCacheRoutes from '~/store/cache-routes'
 
-export default defineComponent({
-  name: 'LayoutMain',
-  setup() {
-    const backgroundColor = computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
+const backgroundColor = computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
 
-    const setting = useSetting()
-    const { type, animationActive } = toRefs(setting.layoutAnimationSetting)
-    const { cacheRoutesName } = toRefs(useCacheRoutes())
-
-    return {
-      type,
-      backgroundColor,
-      animationActive,
-      cacheRoutesName
-    }
-  }
-})
+const setting = useSetting()
+const { type, animationActive } = $(setting.layoutAnimationSetting)
+const { cacheRoutesName } = toRefs(useCacheRoutes())
 </script>
 
 <style lang="less" scoped>

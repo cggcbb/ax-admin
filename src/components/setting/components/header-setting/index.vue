@@ -24,7 +24,7 @@ import useSetting from '~/store/setting'
 
 const setting = useSetting()
 
-const { showLogo, showTitle } = toRefs(setting.headerSetting)
+const { showLogo, showTitle } = $(setting.headerSetting)
 </script>
 
 <style lang="less" scoped></style>

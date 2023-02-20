@@ -4,8 +4,8 @@
       <n-gi v-for="(item, index) of albumList" :key="index">
         <album-item :data="item">
           <template #content="{ content }">
-            <span> {{ content.one }} </span>
-            <span> {{ content.two }} </span>
+            <span>{{ content.one }}</span>
+            <span>{{ content.two }}</span>
           </template>
         </album-item>
       </n-gi>
@@ -37,19 +37,16 @@ import { GET_ALBUM_DATA_LIST } from '~/api/url'
 import { IAlbumItem } from '~/types/common'
 import { get } from '~/utils/http'
 
-const albumList = ref<IAlbumItem[]>([])
+let albumList = $ref<IAlbumItem[]>([])
 
 const getAlbumDataList = async () => {
   const res = await get<IAlbumItem[]>(GET_ALBUM_DATA_LIST)
-  albumList.value = Object.freeze(res.data) as IAlbumItem[]
+  albumList = Object.freeze(res.data) as IAlbumItem[]
 }
 
 onMounted(async () => {
   await getAlbumDataList()
 })
-
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

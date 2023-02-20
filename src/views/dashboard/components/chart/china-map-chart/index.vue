@@ -7,9 +7,9 @@
 <script lang="ts" setup>
 import useChinaMap from './useChinaMap'
 
-const options = ref({})
+const options = $ref({})
 
-useChinaMap(options)
+useChinaMap($$(options))
 </script>
 
 <script lang="ts">
