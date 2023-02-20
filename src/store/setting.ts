@@ -1,6 +1,5 @@
 import setting from '~/setting'
 import type {
-  IDrawer,
   IHeaderSetting,
   ILayoutAnimation,
   IMenuSetting,
@@ -18,49 +17,47 @@ import {
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
 import { themeColorBlack } from '~/config/themeColor'
+import { useLocalStorage } from '@vueuse/core'
 
 const useSetting = defineStore('setting', () => {
+  /**
+   * VueUse useLocalStorage
+   */
+  // 水印
+  const waterMarkSetting = useLocalStorage<IWaterMarkSetting>(STORAGE_WATER_MASK_KEY, {
+    ...setting.waterMarkSetting
+  })
+  // 页面切换过度动画
+  const layoutAnimationSetting = useLocalStorage<ILayoutAnimation>(STORAGE_LAYOUT_ANIMATION_KEY, {
+    ...setting.layoutAnimation
+  })
+  // header
+  const headerSetting = useLocalStorage<IHeaderSetting>(STORAGE_HEADER_KEY, {
+    ...setting.headerSetting
+  })
+  // tabbar
+  const tabBarSetting = useLocalStorage<ITabbarSetting>(STORAGE_TABBAR_KEY, {
+    ...setting.tabBarSetting
+  })
+
+  /**
+   * 下面2个配置，《菜单》和《主题色》
+   * 因为涉及到变化之后的额外逻辑，VueUse useLocalStorage 好像没有提供回调函数
+   * 所以这里单独写
+   */
   // 优先取localStorage
-  const storageWaterMaskValue = localStorage.getItem(STORAGE_WATER_MASK_KEY)
   const storageMenuValue = localStorage.getItem(STORAGE_MENU_KEY)
   const storageThemeColorValue = localStorage.getItem(STORAGE_THEME_COLOR_KEY)
-  const storageLayoutAnimationValue = localStorage.getItem(STORAGE_LAYOUT_ANIMATION_KEY)
-  const storageHeaderSetting = localStorage.getItem(STORAGE_HEADER_KEY)
-  const storageTabBarSetting = localStorage.getItem(STORAGE_TABBAR_KEY)
 
-  // 水印
-  const waterMarkSetting = storageWaterMaskValue
-    ? reactive(JSON.parse(storageWaterMaskValue) as IWaterMarkSetting)
-    : reactive({ ...setting.waterMarkSetting })
   // 菜单
   const menuSetting = storageMenuValue
     ? reactive(JSON.parse(storageMenuValue) as IMenuSetting)
     : reactive({ ...setting.menu })
-  // 抽屉
-  const drawerSetting = reactive<IDrawer>({ ...setting.drawer })
+
   // 主题色
   const themeColorSetting = storageThemeColorValue
     ? ref<string>(storageThemeColorValue)
     : ref<string>(setting.themeColor)
-
-  // 页面切换过度动画
-  const layoutAnimationSetting = storageLayoutAnimationValue
-    ? reactive(JSON.parse(storageLayoutAnimationValue) as ILayoutAnimation)
-    : reactive({ ...setting.layoutAnimation })
-
-  // header
-  const headerSetting = storageHeaderSetting
-    ? reactive(JSON.parse(storageHeaderSetting) as IHeaderSetting)
-    : reactive({ ...setting.headerSetting })
-
-  // tabbar
-  const tabBarSetting = storageTabBarSetting
-    ? reactive(JSON.parse(storageTabBarSetting) as ITabbarSetting)
-    : reactive({ ...setting.tabBarSetting })
-
-  watch(waterMarkSetting, (newSetting: IWaterMarkSetting) => {
-    localStorage.setItem(STORAGE_WATER_MASK_KEY, JSON.stringify(newSetting))
-  })
 
   /**
    * 这里因为监听了menuSetting的变化
@@ -94,18 +91,6 @@ const useSetting = defineStore('setting', () => {
     localStorage.setItem(STORAGE_THEME_COLOR_KEY, newSetting)
   })
 
-  watch(layoutAnimationSetting, (newSetting: ILayoutAnimation) => {
-    localStorage.setItem(STORAGE_LAYOUT_ANIMATION_KEY, JSON.stringify(newSetting))
-  })
-
-  watch(headerSetting, (newSetting: IHeaderSetting) => {
-    localStorage.setItem(STORAGE_HEADER_KEY, JSON.stringify(newSetting))
-  })
-
-  watch(tabBarSetting, (newSetting: ITabbarSetting) => {
-    localStorage.setItem(STORAGE_TABBAR_KEY, JSON.stringify(newSetting))
-  })
-
   // 修改主题颜色 themeColorSetting 是响应式的
   const themeOverrides = computed<GlobalThemeOverrides>(() => {
     return {
@@ -121,7 +106,6 @@ const useSetting = defineStore('setting', () => {
     setCollapsed,
     waterMarkSetting,
     menuSetting,
-    drawerSetting,
     themeColorSetting,
     themeOverrides,
     layoutAnimationSetting,

@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import useSetting from '~/store/setting'
+import setting from '~/setting'
 import useThemeSetting from './components/theme-setting/useThemeSetting'
 
 export default defineComponent({
@@ -49,8 +49,7 @@ let visible = $ref(false)
 
 const { themeList, handleThemeSettingClick } = useThemeSetting()
 
-const setting = useSetting()
-const { width } = $(setting.drawerSetting)
+const { width } = $(setting.drawer)
 
 // 开启抽屉栏
 const openDrawer = () => {

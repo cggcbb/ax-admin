@@ -32,7 +32,7 @@ export default defineConfig({
         'vue-router',
         'pinia',
         {
-          '@vueuse/core': ['useDark', 'useFullscreen', 'useToggle', 'useTitle']
+          '@vueuse/core': ['useDark', 'useFullscreen', 'useToggle', 'useTitle', 'useLocalStorage']
         },
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar', 'darkTheme']
