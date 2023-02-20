@@ -11,7 +11,9 @@
         class="ax-layout-sider"
       >
         <!-- logo -->
-        <ax-header />
+        <n-collapse-transition :show="showLogo || showTitle">
+          <ax-header />
+        </n-collapse-transition>
         <!-- 菜单 -->
         <Menu />
       </n-layout-sider>
@@ -75,6 +77,7 @@ import useSong from '~/store/song'
 const setting = useSetting()
 const { collapsed, menuWidth, collapsedWidth } = $(setting.menuSetting)
 const { showTabBar } = $(setting.tabBarSetting)
+const { showLogo, showTitle } = $(setting.headerSetting)
 
 const audio: any = $ref<HTMLElement | null>(null)
 
