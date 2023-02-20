@@ -18,7 +18,9 @@
       <n-layout>
         <!-- 导航 -->
         <navbar />
-        <tabbar v-show="showTabBar" />
+        <n-collapse-transition :show="showTabBar">
+          <tabbar />
+        </n-collapse-transition>
         <!-- 主题内容 -->
         <layout-main />
       </n-layout>
