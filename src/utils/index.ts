@@ -1,5 +1,5 @@
 export const randomNumber = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min
 }
 
 export const debounce = (fn: Function, delay: number): any => {
@@ -14,3 +14,8 @@ export const debounce = (fn: Function, delay: number): any => {
 }
 
 export const sleep = (delay: number) => new Promise(resolve => setTimeout(resolve, delay))
+
+// 交换数组两个下标位置的元素
+export const swap = (arr: any, i: number, j: number) => {
+  ;[arr[i], arr[j]] = [arr[j], arr[i]]
+}

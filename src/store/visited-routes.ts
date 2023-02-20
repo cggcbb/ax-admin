@@ -1,8 +1,9 @@
 import { RouteRecordRaw } from 'vue-router'
+import { swapSpecifiedRouteToFirst } from '~/utils/routes'
 import useCacheRoutes from './cache-routes'
 
 const useVisitedRoutes = defineStore('visited-routes', () => {
-  const visitedRoutes = $ref<RouteRecordRaw[]>([])
+  let visitedRoutes = $ref<RouteRecordRaw[]>([])
 
   const { addCacheRouteName, removeCacheRouteName } = useCacheRoutes()
 
@@ -31,6 +32,10 @@ const useVisitedRoutes = defineStore('visited-routes', () => {
       )
     })
   }
+
+  watchEffect(() => {
+    visitedRoutes = swapSpecifiedRouteToFirst(visitedRoutes, '首页')
+  })
 
   return {
     visitedRoutes,

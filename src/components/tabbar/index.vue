@@ -23,7 +23,7 @@
           {{ item.meta?.title ?? item.name }}
         </span>
         <n-icon
-          v-if="showCloseIcon && !item.meta?.fix"
+          v-if="showCloseIcon && !item.meta?.affix"
           class="icon remove-icon"
           @click.stop="removeItem(item)"
         >

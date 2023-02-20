@@ -1,4 +1,4 @@
-import { getCacheRoutesName } from '~/utils/routes'
+import { getCacheRoutesName, swapSpecifiedRouteToFirst } from '~/utils/routes'
 import { describe, expect, it } from 'vitest'
 
 describe('getCacheRoutesName', () => {
@@ -103,5 +103,81 @@ describe('getCacheRoutesName', () => {
     expect(result).contains('ccc')
     expect(result).contains('bbb')
     expect(result).not.contains('ddd')
+  })
+})
+
+describe('swapSpecifiedRouteToFirst', () => {
+  it('not find specified ', () => {
+    const rList: any = [
+      {
+        meta: {
+          title: 'aaa'
+        }
+      },
+      {
+        meta: {
+          title: 'bbb'
+        }
+      },
+      {
+        meta: {
+          title: 'ccc'
+        }
+      }
+    ]
+    const result = swapSpecifiedRouteToFirst(rList, 'ddd')
+    expect(result[0].meta?.title).toBe('aaa')
+    expect(result[1].meta?.title).toBe('bbb')
+    expect(result[2].meta?.title).toBe('ccc')
+  })
+
+  it('specified is current first', () => {
+    const rList: any = [
+      {
+        meta: {
+          title: 'aaa'
+        }
+      },
+      {
+        meta: {
+          title: 'bbb'
+        }
+      },
+      {
+        meta: {
+          title: 'ccc'
+        }
+      }
+    ]
+    const result = swapSpecifiedRouteToFirst(rList, 'aaa')
+    expect(result[0].meta?.title).toBe('aaa')
+    expect(result[1].meta?.title).toBe('bbb')
+    expect(result[2].meta?.title).toBe('ccc')
+  })
+
+  it('specified is not current first', () => {
+    const rList: any = [
+      {
+        meta: {
+          title: 'aaa'
+        }
+      },
+      {
+        meta: {
+          title: 'bbb'
+        }
+      },
+      {
+        meta: {
+          title: 'ccc'
+        }
+      }
+    ]
+    const result = swapSpecifiedRouteToFirst(rList, 'ccc')
+    expect(result[0].meta?.title).toBe('ccc')
+    expect(result[1].meta?.title).toBe('bbb')
+    expect(result[2].meta?.title).toBe('aaa')
+    // is add?
+    expect(result[3]).toBeUndefined()
   })
 })
