@@ -14,7 +14,11 @@
         @click="handleItemClick(item)"
       >
         <!-- 加载设置的affixIcon， 否则默认图标为 DefaultIcon -->
-        <n-icon v-if="showAffixIcon" :component="item.meta?.affixIcon ?? DefaultIcon" mr-4px />
+        <n-icon
+          v-if="showAffixIcon"
+          :component="NIconTransform[item.meta?.affixIcon as string] ?? DefaultIcon"
+          mr-4px
+        />
         <span font-size-5>
           {{ item.meta?.title ?? item.name }}
         </span>
@@ -40,9 +44,11 @@ defineComponent({
 import { NScrollbar } from 'naive-ui'
 import { RouteRecordRaw } from 'vue-router'
 import { Close as closeIcon, MenuOutline as DefaultIcon } from '@vicons/ionicons5'
+import { NIconTransform } from '~/config/icon'
 import useVisitedRoutes from '~/store/visited-routes'
 import useSetting from '~/store/setting'
 import setting from '~/setting'
+
 const { visitedRoutes, removeVisitedRoute } = useVisitedRoutes()
 
 const route = useRoute()
