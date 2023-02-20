@@ -13,7 +13,7 @@
     <navbar-actions
       @search-click="handleSearchClick"
       @refresh-click="handleRefreshClick"
-      @full-screen-click="handleFullScreenClick"
+      @full-screen-click="handleFullscreenClick"
       @setting-click="handleSettingClick"
     />
     <navbar-avatar />
@@ -35,7 +35,7 @@ import useActions from './useActions'
 const settingRef = ref<HTMLElement | null>(null)
 const searchRef = ref<HTMLElement | null>(null)
 
-const { handleSearchClick, handleRefreshClick, handleFullScreenClick, handleSettingClick } =
+const { handleSearchClick, handleRefreshClick, handleFullscreenClick, handleSettingClick } =
   useActions(settingRef, searchRef)
 
 const { showTabBar } = $(useSetting().tabBarSetting)

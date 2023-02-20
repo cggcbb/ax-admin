@@ -4,7 +4,8 @@ import type {
   ILayoutAnimation,
   IMenuSetting,
   IWaterMarkSetting,
-  ITabbarSetting
+  ITabbarSetting,
+  INarBarSetting
 } from '~/types/common'
 import {
   STORAGE_WATER_MASK_KEY,
@@ -12,7 +13,8 @@ import {
   STORAGE_THEME_COLOR_KEY,
   STORAGE_LAYOUT_ANIMATION_KEY,
   STORAGE_HEADER_KEY,
-  STORAGE_TABBAR_KEY
+  STORAGE_TABBAR_KEY,
+  STORAGE_NAVBAR_KEY
 } from '~/config/storage'
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
@@ -38,6 +40,10 @@ const useSetting = defineStore('setting', () => {
   // tabbar
   const tabBarSetting = useLocalStorage<ITabbarSetting>(STORAGE_TABBAR_KEY, {
     ...setting.tabBarSetting
+  })
+  // navbar
+  const narBarSetting = useLocalStorage<INarBarSetting>(STORAGE_NAVBAR_KEY, {
+    ...setting.navBarSetting
   })
 
   /**
@@ -110,7 +116,8 @@ const useSetting = defineStore('setting', () => {
     themeOverrides,
     layoutAnimationSetting,
     headerSetting,
-    tabBarSetting
+    tabBarSetting,
+    narBarSetting
   }
 })
 

@@ -1,23 +1,15 @@
 <template>
   <section flex-center-all>
-    <span
-      class="action-item"
-      v-for="(action, index) in actionRender"
-      :key="`${action.name}-${index}`"
-    >
+    <span class="action-item" v-for="(action, index) in actions" :key="`${action.name}-${index}`">
       <n-popover
         placement="bottom"
         trigger="click"
         :width="320"
-        v-if="action.name === 'bell-icon'"
+        v-if="action.name === 'bell-icon' && action.showIcon"
       >
         <template #trigger>
-          <n-badge
-            processing
-            :value="badgeValue"
-            :class="{ active: !badgeValue }"
-          >
-            <n-icon size="20" :component="action.component" />
+          <n-badge processing :value="badgeValue" :class="{ active: !badgeValue }">
+            <n-icon size="20" :component="NIconTransform[action.icon]" />
           </n-badge>
         </template>
         <navbar-notification
@@ -28,10 +20,10 @@
         />
       </n-popover>
       <n-icon
-        v-else
+        v-else-if="action.showIcon"
         size="20"
         @click.stop="action.callback"
-        :component="action.component"
+        :component="NIconTransform[action.icon]"
       />
     </span>
   </section>
@@ -46,15 +38,10 @@ defineComponent({
 <script setup lang="ts">
 import { isFullscreen } from '~/composables'
 // import { CSSProperties } from 'vue'
-import {
-  SearchOutline as SearchIcon,
-  NotificationsOutline as BellIcon,
-  SettingsOutline as SettingIcon,
-  ExpandOutline as ExpandOutIcon,
-  ContractOutline as ContractOutIcon,
-  RefreshOutline as RefreshIcon
-} from '@vicons/ionicons5'
 import useNotification from '../useNotification'
+import useSetting from '~/store/setting'
+import { IAction } from '~/types/common'
+import { NIconTransform } from '~/config/icon'
 
 const emits = defineEmits([
   'search-click',
@@ -64,78 +51,69 @@ const emits = defineEmits([
   'refresh-click'
 ])
 
-interface IAction {
-  name: string
-  component: any
-  fullscreen?: boolean
-  callback?: () => void
-}
+const setting = useSetting()
+const { showSearch, showNotification, showRefresh, showFullscreen } = $(setting.narBarSetting)
 
-const actions: IAction[] = [
-  {
-    name: 'search-icon',
-    component: SearchIcon,
-    callback: () => {
-      emits('search-click')
-    }
-  },
-  {
-    name: 'bell-icon',
-    component: BellIcon
-  },
-  {
-    name: 'refresh-icon',
-    component: RefreshIcon,
-    callback: () => {
-      emits('refresh-click')
-    }
-  },
-  {
-    name: 'full-screen-icon',
-    component: ExpandOutIcon,
-    callback: () => {
-      emits('full-screen-click')
-    }
-  },
-  {
-    name: 'full-screen-icon',
-    component: ContractOutIcon,
-    fullscreen: true,
-    callback: () => {
-      emits('full-screen-click')
-    }
-  },
-  {
-    name: 'setting-icon',
-    component: SettingIcon,
-    callback: () => {
-      emits('setting-click')
-    }
-  }
-]
+let actions = $ref<IAction[]>([])
 
-const actionRender = shallowRef<IAction[] | null>([...actions])
+watchPostEffect(() => {
+  actions = [
+    {
+      name: 'search-icon',
+      icon: 'n-icon-search',
+      callback: () => {
+        emits('search-click')
+      },
+      showIcon: showSearch
+    },
+    {
+      name: 'bell-icon',
+      icon: 'n-icon-bell',
+      showIcon: showNotification
+    },
+    {
+      name: 'refresh-icon',
+      icon: 'n-icon-refresh',
+      callback: () => {
+        emits('refresh-click')
+      },
+      showIcon: showRefresh
+    },
+    {
+      name: 'full-screen-icon',
+      icon: 'n-icon-expand-out',
+      callback: () => {
+        emits('full-screen-click')
+      },
+      showIcon: showFullscreen
+    },
+    {
+      name: 'full-screen-icon',
+      icon: 'n-icon-contract-out',
+      fullscreen: true,
+      callback: () => {
+        emits('full-screen-click')
+      },
+      showIcon: showFullscreen
+    },
+    {
+      name: 'setting-icon',
+      icon: 'n-icon-setting',
+      callback: () => {
+        emits('setting-click')
+      },
+      showIcon: true
+    }
+  ]
+    .filter(item => item.showIcon)
+    .filter(item =>
+      isFullscreen.value
+        ? item.name !== 'full-screen-icon' || item.fullscreen
+        : item.name !== 'full-screen-icon' || !item.fullscreen
+    )
+})
 
-watch(
-  isFullscreen,
-  isFullscreen => {
-    actionRender.value = isFullscreen
-      ? [...actions].filter(
-          action =>
-            action.name !== 'full-screen-icon' ||
-            (action.name === 'full-screen-icon' && action.fullscreen)
-        )
-      : [...actions].filter(
-          action =>
-            action.name !== 'full-screen-icon' ||
-            (action.name === 'full-screen-icon' && !action.fullscreen)
-        )
-  },
-  { immediate: true }
-)
-
-const { badgeValue, notificationList, handleClickIcon, handleReadAll } =
-  useNotification()
+const { badgeValue, notificationList, handleClickIcon, handleReadAll } = useNotification()
 
 // const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
 //   const style: CSSProperties = {}

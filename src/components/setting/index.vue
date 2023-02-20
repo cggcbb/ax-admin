@@ -27,6 +27,8 @@
       <header-setting />
       <n-divider dashed>页签设置</n-divider>
       <tabbar-setting />
+      <n-divider dashed>导航栏设置</n-divider>
+      <navbar-setting />
       <n-divider dashed>菜单设置</n-divider>
       <menu-setting />
       <n-divider dashed>水印设置</n-divider>

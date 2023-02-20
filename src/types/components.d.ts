@@ -35,6 +35,7 @@ declare module '@vue/runtime-core' {
     NavbarFoldIcon: typeof import('./../components/navbar/components/navbarFoldIcon.vue')['default']
     NavbarMusicIcon: typeof import('./../components/navbar/components/navbarMusicIcon.vue')['default']
     NavbarNotification: typeof import('./../components/navbar/components/navbarNotification.vue')['default']
+    NavbarSetting: typeof import('./../components/setting/components/navbar-setting/index.vue')['default']
     NBadge: typeof import('naive-ui')['NBadge']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']

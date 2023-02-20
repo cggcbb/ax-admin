@@ -7,7 +7,8 @@ import {
   LayoutAnimationEnum,
   ILayoutAnimation,
   IHeaderSetting,
-  ITabbarSetting
+  ITabbarSetting,
+  INarBarSetting
 } from '~/types/common'
 
 // 水印
@@ -68,6 +69,13 @@ const tabBarSetting: ITabbarSetting = {
   showCloseIcon: true
 }
 
+const navBarSetting: INarBarSetting = {
+  showSearch: true,
+  showNotification: true,
+  showRefresh: true,
+  showFullscreen: true
+}
+
 export default {
   projectName: 'ax-admin',
   waterMarkSetting,
@@ -102,5 +110,6 @@ export default {
     }
   ],
   headerSetting,
-  tabBarSetting
+  tabBarSetting,
+  navBarSetting
 } as ISetting

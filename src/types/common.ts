@@ -13,6 +13,14 @@ export interface IAxiosOption {
   headers?: any
 }
 
+export interface IAction {
+  name: string
+  icon: string
+  fullscreen?: boolean
+  callback?: () => void
+  showIcon?: boolean
+}
+
 export interface ISetting {
   projectName: string
   waterMarkSetting: IWaterMarkSetting
@@ -23,6 +31,7 @@ export interface ISetting {
   layoutAnimationOptions: SelectOption[]
   headerSetting: IHeaderSetting
   tabBarSetting: ITabbarSetting
+  navBarSetting: INarBarSetting
 }
 
 // 用户水印系统设置
@@ -130,4 +139,11 @@ export interface ITabbarSetting {
   showTabBar: boolean
   showAffixIcon: boolean
   showCloseIcon: boolean
+}
+
+export interface INarBarSetting {
+  showSearch: boolean
+  showNotification: boolean
+  showRefresh: boolean
+  showFullscreen: boolean
 }
