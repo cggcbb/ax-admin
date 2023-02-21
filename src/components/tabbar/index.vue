@@ -101,10 +101,10 @@ watchPostEffect(() => {
 <style lang="less" scoped>
 .ax-tab-bar-container {
   position: relative;
-  height: @tabHeight;
+  height: @tabBarHeight;
   // 4px 是 n-scrollbar 绝对定位 bottom: 4px
   // 保证滚动条不遮盖item
-  line-height: calc(@tabHeight - 4px);
+  line-height: calc(@tabBarHeight - 4px);
   box-shadow: var(--box-shadow-1);
   white-space: nowrap;
   padding: 0 8px;

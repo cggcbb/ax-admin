@@ -1,5 +1,5 @@
 <template>
-  <section class="main-container" pa-8px>
+  <section pa-8px class="main-container" :class="{ 'show-tabbar': showTabBar }">
     <router-view v-slot="{ Component, route }">
       <transition :name="`${animationActive ? type : ''}-transform`" mode="out-in" appear>
         <keep-alive :include="cacheRoutesName">
@@ -25,6 +25,8 @@ const backgroundColor = computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
 const setting = useSetting()
 const { type, animationActive } = $(setting.layoutAnimationSetting)
 const { cacheRoutesName } = toRefs(useCacheRoutes())
+
+const { showTabBar } = $(useSetting().tabBarSetting)
 </script>
 
 <style lang="less" scoped>
@@ -32,5 +34,8 @@ const { cacheRoutesName } = toRefs(useCacheRoutes())
   height: calc(100vh - @logoHeight);
   overflow: auto;
   background-color: v-bind(backgroundColor);
+  &.show-tabbar {
+    height: calc(100vh - @logoHeight - @tabBarHeight);
+  }
 }
 </style>

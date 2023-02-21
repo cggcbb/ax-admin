@@ -7,7 +7,7 @@
         </n-grid>
       </template>
       <n-divider dashed>主题设置</n-divider>
-      <n-grid>
+      <!-- <n-grid>
         <n-gi v-for="(item, index) of themeList" :key="index" :span="12" class="example-wrapper">
           <theme-setting
             :checked="item.checked"
@@ -18,7 +18,8 @@
             @click="handleThemeSettingClick(item)"
           />
         </n-gi>
-      </n-grid>
+      </n-grid> -->
+      <theme-setting-another @handleThemeChange="handleThemeChange" />
       <n-divider dashed>主题颜色</n-divider>
       <theme-color-setting />
       <n-divider dashed>切换动画</n-divider>
@@ -49,7 +50,7 @@ export default defineComponent({
 <script lang="ts" setup>
 let visible = $ref(false)
 
-const { themeList, handleThemeSettingClick } = useThemeSetting()
+const { handleThemeChange } = useThemeSetting()
 
 const { width } = $(setting.drawer)
 

@@ -57,6 +57,7 @@ const { showTabBar } = $(useSetting().tabBarSetting)
   }
   &.show-box-shadow {
     box-shadow: var(--box-shadow-2);
+    border-bottom: none;
   }
 }
 </style>
