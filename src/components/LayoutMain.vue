@@ -20,7 +20,7 @@ defineComponent({
 import useSetting from '~/store/setting'
 import useCacheRoutes from '~/store/cache-routes'
 
-const backgroundColor = computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
+const backgroundColor = $computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
 
 const setting = useSetting()
 const { type, animationActive } = $(setting.layoutAnimationSetting)
