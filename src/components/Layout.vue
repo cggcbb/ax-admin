@@ -1,6 +1,6 @@
 <template>
   <n-el>
-    <n-layout has-sider>
+    <n-layout :has-sider="layoutLR">
       <!-- 侧边栏 -->
       <n-layout-sider
         bordered
@@ -8,18 +8,19 @@
         :collapsed-width="collapsedWidth"
         :width="menuWidth"
         :collapsed="collapsed"
+        :native-scrollbar="false"
         class="ax-layout-sider"
+        v-if="layoutLR"
       >
-        <!-- logo -->
-        <n-collapse-transition :show="showLogo || showTitle">
-          <ax-header />
-        </n-collapse-transition>
+        <!-- 垂直菜单 -->
+        <vertical-header />
         <!-- 菜单 -->
-        <Menu />
+        <vertical-menu />
       </n-layout-sider>
-      <n-layout>
+      <n-layout :native-scrollbar="false">
         <!-- 导航 -->
-        <navbar />
+        <navbar v-if="layoutLR" />
+        <horizontal-header v-else />
         <n-collapse-transition :show="showTabBar">
           <tabbar />
         </n-collapse-transition>
@@ -73,11 +74,10 @@ defineComponent({
 <script lang="ts" setup>
 import useSetting from '~/store/setting'
 import useSong from '~/store/song'
-
 const setting = useSetting()
 const { collapsed, menuWidth, collapsedWidth } = $(setting.menuSetting)
 const { showTabBar } = $(setting.tabBarSetting)
-const { showLogo, showTitle } = $(setting.headerSetting)
+const { layoutLR } = $(setting)
 
 const audio: any = $ref<HTMLElement | null>(null)
 

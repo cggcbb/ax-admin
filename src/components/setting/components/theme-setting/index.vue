@@ -34,8 +34,8 @@ export default defineComponent({
     checked: {
       type: Boolean,
       default: false
-    },
-  },
+    }
+  }
 })
 </script>
 
@@ -64,7 +64,7 @@ export default defineComponent({
       border-top-left-radius: @border-radius;
       border-bottom-left-radius: @border-radius;
       background-size: cover;
-      background-color: v-bind(leftBg)
+      background-color: v-bind(leftBg);
     }
 
     .right {
@@ -75,7 +75,7 @@ export default defineComponent({
       border-bottom-right-radius: @border-radius;
 
       .right-top {
-        height: 20%;
+        height: 24%;
         border-top-right-radius: @border-radius;
         background-color: v-bind(rightTopBg);
       }
@@ -91,6 +91,20 @@ export default defineComponent({
   .text {
     font-size: 12px;
     text-align: center;
+  }
+
+  &.hidden-left {
+    .left {
+      width: 0;
+    }
+    .right {
+      .right-top {
+        border-top-left-radius: @border-radius;
+      }
+      .right-bottom {
+        border-bottom-left-radius: @border-radius;
+      }
+    }
   }
 }
 

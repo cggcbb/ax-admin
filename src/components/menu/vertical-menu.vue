@@ -1,14 +1,23 @@
 <template>
-  <section class="scrollbar">
-    <n-menu mode="vertical" :accordion="menuSetting.accordion" :collapsed="menuSetting.collapsed"
-      :collapsed-width="menuSetting.collapsedWidth" :collapsed-icon-size="menuSetting.collapsedIconSize"
-      :options="menuOptions" :render-label="renderMenuLabel" :default-value="defaultValue" />
-  </section>
+  <n-el class="vertical-menu-container">
+    <n-scrollbar x-scrollable>
+      <n-menu
+        mode="vertical"
+        :accordion="menuSetting.accordion"
+        :collapsed="menuSetting.collapsed"
+        :collapsed-width="menuSetting.collapsedWidth"
+        :collapsed-icon-size="menuSetting.collapsedIconSize"
+        :options="menuOptions"
+        :render-label="renderMenuLabel"
+        :default-value="defaultValue"
+      />
+    </n-scrollbar>
+  </n-el>
 </template>
 
 <script lang="ts">
 export default defineComponent({
-  name: 'Menu',
+  name: 'VerticalMenu'
 })
 </script>
 
@@ -29,7 +38,7 @@ const renderMenuLabel = (option: MenuOption) => {
       RouterLink,
       {
         to: {
-          path: option.to as string,
+          path: option.to as string
         }
       },
       { default: () => option.label }
@@ -40,8 +49,8 @@ const renderMenuLabel = (option: MenuOption) => {
 </script>
 
 <style lang="less" scoped>
-.scrollbar {
+.vertical-menu-container {
+  overflow: hidden;
   height: calc(100vh - @logoHeight) !important;
-  overflow: auto;
 }
 </style>

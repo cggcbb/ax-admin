@@ -8,7 +8,8 @@ import {
   ILayoutAnimation,
   IHeaderSetting,
   ITabbarSetting,
-  INarBarSetting
+  INarBarSetting,
+  LayoutTypeEnum
 } from '~/types/common'
 
 // 水印
@@ -73,8 +74,11 @@ const navBarSetting: INarBarSetting = {
   showSearch: true,
   showNotification: true,
   showRefresh: true,
-  showFullscreen: true
+  showFullscreen: true,
+  showMusic: true
 }
+
+const layoutSetting = LayoutTypeEnum.LR
 
 export default {
   projectName: 'ax-admin',
@@ -111,5 +115,6 @@ export default {
   ],
   headerSetting,
   tabBarSetting,
-  navBarSetting
+  navBarSetting,
+  layoutSetting
 } as ISetting

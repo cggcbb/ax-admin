@@ -133,6 +133,7 @@ const { badgeValue, notificationList, handleClickIcon, handleReadAll } = useNoti
 .action-item {
   min-width: 40px;
   display: flex;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 

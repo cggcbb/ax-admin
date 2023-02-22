@@ -32,6 +32,7 @@ export interface ISetting {
   headerSetting: IHeaderSetting
   tabBarSetting: ITabbarSetting
   navBarSetting: INarBarSetting
+  layoutSetting: LayoutTypeEnum
 }
 
 // 用户水印系统设置
@@ -146,4 +147,10 @@ export interface INarBarSetting {
   showNotification: boolean
   showRefresh: boolean
   showFullscreen: boolean
+  showMusic: boolean
+}
+
+export enum LayoutTypeEnum {
+  LR = 'lr',
+  TB = 'tb'
 }

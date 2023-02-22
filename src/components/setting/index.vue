@@ -22,6 +22,8 @@
       <theme-setting-another @handleThemeChange="handleThemeChange" />
       <n-divider dashed>主题颜色</n-divider>
       <theme-color-setting />
+      <n-divider dashed>布局设置</n-divider>
+      <layout-setting />
       <n-divider dashed>切换动画</n-divider>
       <layout-animation-setting />
       <n-divider dashed>头部设置</n-divider>

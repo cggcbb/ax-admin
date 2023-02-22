@@ -14,3 +14,5 @@ export const STORAGE_HEADER_KEY = 'ax-header-setting'
 export const STORAGE_TABBAR_KEY = 'ax-tabbar-setting'
 
 export const STORAGE_NAVBAR_KEY = 'ax-navbar-setting'
+
+export const STORAGE_LAYOUT_KEY = 'ax-layout-setting'

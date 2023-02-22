@@ -1,15 +1,17 @@
 <template>
-  <div class="ax-header-layout">
-    <logo v-if="showLogo" />
-    <div flex items-center v-if="showTitle">
-      <span fw-bold :class="[collapsed ? 'close-title' : 'show-title']">ax-admin</span>
-    </div>
-  </div>
+  <n-collapse-transition :show="showLogo || showTitle">
+    <n-el class="ax-vertical-header-container">
+      <logo v-if="showLogo" />
+      <div flex items-center v-if="showTitle">
+        <span fw-bold :class="[collapsed ? 'close-title' : 'show-title']">ax-admin</span>
+      </div>
+    </n-el>
+  </n-collapse-transition>
 </template>
 
 <script lang="ts">
 export default defineComponent({
-  name: 'AXHeader'
+  name: 'VerticalHeader'
 })
 </script>
 
@@ -22,7 +24,7 @@ const { showLogo, showTitle } = $(setting.headerSetting)
 </script>
 
 <style scoped lang="less">
-.ax-header-layout {
+.ax-vertical-header-container {
   display: flex;
   justify-content: center;
   align-items: center;

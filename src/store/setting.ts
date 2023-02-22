@@ -1,11 +1,12 @@
 import setting from '~/setting'
-import type {
+import {
   IHeaderSetting,
   ILayoutAnimation,
   IMenuSetting,
   IWaterMarkSetting,
   ITabbarSetting,
-  INarBarSetting
+  INarBarSetting,
+  LayoutTypeEnum
 } from '~/types/common'
 import {
   STORAGE_WATER_MASK_KEY,
@@ -14,7 +15,8 @@ import {
   STORAGE_LAYOUT_ANIMATION_KEY,
   STORAGE_HEADER_KEY,
   STORAGE_TABBAR_KEY,
-  STORAGE_NAVBAR_KEY
+  STORAGE_NAVBAR_KEY,
+  STORAGE_LAYOUT_KEY
 } from '~/config/storage'
 import { GlobalThemeOverrides } from 'naive-ui'
 import { generateDarkerColor, generateLighterColor } from '~/utils/color'
@@ -45,6 +47,8 @@ const useSetting = defineStore('setting', () => {
   const narBarSetting = useLocalStorage<INarBarSetting>(STORAGE_NAVBAR_KEY, {
     ...setting.navBarSetting
   })
+  // layout
+  const layoutSetting = useLocalStorage<LayoutTypeEnum>(STORAGE_LAYOUT_KEY, setting.layoutSetting)
 
   /**
    * 下面2个配置，《菜单》和《主题色》
@@ -108,6 +112,8 @@ const useSetting = defineStore('setting', () => {
     }
   })
 
+  const layoutLR = computed(() => layoutSetting.value === LayoutTypeEnum.LR)
+
   return {
     setCollapsed,
     waterMarkSetting,
@@ -117,7 +123,9 @@ const useSetting = defineStore('setting', () => {
     layoutAnimationSetting,
     headerSetting,
     tabBarSetting,
-    narBarSetting
+    narBarSetting,
+    layoutSetting,
+    layoutLR
   }
 })
 

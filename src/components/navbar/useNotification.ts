@@ -1,22 +1,21 @@
-import { ComputedRef, Ref } from "vue"
-import { GET_NOTIFICATION_LIST } from "~/api/url"
-import { INotificationItem } from "~/types/common"
-import { get } from "~/utils/http"
+import { ComputedRef, Ref } from 'vue'
+import { GET_NOTIFICATION_LIST } from '~/api/url'
+import { INotificationItem } from '~/types/common'
+import { get } from '~/utils/http'
 
 interface INotificationUse {
   notificationList: Ref<INotificationItem[]>
-  badgeValue: ComputedRef<number>,
+  badgeValue: ComputedRef<number>
   handleClickIcon: () => void
   handleReadAll: (isReadAll?: boolean) => void
 }
 
 export default function useNotification() {
-
   const message = useMessage()
   const notificationList = ref<INotificationItem[]>([])
 
   const badgeValue = computed(() => {
-    return notificationList.value.reduce((t, c) => c.selected ? t : t += 1, 0)
+    return notificationList.value.reduce((t, c) => (c.selected ? t : (t += 1)), 0)
   })
 
   const handleClickIcon = (item: INotificationItem) => {
