@@ -1,4 +1,4 @@
-interface IThemeSettingItem {
+export interface IThemeSettingItem {
   leftBg: string
   rightTopBg: string
   rightBottomBg: string
@@ -12,17 +12,17 @@ export default function useThemeSetting() {
 
   const themeList = reactive<IThemeSettingItem[]>([
     {
-      leftBg: '#ffffff',
-      rightTopBg: '#ffffff',
+      leftBg: '#fff',
+      rightTopBg: '#fff',
       rightBottomBg: '#f5f5f5',
       checked: !isDark.value,
       isDark: false,
       text: '明亮'
     },
     {
-      leftBg: '#000000',
-      rightTopBg: '#000000',
-      rightBottomBg: '#333333',
+      leftBg: '#000',
+      rightTopBg: '#000',
+      rightBottomBg: '#333',
       checked: isDark.value,
       isDark: true,
       text: '暗黑'
@@ -58,6 +58,7 @@ export default function useThemeSetting() {
       message.success('切换明亮主题')
     }
   }
+
   return {
     handleThemeSettingClick,
     handleThemeChange,
