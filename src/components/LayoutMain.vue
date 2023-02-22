@@ -24,7 +24,7 @@ const backgroundColor = $computed(() => (isDark.value ? '#1c1c1c' : '#f4f4f4'))
 
 const setting = useSetting()
 const { type, animationActive } = $(setting.layoutAnimationSetting)
-const { cacheRoutesName } = toRefs(useCacheRoutes())
+const { cacheRoutesName } = $(useCacheRoutes())
 
 const { showTabBar } = $(useSetting().tabBarSetting)
 </script>

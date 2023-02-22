@@ -5,7 +5,7 @@ const useCacheRoutes = defineStore('cache-routes', () => {
   const cacheRoutesNameSet = $ref<Set<string>>(new Set())
 
   // KeepAlive include, 需要一个Array
-  const cacheRoutesName = computed(() => [...cacheRoutesNameSet])
+  const cacheRoutesName = $computed(() => [...cacheRoutesNameSet])
 
   const addCacheRouteName = (r: RouteRecordRaw) => {
     if (r.meta?.cache) {
@@ -18,11 +18,11 @@ const useCacheRoutes = defineStore('cache-routes', () => {
     cacheRoutesNameSet.delete(r.name as string)
   }
 
-  return {
+  return $$({
     cacheRoutesName,
     addCacheRouteName,
     removeCacheRouteName
-  }
+  })
 })
 
 export default useCacheRoutes
