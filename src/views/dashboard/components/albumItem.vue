@@ -1,13 +1,22 @@
 <template>
-  <n-card class="card-album-item" :content-style="{ padding: '8px 16px' }" :header-style="{ padding: '5px 16px' }"
-    :segmented="true">
+  <n-card
+    class="card-album-item"
+    :content-style="{ padding: '8px 16px' }"
+    :header-style="{ padding: '5px 16px' }"
+    :segmented="true"
+  >
     <template #header>
       <n-skeleton text v-if="loading" width="95%" />
       <template v-else>
         <div flex-center-v justify-between>
           <gradient-text :size="16">{{ data.album }}</gradient-text>
-          <n-avatar size="small" :src="data.albumUrl" hover:transform-scale-240 transform-origin-right-center
-            transition-transform-300></n-avatar>
+          <n-avatar
+            size="small"
+            :src="data.albumUrl"
+            hover:transform-scale-500
+            transform-origin-right-top
+            transition-transform-300
+          ></n-avatar>
         </div>
       </template>
     </template>
@@ -42,8 +51,8 @@ defineProps({
     type: Object,
     default: () => {
       return {}
-    },
-  },
+    }
+  }
 })
 
 let loading = $ref(true)
@@ -51,7 +60,6 @@ let loading = $ref(true)
 setTimeout(() => {
   loading = false
 }, 1000)
-
 </script>
 
 <style lang="less" scoped>
