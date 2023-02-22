@@ -1,9 +1,9 @@
-import { GET_CHINA_MAP_FEATURE_COLLECTION, GET_DEFORMATION_DATA } from "~/api/url"
+import { GET_CHINA_MAP_FEATURE_COLLECTION, GET_DEFORMATION_DATA } from '~/api/url'
 import * as echarts from 'echarts'
-import { get } from "~/utils/http"
+import { get } from '~/utils/http'
 
 interface IDeformationData {
-  name: string,
+  name: string
   value: number
 }
 
@@ -21,8 +21,8 @@ export default function useDeformationChart(options: any) {
     deformationData!.sort((a, b) => {
       return a.value - b.value
     })
-    const name = deformationData.map((item) => item.name)
-    const value = deformationData.map((item) => item.value)
+    const name = deformationData.map(item => item.name)
+    const value = deformationData.map(item => item.value)
 
     barOption.yAxis.data = name
     barOption.series.data = value
@@ -39,7 +39,7 @@ export default function useDeformationChart(options: any) {
       top: '7%',
       bottom: '10%'
     },
-    tooltip: {},
+    tooltip: {}
   }
 
   const mapOption = {
@@ -55,7 +55,19 @@ export default function useDeformationChart(options: any) {
       min: 2000,
       max: 10000,
       inRange: {
-        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+        color: [
+          '#313695',
+          '#4575b4',
+          '#74add1',
+          '#abd9e9',
+          '#e0f3f8',
+          '#ffffbf',
+          '#fee090',
+          '#fdae61',
+          '#f46d43',
+          '#d73027',
+          '#a50026'
+        ]
       },
       text: ['高', '低'],
       calculable: true
