@@ -1,4 +1,3 @@
-
 import * as echarts from 'echarts'
 import { get } from '~/utils/http'
 import { GET_CHINA_MAP_DATA, GET_CHINA_MAP_FEATURE_COLLECTION } from '~/api/url'
@@ -8,19 +7,27 @@ export default function useChinaMap(options: any) {
    * 区分白色背景和黑色背景
    */
   // 文字颜色
-  const textColor = $computed(() => isDark.value ? '#fff' : '#1f2225')
+  const textColor = $computed(() => (isDark.value ? '#fff' : '#1f2225'))
   // timeline颜色
-  const progressColor = $computed(() => isDark.value ? '#93ebf8' : '#199fb7')
+  const progressColor = $computed(() => (isDark.value ? '#93ebf8' : '#199fb7'))
   // 地图区域边框色
-  const mapBorderColor = $computed(() => isDark.value ? '#93ebf8' : 'rgba(0, 0, 0, .1)')
+  const mapBorderColor = $computed(() => (isDark.value ? '#93ebf8' : 'rgba(0, 0, 0, .1)'))
   // 阴影颜色
-  const mapShadowColor = $computed(() => isDark.value ? '#7fd9f8' : 'rgba(0, 0, 0, .3)')
+  const mapShadowColor = $computed(() => (isDark.value ? '#7fd9f8' : 'rgba(0, 0, 0, .3)'))
   // map背景渐变色
-  const gradientColor = $computed(() => isDark.value ? ['rgba(147, 235, 248, 0)', 'rgba(147, 235, 248, .2)'] : ['rgba(96, 217, 234, .31)', 'rgba(255, 255, 255, .3)'])
+  const gradientColor = $computed(() =>
+    isDark.value
+      ? ['rgba(147, 235, 248, 0)', 'rgba(147, 235, 248, .2)']
+      : ['rgba(96, 217, 234, .31)', 'rgba(255, 255, 255, .3)']
+  )
   // hover时的背景色
-  const mapAreaColor = $computed(() => isDark.value ? '#389bb7' : 'rgba(56, 155, 183, .5)')
+  const mapAreaColor = $computed(() => (isDark.value ? '#389bb7' : 'rgba(56, 155, 183, .5)'))
   // 切换每项的颜色
-  const colors = $computed(() => isDark.value ? [['#04b9ff', '#e690d1', '#ffdb5c', '#1de9b6', '#ea7e53', '#e062ae']] : [['#199fb7', '#ff668f', '#d38f45', '#0092f4', '#3eaa77', '#626262']])
+  const colors = $computed(() =>
+    isDark.value
+      ? [['#04b9ff', '#e690d1', '#ffdb5c', '#1de9b6', '#ea7e53', '#e062ae']]
+      : [['#199fb7', '#ff668f', '#d38f45', '#0092f4', '#3eaa77', '#626262']]
+  )
 
   const REGISTER_MAP_NAME = 'china'
 
@@ -31,17 +38,7 @@ export default function useChinaMap(options: any) {
 
   const update = async () => {
     const chinaMapData = await get<unknown>(GET_CHINA_MAP_DATA)
-    const {
-      geoGpsMap,
-      geoCoordMap,
-      d1,
-      d2,
-      d3,
-      d4,
-      d5,
-      d6,
-      cities
-    } = chinaMapData.data as any
+    const { geoGpsMap, geoCoordMap, d1, d2, d3, d4, d5, d6, cities } = chinaMapData.data as any
 
     const colorIndex = 0
     const mapData = [[], [], [], [], [], []] as any
@@ -116,9 +113,7 @@ export default function useChinaMap(options: any) {
         const toCoord = geoCoordMap[dataItem.name]
         const fromCoord = gps
         if (fromCoord && toCoord) {
-          res.push([
-            fromCoord, toCoord
-          ])
+          res.push([fromCoord, toCoord])
         }
       }
       return res
@@ -151,35 +146,35 @@ export default function useChinaMap(options: any) {
           color: textColor,
           borderColor: textColor,
           itemSize: 20,
-          opacity: .8
+          opacity: 0.8
         },
         progress: {
           label: {
-            color: progressColor,
+            color: progressColor
           },
           itemStyle: {
-            color: progressColor,
+            color: progressColor
           },
           lineStyle: {
-            color: progressColor,
-          },
+            color: progressColor
+          }
         },
         emphasis: {
           label: {
             color: progressColor,
-            borderColor: progressColor,
+            borderColor: progressColor
           },
           itemStyle: {
             color: progressColor,
-            borderColor: progressColor,
+            borderColor: progressColor
           },
           checkpointStyle: {
             color: progressColor,
-            borderColor: progressColor,
+            borderColor: progressColor
           },
           controlStyle: {
             color: progressColor,
-            borderColor: progressColor,
+            borderColor: progressColor
           }
         },
         left: '8%',
@@ -199,7 +194,7 @@ export default function useChinaMap(options: any) {
             type: 'shadow',
             shadowStyle: {
               color: 'rgba(150, 150, 150, 0.1)'
-            },
+            }
           }
         },
         geo: {
@@ -230,22 +225,22 @@ export default function useChinaMap(options: any) {
             shadowColor: mapShadowColor,
             shadowOffsetX: -2,
             shadowOffsetY: 2,
-            shadowBlur: 10,
+            shadowBlur: 10
           },
           emphasis: {
             label: {
               show: false
             },
             itemStyle: {
-              areaColor: mapAreaColor,
+              areaColor: mapAreaColor
             }
-          },
+          }
           // 滚轮缩放的极限控制
           // scaleLimit: {
           //   min: 0.8,
           //   max: 1
           // }
-        },
+        }
       },
 
       options: [] as any
@@ -261,7 +256,7 @@ export default function useChinaMap(options: any) {
             top: '2%',
             textStyle: {
               color: textColor,
-              fontSize: 14,
+              fontSize: 14
             },
             subtextStyle: {
               fontSize: 12
@@ -269,8 +264,7 @@ export default function useChinaMap(options: any) {
           },
           {
             id: 'statistic',
-            // text: `${cities[i]}销售额统计情况`,
-            text: '不知道这条形图有什么用',
+            text: '不知道这柱状图有什么用',
             right: '10%',
             top: '1%',
             textStyle: {
@@ -363,7 +357,7 @@ export default function useChinaMap(options: any) {
             itemStyle: {
               color: colors[colorIndex][i]
             }
-          },
+          }
         ]
       })
     }
@@ -377,4 +371,3 @@ export default function useChinaMap(options: any) {
     await update()
   })
 }
-
