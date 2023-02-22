@@ -3,8 +3,14 @@
     <n-el v-for="item of list" :key="item.title" class="notification-item">
       <n-grid flex-center-v x-gap="10">
         <n-gi :span="5" flex-center-all>
-          <n-avatar round size="large" :src="item.albumUrl" hover:transform-scale-200 transform-origin-right-center
-            transition-transform-300 />
+          <n-avatar
+            round
+            size="large"
+            :src="item.albumUrl"
+            hover:transform-scale-200
+            transform-origin-right-center
+            transition-transform-300
+          />
         </n-gi>
         <n-gi :span="17">
           <div flex flex-col>
@@ -44,7 +50,7 @@ defineComponent({
 
 <script setup lang="ts">
 import { EyeOffOutline as readIcon, EyeOutline as unReadIcon } from '@vicons/ionicons5'
-import { INotificationItem } from '~/types/common';
+import { INotificationItem } from '~/types/common'
 
 defineProps<{
   list: INotificationItem[]
@@ -67,10 +73,11 @@ const unReadAll = () => {
 
 <style lang="less" scoped>
 .notification-container {
-  margin: 8px 0;
+  margin-top: 8px;
 
   .notification-item {
     padding-top: 12px;
+    user-select: none;
 
     &:nth-child(1) {
       padding-top: 0;
@@ -78,17 +85,17 @@ const unReadAll = () => {
   }
 
   .notification-icon {
-    transition: color .3s;
+    transition: color 0.3s;
 
     &:hover {
-      color: var(--primary-color)
+      color: var(--primary-color);
     }
   }
 
   .notification-options {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed var(--border-color)
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-color);
   }
 }
 </style>
