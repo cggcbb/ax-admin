@@ -36,7 +36,7 @@ type layoutSettingType = Omit<IThemeSettingItem, 'isDark'> & {
 }
 
 const setting = useSetting()
-const { layoutLR } = $(setting)
+let { layoutLR, layoutSetting } = $(setting)
 
 const { pressedColor } = unref(useThemeVars())
 const layoutList = reactive<layoutSettingType[]>([
@@ -60,7 +60,25 @@ const layoutList = reactive<layoutSettingType[]>([
 ])
 
 const handleLayoutClick = (item: layoutSettingType) => {
-  setting.layoutSetting = item.type
+  const { type } = item
+  if (layoutSetting !== type) {
+    layoutSetting = type
+    triggerMutationObserver()
+  }
+}
+
+// 修改当前页面所有的echarts的style.width，
+// 触发mutationObserver，调用 handleChartResize 函数，重新resize
+// 再异步将width清除掉，否则第二次获取的宽度值不对
+const triggerMutationObserver = () => {
+  nextTick(() => {
+    const echarts = document.querySelectorAll('.vue-echarts')
+    echarts.forEach((chart: Element) => {
+      ;(chart as HTMLElement).style.width = getComputedStyle(chart).width
+
+      Promise.resolve().then(() => ((chart as HTMLElement).style.width = ''))
+    })
+  })
 }
 </script>
 

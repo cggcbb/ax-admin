@@ -14,14 +14,16 @@ export default function useEcharts(props: any, domWrapper: any) {
 
   const handleChartResize = debounce(() => {
     chart?.resize()
-  }, 300)
+  }, 200)
 
   onMounted(() => {
     window.addEventListener('resize', handleChartResize)
+    initMutationObserver()
   })
 
   onBeforeMount(() => {
     window.removeEventListener('resize', handleChartResize)
+    removeMutationObserver()
   })
 
   watch(() => props.options, updateChart)
@@ -41,4 +43,19 @@ export default function useEcharts(props: any, domWrapper: any) {
 
     chart = echarts.init(domWrapper.value as HTMLElement, theme)
   })
+
+  // 容器 style (这里指宽度) 发生改变的时候，触发 handleChartResize 函数
+  let observer = $ref<MutationObserver | null>(null)
+  const initMutationObserver = () => {
+    observer = new MutationObserver(handleChartResize)
+    observer.observe(domWrapper.value, {
+      attributeFilter: ['style'],
+      attributeOldValue: true
+    })
+  }
+
+  const removeMutationObserver = () => {
+    if (!observer) return
+    observer.disconnect()
+  }
 }
