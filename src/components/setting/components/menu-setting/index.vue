@@ -6,9 +6,9 @@
         size="small"
         v-model:value="menuWidth"
         placeholder="请输入"
-        min="0"
+        :min="min"
         :max="600"
-        :step="10"
+        :step="step"
       >
         <template #suffix>px</template>
       </n-input-number>
@@ -21,9 +21,9 @@
         size="small"
         v-model:value="autoCollapsedWidth"
         placeholder="..."
-        min="0"
+        :min="min"
         :max="600"
-        :step="10"
+        :step="step"
       >
         <template #prefix>最小</template>
         <template #suffix>px</template>
@@ -52,7 +52,12 @@ import useSetting from '~/store/setting'
 
 const setting = useSetting()
 
-const { menuWidth, autoCollapsedWidth, accordion } = $(setting.menuSetting)
+const { menuWidth, collapsedWidth, autoCollapsedWidth, accordion } = $(setting.menuSetting)
+const { layoutLR } = $(setting)
+
+// layout为上下局部时，菜单最小宽度为collapsedWidth (65px)，保证logo显示
+const min = $computed(() => (layoutLR ? 0 : collapsedWidth))
+const step = $computed(() => (layoutLR ? 10 : 5))
 
 const message = useMessage()
 const handleActiveChange = (val: boolean) => {
