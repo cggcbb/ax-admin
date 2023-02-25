@@ -33,11 +33,12 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/404',
+    path: '/error',
     component: Layout,
+    redirect: '/error/404',
     children: [
       {
-        path: '',
+        path: '404',
         name: '404',
         component: NotFound,
         meta: {
@@ -46,5 +47,5 @@ export const constantRoutes = [
       }
     ]
   },
-  { path: '/:pathMatch(.*)', redirect: '/404' }
+  { path: '/:pathMatch(.*)', redirect: '/error' }
 ]

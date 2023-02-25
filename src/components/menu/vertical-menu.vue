@@ -2,6 +2,7 @@
   <n-el class="vertical-menu-container">
     <n-scrollbar x-scrollable>
       <n-menu
+        ref="verticalMenu"
         mode="vertical"
         :accordion="menuSetting.accordion"
         :collapsed="menuSetting.collapsed"
@@ -9,7 +10,8 @@
         :collapsed-icon-size="menuSetting.collapsedIconSize"
         :options="menuOptions"
         :render-label="renderMenuLabel"
-        :default-value="defaultValue"
+        :value="selectedKey"
+        :default-value="selectedKey"
       />
     </n-scrollbar>
   </n-el>
@@ -22,15 +24,24 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { MenuOption } from 'naive-ui'
-import useSetting from '~/store/setting'
+import { MenuInst, MenuOption, NEl } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { routes as menuOptions } from '../../../mock/menu'
+import useSetting from '~/store/setting'
 
 const setting = useSetting()
+const route = useRoute()
 const { menuSetting } = setting
 
-const defaultValue = $computed(() => useRoute().fullPath)
+const selectedKey = $computed(() => route.fullPath)
+const verticalMenu = $ref<MenuInst | null>(null)
+
+watch(
+  () => selectedKey,
+  newVal => {
+    verticalMenu?.showOption(newVal)
+  }
+)
 
 const renderMenuLabel = (option: MenuOption) => {
   if (option.to) {
@@ -44,7 +55,7 @@ const renderMenuLabel = (option: MenuOption) => {
       { default: () => option.label }
     )
   }
-  return h('div', {}, { default: () => option.label })
+  return h(NEl, {}, { default: () => option.label })
 }
 </script>
 
