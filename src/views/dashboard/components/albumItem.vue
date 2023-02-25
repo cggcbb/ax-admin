@@ -9,7 +9,7 @@
       <n-skeleton text v-if="loading" width="95%" />
       <template v-else>
         <div flex-center-v justify-between>
-          <gradient-text :size="16">{{ data.album }}</gradient-text>
+          <n-gradient-text :size="16">{{ data.album }}</n-gradient-text>
           <n-avatar
             size="small"
             :src="data.albumUrl"
