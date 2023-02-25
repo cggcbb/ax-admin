@@ -154,3 +154,10 @@ export enum LayoutTypeEnum {
   LR = 'lr',
   TB = 'tb'
 }
+
+export interface IBreadcrumb {
+  label: string
+  key: string
+  path: string
+  children?: IBreadcrumb[]
+}

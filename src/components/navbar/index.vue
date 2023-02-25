@@ -12,7 +12,7 @@
     <navbar-fold-icon v-if="layoutLR" />
     <!-- layout上下结构时候的菜单 -->
     <horizontal-menu v-if="!layoutLR" />
-    <navbar-breadcrumb v-if="layoutLR" />
+    <breadcrumb v-if="layoutLR" />
     <!-- placeholder 占位 -->
     <div class="placeholder" v-if="layoutLR"></div>
     <n-tooltip trigger="hover" v-if="showMusic">
