@@ -27,32 +27,26 @@ export const routes: MenuOption[] = [
         icon: renderIcon(Leaf),
         label: '首页'
       }
-      // {
-      //   to: '/index/work-place',
-      //   key: '/index/work-place',
-      //   icon: renderIcon(Leaf),
-      //   label: '工作台',
-      // },
     ]
   },
   {
     label: '模拟请求',
     icon: renderIcon(FlameOutline),
-    key: '/github',
+    key: '/request',
     children: [
       {
         label: 'github',
         icon: renderIcon(LogoGithub),
-        key: '/github',
-        to: '/github'
+        key: '/request/github',
+        to: '/request/github'
       }
     ]
   },
   {
     label: '项目依赖',
     icon: renderIcon(LogoWebComponent),
-    key: '/dependencies',
-    to: '/dependencies'
+    key: '/dependencies/description',
+    to: '/dependencies/description'
   }
 ]
 
