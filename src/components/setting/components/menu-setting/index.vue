@@ -1,6 +1,6 @@
 <template>
   <n-grid items-center>
-    <n-gi :span="8">菜单宽度</n-gi>
+    <n-gi :span="8"><span>菜单宽度</span></n-gi>
     <n-gi :span="16">
       <n-input-number
         size="small"
@@ -15,7 +15,15 @@
     </n-gi>
   </n-grid>
   <n-grid items-center mt12px>
-    <n-gi :span="8">自动折叠</n-gi>
+    <n-gi :span="8">
+      <span>自动折叠</span>
+      <n-popover trigger="hover" placement="top-start">
+        <template #trigger>
+          <n-icon size="16" :component="HelpCircleSharp" ml-2px translate-y-3 cursor-pointer />
+        </template>
+        <span>当菜单宽度小于此宽度时，菜单自动折叠</span>
+      </n-popover>
+    </n-gi>
     <n-gi :span="16">
       <n-input-number
         size="small"
@@ -31,7 +39,7 @@
     </n-gi>
   </n-grid>
   <n-grid items-center mt-12px>
-    <n-gi :span="17">手风琴模式</n-gi>
+    <n-gi :span="17"><span>手风琴模式</span></n-gi>
     <n-gi :span="7">
       <n-switch v-model:value="accordion" @update:value="handleActiveChange">
         <template #checked>开启</template>
@@ -49,6 +57,7 @@ defineComponent({
 
 <script lang="ts" setup>
 import useSetting from '~/store/setting'
+import { HelpCircleSharp } from '@vicons/ionicons5'
 
 const setting = useSetting()
 
