@@ -8,6 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({
   resolve: {
@@ -23,6 +24,7 @@ export default defineConfig({
         })
       }
     }),
+    vueJsx(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
@@ -47,7 +49,8 @@ export default defineConfig({
     Components({
       dts: './src/types/components.d.ts',
       resolvers: [NaiveUiResolver()],
-      dirs: ['src/components', 'src/views']
+      dirs: ['src/components', 'src/views'],
+      extensions: ['vue', 'tsx']
     }),
 
     // https://github.com/antfu/unocss

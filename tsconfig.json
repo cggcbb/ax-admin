@@ -14,20 +14,13 @@
     "strictNullChecks": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "naive-ui/volar",
-      "vite/client",
-      "unplugin-vue-macros/macros-global"
-    ],
+    "types": ["naive-ui/volar", "vite/client", "unplugin-vue-macros/macros-global"],
     "paths": {
       "~/*": ["src/*"]
     }
   },
   "vueCompilerOptions": {
-    "plugins": [
-      "@vue-macros/volar/define-model",
-      "@vue-macros/volar/define-slots"
-    ]
+    "plugins": ["@vue-macros/volar/define-model", "@vue-macros/volar/define-slots"]
   },
-  "exclude": ["dist", "node_modules"],
+  "exclude": ["dist", "node_modules"]
 }
