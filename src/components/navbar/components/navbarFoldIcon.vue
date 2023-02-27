@@ -1,7 +1,11 @@
 <template>
   <div flex-center-v class="fold-wrapper" @click.stop="toggleFold">
-    <span i-carbon-text-wrap w-22px h-22px :class="[menuSetting.collapsed ? 'fold-close-status' : 'fold-open-status']">
-    </span>
+    <span
+      i-carbon-text-wrap
+      w-22px
+      h-22px
+      :class="[menuSetting.collapsed ? 'fold-close-status' : 'fold-open-status']"
+    ></span>
   </div>
 </template>
 

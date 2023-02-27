@@ -63,7 +63,7 @@ const { layoutLR } = $($setting)
   box-sizing: border-box;
   border-bottom: 1px solid var(--border-color);
   z-index: 99;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: all 0.3s;
   height: @logoHeight;
   padding: 0 12px;
