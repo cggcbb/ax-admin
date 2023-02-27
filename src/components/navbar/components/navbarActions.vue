@@ -6,17 +6,19 @@
         trigger="click"
         :width="320"
         v-if="action.name === 'bell-icon' && action.showIcon"
+        class="!p-0"
       >
         <template #trigger>
-          <n-badge processing :value="badgeValue" :class="{ active: !badgeValue }">
+          <n-badge processing :value="count" :class="{ active: !count }">
             <n-icon size="20" :component="NIconTransform[action.icon]" />
           </n-badge>
         </template>
         <navbar-notification
-          :list="notificationList"
-          @clickIcon="handleClickIcon"
-          @read-all="handleReadAll"
-          @un-read-all="handleReadAll(false)"
+          :notificationList="notificationList"
+          :loading="loading"
+          @clickItem="handleClickItem"
+          @clear="handleClear"
+          @loadMore="handleLoadMore"
         />
       </n-popover>
       <n-icon
@@ -113,7 +115,8 @@ watchPostEffect(() => {
     )
 })
 
-const { badgeValue, notificationList, handleClickIcon, handleReadAll } = useNotification()
+const { count, loading, notificationList, handleClickItem, handleClear, handleLoadMore } =
+  useNotification()
 
 // const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
 //   const style: CSSProperties = {}

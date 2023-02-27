@@ -1,4 +1,4 @@
-import { SelectOption } from 'naive-ui'
+import { BadgeProps, SelectOption } from 'naive-ui'
 
 export interface Result<T = any> {
   code: number
@@ -114,7 +114,14 @@ export interface INotificationItem {
   albumUrl: string
   title: string
   content: string
-  selected: boolean
+  isRead: boolean
+}
+
+export interface INotification {
+  key: string | number
+  badgeType: BadgeProps['type']
+  title: string
+  list: INotificationItem[]
 }
 
 // album
