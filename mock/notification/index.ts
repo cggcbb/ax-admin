@@ -62,7 +62,7 @@ const notificationList = [
   {
     key: 2,
     badgeType: 'success',
-    title: '代办',
+    title: '待办',
     list: '@CONSTELLATION'
   }
 ]
