@@ -5,7 +5,7 @@ import useCacheRoutes from './cache-routes'
 const useVisitedRoutes = defineStore('visited-routes', () => {
   let visitedRoutes = $ref<RouteRecordRaw[]>([])
 
-  const { addCacheRouteName, removeCacheRouteName } = useCacheRoutes()
+  const { addCacheRouteName, removeCacheRouteName, clearCacheRouteName } = useCacheRoutes()
 
   // 记录当前删除的路由下标
   let markRemoveIndex = $ref(0)
@@ -33,6 +33,11 @@ const useVisitedRoutes = defineStore('visited-routes', () => {
     })
   }
 
+  const clearVisitedRoute = () => {
+    visitedRoutes.length = 0
+    clearCacheRouteName()
+  }
+
   watchEffect(() => {
     visitedRoutes = swapSpecifiedRouteToFirst(visitedRoutes, '首页')
   })
@@ -40,7 +45,8 @@ const useVisitedRoutes = defineStore('visited-routes', () => {
   return {
     visitedRoutes,
     addVisitedRoute,
-    removeVisitedRoute
+    removeVisitedRoute,
+    clearVisitedRoute
   }
 })
 

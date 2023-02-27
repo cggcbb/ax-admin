@@ -21,9 +21,12 @@ const loginWrapper = $ref<HTMLElement | null>(null)
 useLoginBackground($$(loginWrapper))
 
 const router = useRouter()
+const route = useRoute()
+
 const go = () => {
+  const { query } = route
   router.push({
-    path: '/dashboard'
+    path: (query.redirect as string) ?? '/dashboard'
   })
 }
 

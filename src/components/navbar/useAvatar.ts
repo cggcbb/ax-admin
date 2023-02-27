@@ -1,5 +1,6 @@
 import { LogInOutline, PersonOutline } from '@vicons/ionicons5'
 import { NIcon } from 'naive-ui'
+import useVisitedRoutes from '~/store/visited-routes'
 import { sleep } from '~/utils'
 
 export default function useAvatar() {
@@ -9,26 +10,38 @@ export default function useAvatar() {
     {
       label: '个人中心',
       key: 'personal-center',
-      icon: () => h(NIcon, {
-        size: 20
-      }, {
-        default: () => h(PersonOutline)
-      })
+      icon: () =>
+        h(
+          NIcon,
+          {
+            size: 20
+          },
+          {
+            default: () => h(PersonOutline)
+          }
+        )
     },
     {
       label: '退出登录',
       key: 'logout',
-      icon: () => h(NIcon, {
-        size: 20
-      }, {
-        default: () => h(LogInOutline),
-      })
-    },
+      icon: () =>
+        h(
+          NIcon,
+          {
+            size: 20
+          },
+          {
+            default: () => h(LogInOutline)
+          }
+        )
+    }
   ]
 
   const message = useMessage()
   const router = useRouter()
   const dialog = useDialog()
+  const route = useRoute()
+  const { clearVisitedRoute } = useVisitedRoutes()
 
   const logout = () => {
     const instance = dialog.warning({
@@ -41,8 +54,12 @@ export default function useAvatar() {
         return new Promise(resolve => {
           sleep(1000).then(() => {
             // TODO logout的一些逻辑
+            clearVisitedRoute()
             router.push({
-              path: '/login'
+              path: '/login',
+              query: {
+                redirect: route.fullPath
+              }
             })
             resolve(null)
           })

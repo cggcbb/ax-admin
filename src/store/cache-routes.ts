@@ -18,10 +18,15 @@ const useCacheRoutes = defineStore('cache-routes', () => {
     cacheRoutesNameSet.delete(r.name as string)
   }
 
+  const clearCacheRouteName = () => {
+    cacheRoutesNameSet.clear()
+  }
+
   return $$({
     cacheRoutesName,
     addCacheRouteName,
-    removeCacheRouteName
+    removeCacheRouteName,
+    clearCacheRouteName
   })
 })
 
