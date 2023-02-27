@@ -64,9 +64,11 @@ const handleItemClick = (r: RouteRecordRaw) => {
 }
 
 const handleTabClick = (path: string) => {
-  router.push({
-    path
-  })
+  if (path !== currentPath) {
+    router.push({
+      path
+    })
+  }
 }
 
 const removeItem = async (r: RouteRecordRaw) => {
