@@ -12,6 +12,7 @@ const Dependencies = () => import(/** package */ '~/views/dep/index.vue')
  *  meta: {
  *    cache: true,                   // 是否被<keep-alive>组件缓存
  *    title: 'title',                // 设置路由在面包屑中展示的名字
+ *    hidden: false                  // 是否在页签栏展示, 父元素设置了，会影响子元素
  *    affix: true,                   // 是否固定在页签栏, 固定后不能删除
  *    affixIcon: 'n-icon-home'       // 页签栏的图标 在src/config/icon/index.ts里面转换
  *  }

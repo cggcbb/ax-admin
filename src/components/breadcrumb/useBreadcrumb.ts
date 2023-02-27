@@ -47,6 +47,9 @@ export default function useBreadcrumb() {
   }
 
   watchPostEffect(() => {
+    if (route.path.startsWith('/redirect') || ['/login', '/404'].includes(route.path)) {
+      return
+    }
     // 切换
     breadcrumbList = generateBreadcrumb(route.matched)
   })

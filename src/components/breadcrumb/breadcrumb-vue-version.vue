@@ -1,3 +1,4 @@
+<!-- 这个文件暂时没用，breadcrumb组件，使用的是index.tsx-->
 <template>
   <n-breadcrumb>
     <transition-group name="breadcrumb">
