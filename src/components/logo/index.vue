@@ -1,5 +1,5 @@
 <template>
-  <div flex-center-all class="logo-wrapper">
+  <div center-layout class="logo-wrapper">
     <img w-30px src="../../assets/logo.svg" />
   </div>
 </template>

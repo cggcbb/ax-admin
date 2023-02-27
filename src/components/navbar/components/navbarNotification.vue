@@ -1,8 +1,8 @@
 <template>
   <section class="notification-container">
     <n-el v-for="item of list" :key="item.title" class="notification-item">
-      <n-grid flex-center-v x-gap="10">
-        <n-gi :span="5" flex-center-all>
+      <n-grid center-layout-v x-gap="10">
+        <n-gi :span="5" center-layout>
           <n-avatar
             round
             size="large"
@@ -20,7 +20,7 @@
             </n-ellipsis>
           </div>
         </n-gi>
-        <n-gi :span="2" flex-center-v>
+        <n-gi :span="2" center-layout-v>
           <n-popover trigger="hover">
             <template #trigger>
               <n-icon cursor-pointer :size="16" class="notification-icon" @click="clickIcon(item)">

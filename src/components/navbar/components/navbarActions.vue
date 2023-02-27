@@ -1,5 +1,5 @@
 <template>
-  <section flex-center-all>
+  <section center-layout>
     <span class="action-item" v-for="(action, index) in actions" :key="`${action.name}-${index}`">
       <n-popover
         placement="bottom"

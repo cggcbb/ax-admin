@@ -1,5 +1,5 @@
 <template>
-  <div flex-center-v class="fold-wrapper" @click.stop="toggleFold">
+  <div center-layout-v class="fold-wrapper" @click.stop="toggleFold">
     <span
       i-carbon-text-wrap
       w-22px

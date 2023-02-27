@@ -1,12 +1,12 @@
 <template>
   <section class="login-wrapper">
     <n-grid>
-      <n-gi :span="24" flex-center-h>
+      <n-gi :span="24" center-layout-h>
         <n-button>登录页面留给一个特别的人</n-button>
       </n-gi>
     </n-grid>
     <n-grid mt-10px>
-      <n-gi :span="24" flex-center-h>
+      <n-gi :span="24" center-layout-h>
         <n-button @click="go">去首页</n-button>
       </n-gi>
     </n-grid>

@@ -8,7 +8,7 @@
     <template #header>
       <n-skeleton text v-if="loading" width="95%" />
       <template v-else>
-        <div flex-center-v justify-between>
+        <div center-layout-v justify-between>
           <n-gradient-text :size="16">{{ data.album }}</n-gradient-text>
           <n-avatar
             size="small"
@@ -26,11 +26,11 @@
         <span font-size-10>
           {{ data.songName }}
         </span>
-        <div flex-center-h flex-col flex-1>
+        <div center-layout-h flex-col flex-1>
           <slot name="content" :content="data.content"></slot>
         </div>
         <div class="divide"></div>
-        <div flex-center-v justify-between>
+        <div center-layout-v justify-between>
           <span text-3>{{ data.singer }}</span>
           <span text-3>{{ data.date }}</span>
         </div>
