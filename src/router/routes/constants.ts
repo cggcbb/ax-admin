@@ -1,7 +1,8 @@
 const Layout = () => import(/** layout */ '~/components/Layout.vue')
 const Login = () => import(/** login */ '~/views/login/index.vue')
 const Redirect = () => import(/** redirect */ '~/views/redirect/index.vue')
-const NotFound = () => import(/** 404 */ '~/views/error/404.vue')
+const NotFound = () => import(/** 404 */ '~/views/exception/404.vue')
+const Personal = () => import(/** 404 */ '~/views/personal/index.vue')
 
 export const constantRoutes = [
   {
@@ -33,9 +34,9 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/error',
+    path: '/exception',
     component: Layout,
-    redirect: '/error/404',
+    redirect: '/exception/404',
     children: [
       {
         path: '404',
@@ -47,5 +48,21 @@ export const constantRoutes = [
       }
     ]
   },
-  { path: '/:pathMatch(.*)', redirect: '/error' }
+  {
+    path: '/personal',
+    name: 'personal',
+    component: Layout,
+    children: [
+      {
+        path: 'information',
+        name: 'information',
+        component: Personal,
+        meta: {
+          title: '个人中心',
+          affixIcon: 'n-icon-person'
+        }
+      }
+    ]
+  },
+  { path: '/:pathMatch(.*)', redirect: '/exception' }
 ]

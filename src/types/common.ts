@@ -1,4 +1,4 @@
-import { BadgeProps, SelectOption } from 'naive-ui'
+import { BadgeProps, SelectOption, TagProps } from 'naive-ui'
 
 export interface Result<T = any> {
   code: number
@@ -167,4 +167,27 @@ export interface IBreadcrumb {
   key: string
   path: string
   children?: IBreadcrumb[]
+}
+
+export interface IPersonal {
+  avatarUrl: string
+  name: string
+  motto: string
+  content: IPersonalContent[]
+  tags: IPersonalTags[]
+}
+
+export interface IPersonalContent {
+  key: string
+  value: string
+}
+
+export interface IPersonalContent {
+  key: string
+  value: string
+}
+
+export interface IPersonalTags {
+  type: TagProps['type']
+  text: string
 }

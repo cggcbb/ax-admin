@@ -9,7 +9,7 @@ export default function useAvatar() {
   const options = [
     {
       label: '个人中心',
-      key: 'personal-center',
+      key: 'personal-information' as const,
       icon: () =>
         h(
           NIcon,
@@ -23,7 +23,7 @@ export default function useAvatar() {
     },
     {
       label: '退出登录',
-      key: 'logout',
+      key: 'logout' as const,
       icon: () =>
         h(
           NIcon,
@@ -37,7 +37,6 @@ export default function useAvatar() {
     }
   ]
 
-  const message = useMessage()
   const router = useRouter()
   const dialog = useDialog()
   const route = useRoute()
@@ -68,15 +67,21 @@ export default function useAvatar() {
     })
   }
 
-  const handleSelect = (key: string) => {
+  type selectKeys = (typeof options)[number]['key']
+
+  const handleSelect = (key: selectKeys) => {
     switch (key) {
-      case 'personal-center':
-        message.warning('click personal center')
+      case 'personal-information':
+        router.push({
+          path: '/personal/information'
+        })
         break
       case 'logout':
         logout()
         break
       default:
+        const n: never = key
+        return n
     }
   }
 

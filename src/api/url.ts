@@ -11,3 +11,5 @@ export const GET_ALBUM_DATA_LIST = '/getAlbumDataList'
 export const GET_NOTIFICATION_LIST = '/getNotificationList'
 
 export const GET_MORE_NOTIFICATION_LIST = '/getMoreNotificationList'
+
+export const GET_PERSONAL = '/getPersonal'

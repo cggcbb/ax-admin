@@ -34,7 +34,6 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: 'workbench',
         component: Workbench,
         meta: {
-          cache: true,
           title: '首页',
           affix: true,
           affixIcon: 'n-icon-home'

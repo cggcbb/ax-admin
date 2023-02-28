@@ -7,7 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    404: typeof import('./../views/error/404.vue')['default']
+    404: typeof import('./../views/exception/404.vue')['default']
     AlbumItem: typeof import('./../views/dashboard/components/albumItem.vue')['default']
     Breadcrumb: typeof import('./../components/breadcrumb/index.tsx')['default']
     BreadcrumbVueVersion: typeof import('./../components/breadcrumb/breadcrumb-vue-version.vue')['default']
@@ -80,6 +80,8 @@ declare module '@vue/runtime-core' {
     NTabs: typeof import('naive-ui')['NTabs']
     NTooltip: typeof import('naive-ui')['NTooltip']
     NWatermark: typeof import('naive-ui')['NWatermark']
+    Personal: typeof import('./../views/personal/index.vue')['default']
+    PersonalUser: typeof import('./../views/personal/components/personal-user.tsx')['default']
     Redirect: typeof import('./../views/redirect/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

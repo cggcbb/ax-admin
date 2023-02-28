@@ -6,7 +6,8 @@ import {
   ExpandOutline as ExpandOutIcon,
   ContractOutline as ContractOutIcon,
   RefreshOutline as RefreshIcon,
-  LogoGithub as GithubIcon
+  LogoGithub as GithubIcon,
+  PersonOutline as PersonIcon
 } from '@vicons/ionicons5'
 
 export interface INIconTransform {
@@ -21,5 +22,6 @@ export const NIconTransform: INIconTransform = {
   'n-icon-expand-out': ExpandOutIcon,
   'n-icon-contract-out': ContractOutIcon,
   'n-icon-refresh': RefreshIcon,
-  'n-icon-github': GithubIcon
+  'n-icon-github': GithubIcon,
+  'n-icon-person': PersonIcon
 }
