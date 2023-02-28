@@ -39,6 +39,8 @@ export default function useNotification() {
   }
 
   const handleLoadMore = async (index: number) => {
+    if (loading.value) return
+
     loading.value = true
     await sleep(1000)
     const res = await get<INotificationItem[]>(GET_MORE_NOTIFICATION_LIST)
