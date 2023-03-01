@@ -4,9 +4,10 @@
     :content-style="{ padding: '8px 16px' }"
     :header-style="{ padding: '5px 16px' }"
     :segmented="true"
+    :bordered="false"
   >
     <template #header>
-      <n-skeleton text v-if="loading" width="95%" />
+      <n-skeleton text v-if="loading" />
       <template v-else>
         <div center-layout-v justify-between>
           <n-gradient-text :size="16">{{ data.album }}</n-gradient-text>
@@ -64,12 +65,6 @@ setTimeout(() => {
 
 <style lang="less" scoped>
 .card-album-item {
-  .n-card-header {
-    .n-skeleton {
-      transform: translateX(6px);
-    }
-  }
-
   .divide {
     margin: 10px 0;
     height: 1px;

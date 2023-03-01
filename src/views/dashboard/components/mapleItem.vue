@@ -1,11 +1,14 @@
 <template>
-  <n-card :content-style="{ padding: '10px' }" :header-style="{ padding: '5px 10px' }" :segmented="true">
+  <n-card
+    :content-style="{ padding: '10px' }"
+    :header-style="{ padding: '5px 10px' }"
+    :segmented="true"
+    :bordered="false"
+  >
     <template #header>
       <n-skeleton text v-if="loading" />
       <template v-else>
-        <gradient-text font-size-9 mr-20px>
-          最后，听首 &lt;枫&gt; 吧 ...
-        </gradient-text>
+        <gradient-text font-size-9 mr-20px>最后，听首 &lt;枫&gt; 吧 ...</gradient-text>
         <navbar-music-icon :size="18" translate-y-3 />
       </template>
     </template>
@@ -13,7 +16,10 @@
       <n-skeleton text v-if="loading" :repeat="16" />
       <template v-else>
         <section h420px overflow-auto>
-          <gradient-text class="lyric" gradient="linear-gradient(90deg, #199fb7 0%, #ff668f 50%, #d38f45 100%)">
+          <gradient-text
+            class="lyric"
+            gradient="linear-gradient(90deg, #199fb7 0%, #ff668f 50%, #d38f45 100%)"
+          >
             <article>
               <p>作詞：宋健彰(彈頭)</p>
               <p>作曲：周杰倫</p>

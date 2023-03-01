@@ -1,9 +1,17 @@
 <template>
-  <n-card :content-style="{ padding: '10px' }" :header-style="{ padding: '5px 10px' }" :segmented="true">
+  <n-card
+    :content-style="{ padding: '10px' }"
+    :header-style="{ padding: '5px 10px' }"
+    :segmented="true"
+    :bordered="false"
+  >
     <template #header>
       <n-skeleton text v-if="loading" />
       <template v-else>
-        <n-gradient-text font-size-9 gradient="linear-gradient(90deg, #08d9d6 0%, #3490de 50%, #ff00c1 100%)">
+        <n-gradient-text
+          font-size-9
+          gradient="linear-gradient(90deg, #08d9d6 0%, #3490de 50%, #ff00c1 100%)"
+        >
           那天她说 No Problem
         </n-gradient-text>
       </template>
@@ -31,6 +39,4 @@ setTimeout(() => {
 }, 1000)
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

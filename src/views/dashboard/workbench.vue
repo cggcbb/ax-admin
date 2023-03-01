@@ -15,11 +15,11 @@
         <china-map-item />
       </n-gi>
     </n-grid>
-    <n-grid mt-10px x-gap="10">
-      <n-gi :span="12">
+    <n-grid mt-10px x-gap="10" y-gap="10" cols="1 m:2" responsive="screen">
+      <n-gi>
         <deformation-chart-item />
       </n-gi>
-      <n-gi :span="12">
+      <n-gi>
         <maple-item></maple-item>
       </n-gi>
     </n-grid>
