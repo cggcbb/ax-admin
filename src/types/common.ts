@@ -170,11 +170,25 @@ export interface IBreadcrumb {
 }
 
 export interface IPersonal {
+  user: IPersonalUser
+  heros: IPersonalHero[]
+  article: IPersonalArticle[]
+}
+
+export interface IPersonalUser {
   avatarUrl: string
   name: string
   motto: string
   content: IPersonalContent[]
   tags: IPersonalTags[]
+  timeLine: IPersonalTimeLine[]
+}
+
+export interface IPersonalHero {
+  avatarUrl: string
+  name: string
+  desc: string
+  skills: string[]
 }
 
 export interface IPersonalContent {
@@ -182,12 +196,19 @@ export interface IPersonalContent {
   value: string
 }
 
-export interface IPersonalContent {
-  key: string
-  value: string
+export interface IPersonalTimeLine {
+  type: 'success' | 'info' | 'warning' | 'error'
+  text: string
 }
 
 export interface IPersonalTags {
   type: TagProps['type']
   text: string
+}
+
+export interface IPersonalArticle {
+  key: number
+  title: string
+  author: string
+  content: string[]
 }

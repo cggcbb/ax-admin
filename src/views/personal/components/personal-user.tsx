@@ -1,8 +1,8 @@
-import { NCard, NAvatar, NSpace, NEl, NTag } from 'naive-ui'
-import { IPersonal } from '~/types/common'
+import { NCard, NAvatar, NSpace, NEl, NTag, NTimeline, NTimelineItem } from 'naive-ui'
+import { IPersonalUser } from '~/types/common'
 
 type personalUserProps = {
-  data: IPersonal
+  data: IPersonalUser
 }
 
 /**
@@ -12,7 +12,7 @@ type personalUserProps = {
  */
 export default function personalUser(props: personalUserProps) {
   return (
-    <NCard style="min-height: 400px" bordered={false}>
+    <NCard style="min-height: 450px" bordered={false}>
       <NSpace justify="center">
         <NAvatar bordered round size={120} src={props.data?.avatarUrl} />
       </NSpace>
@@ -34,8 +34,17 @@ export default function personalUser(props: personalUserProps) {
           <NTag type={item.type}>{item.text}</NTag>
         ))}
       </NSpace>
+      <NSpace justify="center" class="mt-5">
+        <NTimeline horizontal>
+          {props.data?.timeLine.map((item, index) => (
+            <NTimelineItem
+              type={item.type}
+              title={item.text}
+              style={index === props.data.timeLine.length - 1 ? 'paddingRight: 0' : ''}
+            />
+          ))}
+        </NTimeline>
+      </NSpace>
     </NCard>
   )
 }
-
-personalUser.props = ['data']
