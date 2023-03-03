@@ -1,8 +1,8 @@
-const Layout = () => import(/** layout */ '~/components/Layout.vue')
-const Login = () => import(/** login */ '~/views/login/index.vue')
-const Redirect = () => import(/** redirect */ '~/views/redirect/index.vue')
-const NotFound = () => import(/** 404 */ '~/views/exception/404.vue')
-const Personal = () => import(/** 404 */ '~/views/personal/index.vue')
+const Layout = defineAsyncComponent(() => import('~/components/Layout.vue'))
+const Login = defineAsyncComponent(() => import('~/views/login/index.vue'))
+const Redirect = defineAsyncComponent(() => import('~/views/redirect/index.vue'))
+const NotFound = defineAsyncComponent(() => import('~/views/exception/404.vue'))
+const Personal = defineAsyncComponent(() => import('~/views/personal/index.vue'))
 
 export const constantRoutes = [
   {

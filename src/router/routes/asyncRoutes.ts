@@ -1,9 +1,9 @@
 import { RouteRecordRaw } from 'vue-router'
 
-const Layout = () => import(/** layout */ '~/components/Layout.vue')
-const Github = () => import(/** github */ '~/views/github.vue')
-const Workbench = () => import(/** workbench */ '~/views/dashboard/workbench.vue')
-const Dependencies = () => import(/** package */ '~/views/dep/index.vue')
+const Layout = defineAsyncComponent(() => import('~/components/Layout.vue'))
+const Github = defineAsyncComponent(() => import('~/views/github.vue'))
+const Workbench = defineAsyncComponent(() => import('~/views/dashboard/workbench.vue'))
+const Dependencies = defineAsyncComponent(() => import('~/views/dep/index.vue'))
 
 /**
  *
