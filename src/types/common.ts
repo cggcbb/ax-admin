@@ -212,3 +212,9 @@ export interface IPersonalArticle {
   author: string
   content: string[]
 }
+
+export type menuBadge = Partial<
+  Pick<INotification, 'badgeType'> & {
+    content: string
+  }
+>

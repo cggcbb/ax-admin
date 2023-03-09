@@ -31,11 +31,18 @@ export const routes: MenuOption[] = [
   },
   {
     label: '模拟请求',
+    badge: {
+      badgeType: 'success',
+      content: 'boom'
+    },
     icon: renderIcon(FlameOutline),
     key: '/request',
     children: [
       {
         label: 'github',
+        badge: {
+          content: 'new'
+        },
         icon: renderIcon(LogoGithub),
         key: '/request/github',
         to: '/request/github'

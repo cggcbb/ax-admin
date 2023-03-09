@@ -24,10 +24,12 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { MenuInst, MenuOption, NEl } from 'naive-ui'
+import type { MenuInst, MenuOption } from 'naive-ui'
+import { NEl, NBadge } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { routes as menuOptions } from '../../../mock/menu'
 import useSetting from '~/store/setting'
+import { menuBadge } from '~/types/common'
 
 const setting = useSetting()
 const route = useRoute()
@@ -52,16 +54,41 @@ const renderMenuLabel = (option: MenuOption) => {
           path: option.to as string
         }
       },
-      { default: () => option.label }
+      { default: () => createLabel(option) }
     )
   }
-  return h(NEl, {}, { default: () => option.label })
+  return h(NEl, null, {
+    default: () => createLabel(option)
+  })
+}
+
+const createLabel = (option: MenuOption) => {
+  const badge = option.badge as menuBadge
+  return badge
+    ? h('div', { class: 'vertical-menu-has-badge' }, [
+        h('span', { class: 'vertical-menu-title' }, option.label as string),
+        h(NBadge, {
+          value: badge.content,
+          type: badge.badgeType,
+          size: 12
+        })
+      ])
+    : option.label
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .vertical-menu-container {
   overflow: hidden;
   height: calc(100vh - @logoHeight) !important;
+}
+.vertical-menu-has-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 4px;
+  .vertical-menu-title {
+    margin-right: 6px;
+  }
 }
 </style>
