@@ -8,7 +8,7 @@
       @select="handleSelect"
     >
       <div center-layout-v>
-        <n-avatar size="small" bordered round src="/src/assets/avatar.png"></n-avatar>
+        <img src="../../../assets/avatar.png" />
         <n-gradient-text ml-6px mr-4px>{{ nickName }}</n-gradient-text>
       </div>
     </n-dropdown>
@@ -27,8 +27,14 @@ const { nickName, options, handleSelect } = useAvatar()
 </script>
 
 <style lang="less" scoped>
-.avatar-wrapper:hover {
-  cursor: pointer;
-  color: var(--primary-color);
+.avatar-wrapper {
+  img {
+    width: 28px;
+    border-radius: 50%;
+  }
+  &:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+  }
 }
 </style>

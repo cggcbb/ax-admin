@@ -116,9 +116,13 @@ const createTimeLineList = () => {
   })
 }
 
+function getImageUrl(name: string) {
+  return new URL(`../../src/assets/${name}`, import.meta.url).href
+}
+
 const createPersonalUser = () => {
   return {
-    avatarUrl: '/src/assets/avatar.png',
+    avatarUrl: getImageUrl('avatar.png'),
     name: 'Mine Mine',
     motto: '我在杀你的路上，带了一枝玫瑰花',
     content: [
@@ -144,37 +148,37 @@ const heros = [
   {
     name: '瑶',
     desc: '辅助',
-    avatarUrl: '/src/assets/yao.webp',
+    avatarUrl: getImageUrl('yao.webp'),
     skills: ['山鬼·白鹿', '若有人兮', '风飒木萧', '独立兮山之上']
   },
   {
     name: '小乔',
     desc: '法师',
-    avatarUrl: '/src/assets/xiaoqiao.webp',
+    avatarUrl: getImageUrl('xiaoqiao.webp'),
     skills: ['治愈微笑', '绽放之舞', '甜蜜恋风', '星华缭乱']
   },
   {
     name: '安琪拉',
     desc: '法师',
-    avatarUrl: '/src/assets/anqila.webp',
+    avatarUrl: getImageUrl('anqila.webp'),
     skills: ['咒术火焰', '火球术', '混沌火种', '炽热光辉']
   },
   {
     name: '米莱狄',
     desc: '法师',
-    avatarUrl: '/src/assets/milaidi.webp',
+    avatarUrl: getImageUrl('milaidi.webp'),
     skills: ['机械仆从', '空中力量', '强制入侵', '浩劫磁场']
   },
   {
     name: '孙尚香',
     desc: '射手',
-    avatarUrl: '/src/assets/sunshangxiang.webp',
+    avatarUrl: getImageUrl('sunshangxiang.webp'),
     skills: ['活力迸发', '翻滚突袭', '红莲爆弹', '究极弩炮']
   },
   {
     name: '桑启',
     desc: '辅助',
-    avatarUrl: '/src/assets/sangqi.webp',
+    avatarUrl: getImageUrl('sangqi.webp'),
     skills: ['萤火庇护', '桑木为引', '乘风启程', '萤火微光']
   }
 ]
